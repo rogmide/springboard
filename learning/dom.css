@@ -1,0 +1,24 @@
+body {
+    background-color: lightslategray;
+}
+
+div {
+    display: flex;    
+    align-items: center;  
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    background-color: lightslategray;
+    border-radius: 10px;
+}
+
+button {
+    width: auto;
+    height: 50px;
+    border-radius: 10px;
+    border-color: antiquewhite;
+}
+
+button:hover {
+    background-color: antiquewhite;    
+}
