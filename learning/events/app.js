@@ -1,4 +1,4 @@
-const h1 = document.querySelector("h1");
+//const h1 = document.querySelector("h1");
 
 //WE NEVER USE THIS ONE - BUT DON DELETE IT FROM YOUR BRAIN
 // h1.onclick = function () {
@@ -69,36 +69,65 @@ const h1 = document.querySelector("h1");
 // });
 
 
-//DONT USE THIS OPTIONS
-function makeBody(color) {
-    document.body.style.backgroundColor = color;
-}
+// //DONT USE THIS OPTIONS
+// function makeBody(color) {
+//     document.body.style.backgroundColor = color;
+// }
 
-// const btn = document.querySelector('#black');
-const btn2 = document.querySelector('#color');
+// // const btn = document.querySelector('#black');
+// const btn2 = document.querySelector('#color');
 
-// btn2.onclick = function () {
+// // btn2.onclick = function () {
+// //     makeBody('#202124');
+// // };
+
+// // btn.onclick = function () {
+// //     makeBody('black');
+// // };
+
+// //USE this WAY OF DOING EVENTS
+// const violetBtn = document.querySelector('#violete');
+// violetBtn.addEventListener('click', function () {
+//     makeBody('violet');
+// });
+
+// btn2.addEventListener('click', function () {
 //     makeBody('#202124');
-// };
+// });
 
-// btn.onclick = function () {
-//     makeBody('black');
-// };
+// const p = document.querySelector('p');
 
-//USE this WAY OF DOING EVENTS
-const violetBtn = document.querySelector('#violete');
-violetBtn.addEventListener('click', function () {
-    makeBody('violet');
+// p.addEventListener('click', function(e){
+//     console.log(e);
+// });
+
+
+
+// const form = document.querySelector('#monkey-form');
+
+// form.addEventListener('submit', function (e) {
+//     e.preventDefault();
+//     console.log('all good now');
+// });
+
+const form = document.querySelector('#monkey-form');
+const brandInput = document.querySelector('input[name="brandname"]');
+const colorInput = document.querySelector('input[name="color"]');
+const fontSizeInput = document.querySelector('input[name="font-side"]');
+const results = document.querySelector('#result');
+
+
+form.addEventListener('submit', function (e) {
+    e.preventDefault();  
+    const newLogo = makeLogo(brandInput.value, colorInput.value, fontSizeInput.value);      
+    
+    results.append(newLogo);
 });
 
-btn2.addEventListener('click', function () {
-    makeBody('#202124');
-});
-
-const p = document.querySelector('p');
-
-p.addEventListener('click', function(e){
-    console.log(e);
-});
-
-
+function makeLogo(text, color, a) {
+    const logo = document.createElement('h2');
+    logo.innerText = text;
+    logo.style.color = color;
+    logo.style.fontSize = a + "px";
+    return logo;
+}
