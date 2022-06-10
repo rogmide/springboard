@@ -31,3 +31,8 @@ h1 {
     transform: scale(0.5);
     color: red;
 }
+
+.imgT {
+    width: 200px;
+    height: 200px;
+}
