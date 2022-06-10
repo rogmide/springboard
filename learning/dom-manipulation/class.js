@@ -41,5 +41,12 @@ const newImg = document.createElement('img');
 newImg.setAttribute('src', 'dogss.jpg')
 newImg.classList.add('imgT');
 
-
 document.body.prepend(newImg);
+
+// const removeMe = document.querySelector('#remove-me');
+// ul.removeChild(removeMe);
+
+const removeMe = document.querySelector('#remove-me');
+removeMe.remove();
+const h1 = document.querySelector('h1');
+h1.remove();
