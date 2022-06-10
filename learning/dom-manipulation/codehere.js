@@ -56,16 +56,31 @@
 
 // i.innerText = i.innerText.toUpperCase();
 
-const allh1 = document.querySelectorAll('h1');
+// const allh1 = document.querySelectorAll('h1');
 
-for (let h1 of allh1) {
-    h1.style.color = 'purple';
-    h1.style.fontSize = '20px';
-}
+// for (let h1 of allh1) {
+//     h1.style.color = 'purple';
+//     h1.style.fontSize = '20px';
+// }
 
-const myimg = document.querySelectorAll('img');
+// for (let h1 of allh1) {
+//     h1.setAttribute('class', 'h1-change');
+// }
 
-for (const img of myimg) {
-    img.style.width = "100px";
-    img.style.border = "2px solid green";
-}
+
+
+// const myimg = document.querySelectorAll('img');
+
+// for (let img of myimg) {
+//     console.log(img.getAttribute('src'));
+// }
+
+// const input = document.querySelector('input');
+
+// input.setAttribute("placeholder", "some text here");
+// input.setAttribute("type", "checkbox");
+
+const myId = document.querySelector('#head-id');
+
+const input = document.querySelector('input');
+

@@ -1,4 +1,13 @@
+body {
+    background-color: grey;
+    height: 100vh;
+}
+
 img {
     width: 150px;
     height: 150px;
+}
+
+.h1-change {
+    background-color: aqua;
 }
