@@ -57,6 +57,12 @@ body {
     }
 }
 
+@media (max-width: 800px) {
+    .container .order-list {
+        max-width: 100%;
+    }
+}
+
 .main-title {
     font-weight: bold;
     margin-top: 20px;
