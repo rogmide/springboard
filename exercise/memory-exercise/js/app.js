@@ -4,9 +4,12 @@ const resetGame = document.querySelector('.btn-winner');
 let orderList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 const bS = document.querySelector('.best-score');
 const storeScore = { currentBS: '0' };
+const cS = document.querySelector('.score');
 
 try {
-    bS.innerText = JSON.parse(localStorage.currentBS);
+    if (cS.innerText === '0') {
+        bS.innerText = JSON.parse(localStorage.currentBS);
+    }
 } catch (error) {
 
 }
@@ -78,8 +81,8 @@ gameContainer.addEventListener('click', function (e) {
 
             let currentScore = Math.round((score - (attent - 12)));
 
-            if (storeScore.currentBS < currentScore) {
-                bS.innerText = currentScore;
+            if (parseInt(bS.innerText) < parseInt(cS.innerText)) {
+                bS.innerText = cS.innerText;
                 localStorage.setItem('currentBS', currentScore);
             }
 
@@ -149,7 +152,7 @@ function checkMatch(e) {
 
 function randomPosition() {
 
-    let unOrder = shuffledArr(orderList);    
+    let unOrder = shuffledArr(orderList);
 
     for (let i = 0; i < 11; i++) {
         gameContainer.children[i].id = 'i' + unOrder[i];
