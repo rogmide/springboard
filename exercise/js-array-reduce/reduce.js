@@ -5,7 +5,7 @@ Examples:
     const arr = [{name: 'Elie'}, {name: 'Tim'}, {name: 'Matt'}, {name: 'Colt'}]
     extractValue(arr,'name') // ['Elie', 'Tim', 'Matt', 'Colt']
 */
-
+// i don't understand REDUCE very well and i dont want to spend time on it
 function extractValue(arr, key) {
     return arr.reduce(function (acc, next) {
         acc.push(next[key]);
@@ -23,9 +23,8 @@ Examples:
     vowelCount('hmmm') // {};
     vowelCount('I Am awesome and so are you') // {i: 1, a: 4, e: 3, o: 3, u: 1};
 */
-/*
 
-*/
+// i don't understand REDUCE very well and i dont want to spend time on it
 function vowelCount(str) {
     const vowels = "aeiou";
     return str.split('').reduce(function (acc, next) {
@@ -56,6 +55,7 @@ Examples:
        ]
 */
 
+// i don't understand REDUCE very well and i dont want to spend time on it
 function addKeyAndValue(arr, key, value) {
     return arr.reduce(function (acc, next, idx) {
         acc[idx][key] = value;
@@ -85,6 +85,7 @@ Examples:
     partition(names, isLongerThanThreeCharacters) // [['Elie', 'Colt', 'Matt'], ['Tim']]
 */
 
+// i don't understand REDUCE very well and i dont want to spend time on it
 function partition(arr, callback) {
     return arr.reduce(function (acc, next) {
         if (callback(next)) {
