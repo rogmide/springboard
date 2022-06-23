@@ -1,0 +1,21 @@
+const PI = 3.14;
+PI = Can't re-assign.
+
+What is the difference between var and let?
+
+-let allows you to declare variables that are limited in scope to the block, statement, or expression on which it is used.
+ This is unlike the var keyword, which defines a variable globally.
+
+What is the difference between var and const?
+
+ -The scope of a var variable is functional scope. but you can not redeclare or reassign using the const.
+  and you can using var
+  
+What is the difference between let and const?
+
+ -The scope of a let variable is block scope. The scope of a const variable is block scope. 
+  It can be updated and re-declared into the scope. It can be updated but cannot be re-declared into the scope.
+
+What is hoisting?
+
+ -Hoisting is a JavaScript mechanism where variables and function declarations are moved to the top(not literal) of their scope before code execution.
