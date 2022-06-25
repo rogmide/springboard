@@ -63,7 +63,7 @@ const obj2 = {
     }
 };
 
-const { a1, b2 } = obj2.numbers
+const { a1, b2 } = obj2.numbers 
 
 var arr = [1, 2];
 var temp = arr[0];
