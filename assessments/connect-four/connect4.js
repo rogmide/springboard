@@ -156,7 +156,7 @@ function checkForWin() {
     // cells is the 4 way of winning condition horiz, vert, diagDR, diagDL    
     // do this every time that the player click to insert a dot
 
-    //horiz vert, diagDR, diagDL they are array with 4 value coming from the position where the player drop the dot
+    //horiz vert, diagDR, diagDL they are array with 4 value 
     //horiz
     // - - - -
     //vert 
