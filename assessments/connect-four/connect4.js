@@ -185,17 +185,19 @@ function checkForWin() {
     );
   }
   // TODO: read and understand this code. Add comments to help you.  
-  // This return a array with the 4 value that are going to be check for winner
-  // Using the positin where the player drop the dop make the 4 arrays
+  // This return a array with the 4 value that are going to be check for winner  
   // horiz vert, diagDR, diagDL 
   // Pass the Array to the _win() in order to check for the winner
+  // This is run all the board checking for winning situation
+  
   for (let y = 0; y < HEIGHT; y++) {
     for (let x = 0; x < WIDTH; x++) {
+
       let horiz = [[y, x], [y, x + 1], [y, x + 2], [y, x + 3]];
       let vert = [[y, x], [y + 1, x], [y + 2, x], [y + 3, x]];
       let diagDR = [[y, x], [y + 1, x + 1], [y + 2, x + 2], [y + 3, x + 3]];
       let diagDL = [[y, x], [y + 1, x - 1], [y + 2, x - 2], [y + 3, x - 3]];
-
+      
       if (_win(horiz) || _win(vert) || _win(diagDR) || _win(diagDL)) {
         return true;
       }
