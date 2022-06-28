@@ -230,21 +230,25 @@ function selectGame(radio) {
   const normal = document.getElementById('input-normal');
   const three = document.getElementById('input-three');
   const ai = document.getElementById('input-vsai')
+  const board = document.getElementById('board');
   switch (radio.value) {
     case 'normal':
       normal.classList.remove('hidden');
       three.classList.add('hidden');
       ai.classList.add('hidden');
+      board.innerHTML = '';
       break;
     case 'three':
       three.classList.remove('hidden');
       normal.classList.add('hidden');
       ai.classList.add('hidden');
+      board.innerHTML = '';
       break;
     case 'vsai':
       ai.classList.remove('hidden');
       three.classList.add('hidden');
       normal.classList.add('hidden');
+      board.innerHTML = '';
       break;
     default:
       break;
