@@ -1,0 +1,42 @@
+<!doctype html>
+
+<head>
+  <title>Connect 4</title>
+  <link href="connect4.css" rel="stylesheet">
+</head>
+
+<body>
+  <from>
+    <input type="radio" id="normal" name="fav_language" value="normal" onchange="selectGame(this)">
+    <label for="normal">Normal Game</label><br>
+    <input type="radio" id="tree_player" name="fav_language" value="three" onchange="selectGame(this)">
+    <label for="tree_player">3 Player Game</label><br>
+    <input type="radio" id="vs-pc" name="fav_language" value="vsai" onchange="selectGame(this)">
+    <label for="vs-pc">VS Computer</label>
+</from>
+<br><br>
+
+<div id="input-normal" class="normal hidden">
+  <input type="text" id="color1" placeholder="P1 Change Color">
+  <input type="text" id="color2" placeholder="P2 Change Color">
+  <input class="new-btn" type="submit" value="New Game">
+</div>
+<div id="input-three"  class="new-tree-player hidden">
+  <input type="text" id="color4" placeholder="P1 Change Color">
+  <input type="text" id="color5" placeholder="P2 Change Color">
+  <input type="text" id="color3" placeholder="P3 Change Color">
+  <input class="new-btn3" type="submit" value="New Game">
+</div>
+<div id="input-vsai"  class="new-vs-pc hidden">
+  <input type="text" id="colorPC" placeholder="P1 Change Color">
+  <input class="new-btn-vs" type="submit" value="New Game">
+</div>
+<div id="game">
+  <table id="board"></table>
+</div>
+
+  <script src="connect4.js"></script>
+
+</body>
+
+</html>
