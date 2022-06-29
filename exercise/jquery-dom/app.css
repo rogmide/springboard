@@ -1,0 +1,14 @@
+body {
+    background-color: #202124;
+    color: white;    
+}
+
+img {
+    max-width: 70%;
+}
+
+.image-center {
+    display: block;
+    margin: 10px auto;    
+}
+
