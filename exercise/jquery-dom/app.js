@@ -37,7 +37,7 @@ setTimeout(function () {
 //When you change the numbers in the three inputs on the bottom,
 //the background color of the body should change to match whatever the three values in the inputs are.
 
-$('input').on('change', function () {
+$('input').on('keyup blur change', function () {
     const r = $($('input')[0]).val();
     const g = $($('input')[1]).val();
     const b = $($('input')[2]).val();
