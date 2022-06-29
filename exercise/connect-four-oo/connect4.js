@@ -196,8 +196,7 @@ class GameVsPC extends Game {
 
   handleClick(evt) {
     let x = 0;
-    if (this.currPlayer === 2) {
-      // LOOK this.WIDTH is not working giving me a undefine      
+    if (this.currPlayer === 2) {          
       x = Math.floor(Math.random() * this.WIDTH);
     }
     if (this.currPlayer === 1) {
