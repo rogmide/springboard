@@ -1,0 +1,128 @@
+body {
+    background-color: #2c3639;
+    color: #dcd7c9;
+}
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: calc(1em + 0.5vw);
+}
+
+body {
+    font-size: 0.6em;
+    line-height: 1.5;
+    position: relative;
+    margin: 0;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 90vw;
+    width: 100%;
+}
+
+.container:before,
+.container:after {
+    content: " ";
+    display: table;
+}
+
+.container:after {
+    clear: both;
+}
+
+@media (min-width: 993px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1201px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
+@media (min-width: 1601px) {
+    .container {
+        max-width: 1280px;
+    }
+}
+
+@media (max-width: 600px) {
+    .group-form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .small-rating {
+        max-width: 100%;
+    }
+}
+
+.top_title {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.small-rating {
+    max-width: 30%;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: #dcd7c9;
+}
+
+.group-form {
+    margin-top: -30px;
+}
+
+.small-btn {
+    width: 150px;
+}
+
+.table {
+    color: #dcd7c9;
+}
+
+.rate {
+    width: 150px;
+}
+
+.col-12 {
+    width: auto;
+}
+
+.row {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+    width: auto;
+}
+
+.input-1 {
+    width: auto;
+}
+
+.btn-delete {
+    height: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #5c636a;
+    width: 60px;    
+    color: #63a1bf;
+}
+
+.btn-delete:hover {
+    background-color: #767e86;
+    color: white;
+}
+
+.td-btn-delete {
+    text-align: end;
+}
