@@ -15,9 +15,10 @@ btnAdd.on('click', function (e) {
             return (parseInt(a.rate) < parseInt(b.rate)) ? 1 : -1;
         });
 
-        tableList.empty();
+        tableList.empty();        
         movie.val('');
         rate.val('');
+        
 
         organizeList();
     }
