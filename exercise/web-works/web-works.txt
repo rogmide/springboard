@@ -1,0 +1,42 @@
+What is HTTP?
+
+ - The Hypertext Transfer Protocol (HTTP) is the foundation of the World Wide Web, and is used to load web pages using hypertext links.
+
+What is a URL?
+
+ - URL stands for Uniform Resource Locator. A URL is nothing more than the address of a given unique resource on the Web.
+
+ hat is DNS?
+
+  - The Domain Name System (DNS) is the phonebook of the Internet. Humans access information online through domain names.
+
+What is a query string?
+
+  - A query string is the portion of a URL where data is passed to a web application and/or back-end database.
+
+What are two HTTP verbs and how are they different?
+
+  - The primary or most-commonly-used HTTP verbs (or methods, as they are properly called) are POST, GET, PUT, PATCH, and DELETE.
+
+What is an HTTP request?
+
+  - HTTP works as a request-response protocol between a client and server. Example: A client (browser) sends an HTTP request to the server; then the server returns a response to the client.
+
+What is an HTTP response?
+
+  - An HTTP response is made by a server to a client. The aim of the response is to provide the client with the resource it requested,
+    or inform the client that the action it requested has been carried out; or else to inform the client that an error occurred in processing its request.
+
+What is an HTTP header? Give a couple examples of request and response headers you have seen.
+
+  - HTTP headers let the client and the server pass additional information with an HTTP request or response.
+    An HTTP header consists of its case-insensitive name followed by a colon (:), then by its value.
+
+What are the processes that happen when you type “http://somesite.com/some/page.html” into a browser?
+
+  - You type a URL in your browser and press Enter.
+  - Browser looks up IP address for the domain.
+  - Browser initiates TCP connection with the server.
+  - Browser sends the HTTP request to the server.
+  - Server processes request and sends back a response.
+  - Browser renders the content.

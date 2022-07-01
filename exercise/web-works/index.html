@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="app.css">
+    <title>Get/Post</title>
+</head>
+
+<body>
+
+    <form class="container row g-3 group-form" action="page1.html" method="GET">
+        <div class="row g-3">
+            <div class="col-md-4 input-1">
+                <input name="first" id="first" type="text" class="form-control" id="validationServer01"
+                    placeholder="Value 1" required>
+            </div>
+            <div class="col-md-4 input-1">
+                <input name="sec" id="sec" type="text" class="form-control" id="validationServer01" placeholder="Value 2"
+                    required>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-secondary">Get!</button>
+            </div>
+        </div>
+    </form>
+
+    <form class="container row g-3 group-form" action="page1.html" method="POST">
+        <div class="row g-3">
+            <div class="col-md-4 input-1">
+                <input name="q" type="text" class="form-control" id="validationServer01" placeholder="POST" required>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-secondary">Post</button>
+            </div>
+        </div>
+    </form>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
