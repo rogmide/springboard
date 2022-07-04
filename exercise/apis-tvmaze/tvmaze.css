@@ -1,0 +1,22 @@
+#cast {
+    width: 150px;
+    height: 200px;
+}
+
+.cast-holder {
+    display: flex;
+}
+
+#member-cast {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#member-cast img {
+    margin-top: 20px;
+    margin-right: 5px;    
+}
+
+.btn-primary {
+    margin-top: 10px;
+}
