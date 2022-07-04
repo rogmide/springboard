@@ -64,8 +64,7 @@ function populateCast(cast) {
   for (const actor of cast) {
     let img = (actor.img) ? actor.img.medium : 'toppng.com-person-icons-android-username-icon-ios-1287x1365.png';
     let $item2 = $(`
-    <div cast-holder>
-    
+    <div cast-holder>    
       <div> <img id="cast" class="card-img-top" src="${img}"> </div>
       <p class="card-text">${actor.name}</p>
     </div>
