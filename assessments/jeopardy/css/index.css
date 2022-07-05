@@ -65,19 +65,22 @@ body {
 }
 
 .team {
-    width: auto;
-    height: 130px;
+    width: 180px;
+    height: 140px;
     background-color: #161924;
     text-align: center;
     border-radius: 10px;
-    margin: 10px;
+    margin-right: 20px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    box-shadow: #e9e8eb 0 2px 2px;
 }
 
 .teams {
     display: flex;
-    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;    
     flex-wrap: wrap;
     max-width: fit-content;
+    margin-left: 0;
 }
 
 img {
@@ -87,18 +90,17 @@ img {
 .team-form {
     display: flex;
     justify-content: flex-end;
-    margin-bottom: 20px;
 }
 
 .btn-new-game {
-    height: 35px;
-    font-size: 10px;
+    height: auto;
+    font-size: 15px;
     width: fit-content;
 }
 
 .input-2 {
-    height: 35px;
-    font-size: 10px;
+    height: auto;
+    font-size: 15px;
     width: fit-content;
 }
 
@@ -107,8 +109,8 @@ label {
     padding-top: 10px;
     width: 200px;
     margin-right: 10px;
-    height: 30px;
-    font-size: 9px;
+    height: auto;
+    font-size: 15px;
     text-align: end;
 }
 
@@ -119,7 +121,13 @@ label {
     margin-left: 10px;
 }
 
+.btn-add {
+    color: #fa6c71;
+}
 
+.btn-take {
+    color: #fa6c71;
+}
 
 h5 {
     font-size: 8px;
@@ -131,3 +139,64 @@ h5 {
     margin-right: 10px;
 }
 
+.game-board {
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    width: auto;
+    height: 80px;
+    box-shadow: #e9e8eb 0 2px 2px;
+    background-color: #161924;
+    margin: 5px;
+    margin-top: 10px;
+}
+
+.card:hover {
+    background-color: #3b445c;
+    cursor: pointer;
+}
+
+.card-done {
+    opacity: 0.1;
+    box-shadow: #e9e8eb 0 0.5px 0.5px;
+}
+
+.card-done:hover {
+    opacity: 0.1;
+    background-color: #3d4048;
+    box-shadow: none;
+}
+
+.colum-holder {
+    width: 20%;
+    height: auto;
+    text-align: center;
+    margin-top: 10px;
+}
+
+h4 {
+    font-size: 15px;
+    font-weight: bolder;
+}
+
+h1 {
+    margin-top: 10px;
+}
+
+h3 {
+    font-size: 30px;
+    color: gold;
+}
+
+h3:hover {
+    cursor: pointer;
+}
+
+.question {
+    font-size: 25px;
+}
