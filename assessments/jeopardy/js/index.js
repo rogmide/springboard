@@ -1,5 +1,5 @@
 const imgUrl = ["/img/dog.png", "/img/pork.png", "/img/bee.png", "/img/rex.png", "/img/rat.png"];
-const category = [['Animals', 21], ['3 Letter Words', 105], ['Sport', 42], ['Science', 25], ['Food', 49]];
+let category = [];//[['Animals', 21], ['3 Letter Words', 105], ['Sport', 42], ['Science', 25], ['Food', 49], ['People', 442]];
 //['American History', 780] ['People', 442]
 let onBoard = [];
 let chosenOne = [];
@@ -7,14 +7,32 @@ let currentValue = 0;
 let question = '';
 let answer = '';
 
+
+
+
 //New Game Button to Star The Game
-$('.btn-new-game').on('click', function (e) {
+$('.btn-new-game').on('click', async function (e) {
     if ($('.input-2').val()) {
         e.preventDefault();
+        category = [];
+        await loadCategory();
         createTeam();
         createGame();
     }
 });
+
+async function loadCategory() {
+    try {
+        let res = await axios.get(`https://jservice.io/api/categories?count=100`);
+        for (let i = 0; i < 5; i++) {
+            let temp = res.data.sort(() => Math.random() - 0.5).pop();
+            category.push([`${temp.title}`, temp.id]);
+        }
+
+    } catch (error) {
+        category = [['Animals', 21], ['3 Letter Words', 105], ['Sport', 42], ['Science', 25], ['Food', 49], ['People', 442]];
+    }
+}
 
 //Load The Game With the Current Question, Answer, CurrentValue
 $('.game-board').on('click', '.card', function (e) {
@@ -56,7 +74,7 @@ $('.teams').on('click', '.btn-add', function (e) {
     const id = $(e.target).parent().children()[1].id;
     const teamPoint = $(`#${id}`);
     teamPoint.text(parseInt(teamPoint.text()) + currentValue);
-    currentValue = 0;
+
 });
 
 //Event to remove Point to the Team
@@ -64,7 +82,6 @@ $('.teams').on('click', '.btn-take', function (e) {
     const id = $(e.target).parent().children()[1].id;
     const teamPoint = $(`#${id}`);
     teamPoint.text(parseInt(teamPoint.text()) - currentValue);
-    currentValue = 0;
 });
 
 // Create the team that will participate in the game

@@ -180,8 +180,11 @@ h5 {
 }
 
 h4 {
+    display: flex;
     font-size: 15px;
     font-weight: bolder;
+    min-height: 35px;
+    justify-content: center;    
 }
 
 h1 {
