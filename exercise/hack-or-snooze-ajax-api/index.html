@@ -21,6 +21,7 @@
   <title>Hack or Snooze</title>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
     integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/cc5b14bb9e.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="css/site.css">
   <link rel="stylesheet" href="css/user.css">
   <link rel="stylesheet" href="css/stories.css">
@@ -60,6 +61,7 @@
       <input id="create-url" required="" type="url" placeholder="story url">
     </div>
     <button id="btn-submit-story" type="submit">submit</button>
+    <button id="btn-submit-edit" hidden type="submit">Edit</button>
     <hr>
   </form>
   <!-- area for stories (all stories, user stories, favorites) -->
@@ -69,8 +71,10 @@
     <div id="stories-loading-msg">Loading&hellip;</div>
 
     <!-- List of all stories -->
-    <ol id="all-stories-list" class="stories-list"></ol>
-    <ol id="all-user-stories-list" class="user-stories-list"></ol>
+    <div class="story-list">
+      <ol id="all-stories-list" class="stories-list"></ol>
+      <ol id="all-user-stories-list" class="user-stories-list"></ol>
+    </div>
 
   </section>
 
@@ -97,21 +101,32 @@
       <h4>Create Account</h4>
       <div class="login-input">
         <label for="signup-name">name</label>
-        <input id="signup-name" autocapitalize="words">
+        <input id="signup-name" minlength="5" required autocapitalize="words">
       </div>
       <div class="login-input">
         <label for="signup-username">username</label>
-        <input id="signup-username" autocomplete="new-username">
+        <input id="signup-username" minlength="5" required autocomplete="new-username">
       </div>
       <div class="login-input">
         <label for="signup-password">password</label>
-        <input id="signup-password" autocomplete="new-password" type="password">
+        <input id="signup-password" minlength="5" required autocomplete="new-password" type="password">
       </div>
       <button type="submit">create account</button>
     </form>
+
+    <form action="#" id="edit-form" class="account-form hidden" method="post">
+      <h4>Update Account</h4>
+      <div class="login-input">
+        <label for="edit-name">name</label>
+        <input id="edit-name" minlength="5" required autocapitalize="words">
+      </div>
+      <div class="login-input">
+        <label for="edit-password">password</label>
+        <input id="edit-password" minlength="5" required autocomplete="new-password" type="password">
+      </div>
+      <button class="edit-user" type="submit">Edit</button>
+    </form>
   </section>
-
-
 
   <!-- Library JS & our JS -->
   <script src="https://unpkg.com/jquery"></script>

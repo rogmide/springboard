@@ -38,25 +38,33 @@ $loginForm.on("submit", login);
 /** Handle signup form submission. */
 
 async function signup(evt) {
-  console.debug("signup", evt);
-  evt.preventDefault();
+  if ($("#signup-name").val() && $("#signup-username").val() && $("#signup-password").val()) {
+    console.debug("signup", evt);
+    evt.preventDefault();
 
-  const name = $("#signup-name").val();
-  const username = $("#signup-username").val();
-  const password = $("#signup-password").val();
+    const name = $("#signup-name").val();
+    const username = $("#signup-username").val();
+    const password = $("#signup-password").val();
 
-  // User.signup retrieves user info from API and returns User instance
-  // which we'll make the globally-available, logged-in user.
-  currentUser = await User.signup(username, password, name);
+    // User.signup retrieves user info from API and returns User instance
+    // which we'll make the globally-available, logged-in user.
+    try {
+      currentUser = await User.signup(username, password, name);
+      $('#login-form').hide();
+      $('#signup-form').hide();
+      $('.nav-story').show();
 
-  $('#login-form').hide();
-  $('#signup-form').hide();
-  $('.nav-story').show();
+      saveUserCredentialsInLocalStorage();
+      updateUIOnUserLogin();
+    } catch (error) {
+      alert('The User Already Exist');
+    }
 
-  saveUserCredentialsInLocalStorage();
-  updateUIOnUserLogin();
+    $signupForm.trigger("reset");
+  } else {
+    return
+  }
 
-  $signupForm.trigger("reset");
 }
 
 $signupForm.on("submit", signup);
@@ -140,12 +148,12 @@ async function loadFavorites() {
 
 async function myStorys() {
   storyList = await StoryList.getStories();
-  let story = '';
+  let item = '';
   $('.user-stories-list').empty();
   storyList.stories.forEach(ele => {
     if (isOwn(ele.username)) {
       let isFav = isFavorite(ele.storyId) ? "fas" : "far";
-      story = $(`
+      item = $(`
       <li id="${ele.storyId}">
         <span class="trash-can">
           <i class="fas fa-trash-alt"></i>
@@ -153,15 +161,19 @@ async function myStorys() {
         <span class="">
             <i class="${isFav} fa-star"></i>
         </span>
+        <span class="edit">
+            <i class="fa-solid fa-pen-to-square"></i>
+        </span>
         <a href="${ele.url}" target="a_blank" class="story-link">
           ${ele.title}
-        </a>   
-        <small class="story-hostname">(fix hostname)</small>
+        </a>  
+ 
+        <small class="story-hostname">(${ele.url})</small>
         <small class="story-author">by ${ele.author}</small>
         <small class="story-user">posted by ${ele.username}</small>
       </li>
     `);
-      $('.user-stories-list').append(story);
+      $('.user-stories-list').append(item);
     }
   });
   $('.user-stories-list').show();
@@ -185,5 +197,27 @@ $('.navbar-brand').on('click', '#nav-favorites', (e) => {
   $('#all-stories-list').show();
   $('.user-stories-list').hide();
   $('.story-form').hide();
-  $('.stories-list li span .far').parents('li').hide();  
+  $('.stories-list li span .far').parents('li').hide();
 });
+
+
+$('.nav-right').on('click', '#nav-user-profile', async (e) => {
+  $('#all-stories-list').hide();
+  $('#edit-form').show();
+});
+
+$('.edit-user').on('click', async (e) => {
+  if ($('#edit-name').val() && $('#edit-password').val()) {
+    e.preventDefault();
+    try {
+      currentUser = await User.update(currentUser.loginToken, currentUser.username, $('#edit-name').val(), $('#edit-password').val());
+      $('#edit-form').hide();
+      alert('Name and Password Updated');
+      start();
+    } catch (error) {
+      console.log(error);
+      alert('');
+    }
+  }
+});
+

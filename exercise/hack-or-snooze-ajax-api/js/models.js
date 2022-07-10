@@ -25,7 +25,7 @@ class Story {
 
   getHostName() {
     // UNIMPLEMENTED: complete this function!
-    return "hostname.com";
+    return new URL(this.url).host;
   }
 }
 
@@ -154,6 +154,26 @@ class User {
       url: `${BASE_URL}/login`,
       method: "POST",
       data: { user: { username, password } },
+    });
+
+    let { user } = response.data;
+
+    return new User(
+      {
+        username: user.username,
+        name: user.name,
+        createdAt: user.createdAt,
+        favorites: user.favorites,
+        ownStories: user.stories
+      },
+      response.data.token
+    );
+  }
+  static async update(token, username, name, password) {
+    const response = await axios({
+      url: `${BASE_URL}/users/${username}`,
+      method: "PATCH",
+      data: { "token": token, "user": { name, password } },
     });
 
     let { user } = response.data;

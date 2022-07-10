@@ -4,13 +4,37 @@
   margin: 20px 5px;
 }
 
-.stories-list > li {
+
+.story-list {
+  max-height: 90vh;
+  max-width: 100%;
+  font-size: 20px;
+  overflow-y: auto;
+  overflow: auto;
+  overflow-x: hidden;
+  border-radius: 10px;
+}
+
+.story-list::-webkit-scrollbar {
+  background-color: white;
+  width: 5px;
+  margin-left: 10px;
+  padding-left: 10px;
+  border-radius: 10px;
+}
+
+.story-list::-webkit-scrollbar-thumb {
+  background-color: #b4b4af;
+  border-radius: 10px;
+}
+
+.stories-list>li {
   color: gray;
   font-size: 0.8rem;
   margin: 10px 0;
 }
 
-.user-stories-list > li {
+.user-stories-list>li {
   color: gray;
   font-size: 0.8rem;
   margin: 10px 0;

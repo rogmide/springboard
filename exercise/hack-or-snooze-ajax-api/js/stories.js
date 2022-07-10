@@ -2,6 +2,7 @@
 
 // This is the global list of the stories, an instance of StoryList
 let storyList;
+let editStoryId = '';
 
 /** Get and show stories when site first loads. */
 
@@ -27,7 +28,7 @@ function generateStoryMarkup(story) {
       <li id="${story.storyId}">
         <span class="star">
             <i class="far fa-star"></i>
-        </span>
+        </span>        
         <a href="${story.url}" target="a_blank" class="story-link">
           ${story.title}
         </a>
@@ -98,18 +99,57 @@ $('.stories-container').on('click', '.star', async (e) => {
   }
 });
 
-
-
 $('#all-user-stories-list').on('click', '.trash-can', async (e) => {
   try {
     const rep = await axios(`https://hack-or-snooze-v3.herokuapp.com/stories/${$(e.target).parents('li').attr('id')}`,
       {
         method: 'DELETE',
         data: { "token": currentUser.loginToken, }
-      });    
+      });
     $(e.target).parents('li').remove();
-    start();
+    $('#nav-my-stories').click();
   } catch (error) {
 
   }
 });
+
+$('#all-user-stories-list').on('click', '.edit', async (e) => {
+  $('.story-form').show();
+  $('#btn-submit-story').hide();
+  $('#btn-submit-edit').show();
+  editStoryId = $(e.target).parents('li').attr('id');
+  const editStory = currentUser.ownStories.find(e => (e.storyId === editStoryId));
+  $('#create-author').val(editStory.author);
+  $('#create-title').val(editStory.title);
+  $('#create-url').val(editStory.url);
+});
+
+$('#btn-submit-edit').on('click', () => {
+  editStory(editStoryId);
+});
+
+/*
+{
+  "token": "YOUR_TOKEN_HERE",
+  "story": {
+    "author": "Not Matt Lane"
+  }
+}
+*/
+async function editStory(id) {
+  try {
+    if ($('#create-author').val() && $('#create-title').val() && $('#create-url').val()) {
+      const rep = await axios(`https://hack-or-snooze-v3.herokuapp.com/stories/${id}`,
+        {
+          method: 'PATCH',
+          data: { "token": currentUser.loginToken, "story": { "author": $('#create-author').val(), "title": $('#create-title').val(), "url": $('#create-url').val() } }
+        });
+      $('#nav-my-stories').click();
+      $('#btn-submit-story').show();
+      $('#btn-submit-edit').hide();
+    }
+
+  } catch (error) {
+
+  }
+}
