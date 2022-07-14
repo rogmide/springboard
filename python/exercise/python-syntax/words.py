@@ -1,4 +1,14 @@
 def print_upper_words(myList):
+    """Return a List with the uppercase word
+        
+    Sample 
+    In: print_upper_words(["hello", "hey", "goodbye", "yo", "yes"])
+    Out: ['HELLO', 'HEY', 'GOODBYE', 'YO', 'YES']   
+    
+    myList -  is a List
+    temp - is a temporary variable to store the results 
+        
+    """
     temp = []
     for char in myList:
         temp.append(char.upper())
@@ -6,6 +16,17 @@ def print_upper_words(myList):
 
 
 def must_start_with(char1, char2):
+    """Return all the word that the first letter start with char1 or char2
+    
+    Sample    
+    myList = ["Apple", "park", "sleep", ]
+    In: must_start_with("a", "p")
+    Out: ['Apple', 'park']
+    
+    myList - is a list with words
+    temp - is a temporary variable to store the results 
+    
+    """
     myList = ["Apple", "park","amazing", "walter", "macbook pro",
               "Water", "sleep", "My My Need One"]
     print(myList)
