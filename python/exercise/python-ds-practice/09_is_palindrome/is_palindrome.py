@@ -21,3 +21,6 @@ def is_palindrome(phrase):
         >>> is_palindrome('Noon')
         True
     """
+
+    temp = phrase.replace(' ', '')
+    return True if temp.upper() == temp[::-1].upper() else False
