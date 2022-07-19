@@ -17,9 +17,9 @@ def flip_case(phrase, to_swap):
             if (char.isupper()):
                 char = char.lower()
                 temp = temp + char
-            if (char.islower()):
-                char = char.upper() 
+            else:
+                char = char.upper()
                 temp = temp + char
         else:
-            temp = temp + char        
+            temp = temp + char
     return temp
