@@ -11,3 +11,9 @@ def mode(nums):
         >>> mode([2, 2, 3, 3, 2])
         2
     """
+
+    # Create a Disctionary with the number that are in the list 2 or more times
+    # then return len of the list to know how many number are there 
+    temp = [{num: nums.count(num) for num in nums if nums.count(num) >= 2}]
+    print(temp)
+    return len(temp[0])
