@@ -21,3 +21,23 @@ def sum_pairs(nums, goal):
         >>> sum_pairs([11, 20, 4, 2, 1, 5], 100)
         ()
     """
+    # (4, 3) sum to 7, and finish before (5, 2):
+    # sum_pairs([5, 1, 4, 8, 3, 2], 7)
+    # This is unclear for me how 4, 3 can be before 5, 2
+    
+    # result = []
+    # while len(nums) > 0:
+    #     temp = nums.pop(0)
+    #     result = [(temp, num) for num in nums if (goal - temp == num)]
+    #     if len(result) > 0:
+    #         return result
+    # return result
+
+    result2 = ()
+    for num in nums:
+        temp = num
+        for num in nums:
+            if goal - temp == num:
+                result2 = (temp, num)
+                return result2
+    return result2
