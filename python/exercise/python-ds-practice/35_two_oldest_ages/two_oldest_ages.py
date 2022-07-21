@@ -1,3 +1,6 @@
+import time
+
+
 def two_oldest_ages(ages):
     """Return two distinct oldest ages as tuple (second-oldest, oldest)..
 
@@ -21,3 +24,9 @@ def two_oldest_ages(ages):
     # you may find it helpful to research the `sorted(iter)` function, which
     # can take *any* type of list-like-thing, and returns a new, sorted list
     # from it.
+    
+    start_time = time.time()
+    temp = set(ages)
+    res = list(temp)
+    res.sort()
+    return (res.pop(), res.pop(), 'Time: ', (time.time() - start_time))
