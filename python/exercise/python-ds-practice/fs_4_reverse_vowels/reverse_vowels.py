@@ -1,3 +1,6 @@
+from multiprocessing.sharedctypes import Value
+
+
 def reverse_vowels(s):
     """Reverse vowels in a string.
 
@@ -19,3 +22,13 @@ def reverse_vowels(s):
     reverse_vowels("why try, shy fly?")
     'why try, shy fly?''
     """
+
+    temp = [{s[i]: i} for i in range(0, len(s)) if s[i] in 'aeiou']
+    sorted_values = []
+
+    for i in range(0, len(temp)):
+        print(temp[i].values())
+
+    print(temp)
+    print(sorted_values)
+    return temp

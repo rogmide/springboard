@@ -29,3 +29,6 @@ def is_odd_string(word):
     """
 
     # Hint: you may find the ord() function useful here
+
+    temp = [ord(w) - 96 for w in word]
+    return True if sum(temp) % 2 != 0 else False
