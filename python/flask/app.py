@@ -1,7 +1,7 @@
 # you need to add the next 2 line all the time for using flask
 from flask import Flask, request, render_template
 from flask_debugtoolbar import DebugToolbarExtension
-from random import randint, choice
+from random import randint, choice, sample
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '123'
 debug = DebugToolbarExtension(app)
@@ -139,3 +139,17 @@ def get_greeting():
 @app.route('/spell/<word>')
 def spell_word(word):    
     return render_template('spell_word.html', word=word)
+
+@app.route('/form-2')
+def show_form2():
+    return render_template('form_2.html')
+
+# interesting method Get for dirctionary or list dont give error if the 
+# item that you looking for is not there
+@app.route('/greet-2')
+def get_greeting_2():
+    name = request.args['username']
+    wants_compliments = request.args.get('wants_compliments') # THIS IS IMPORTAN
+    nice_things = sample(COMPLIMENTS, 3)
+    return render_template('/greet-2.html', username=name, wants_compliments=wants_compliments,
+    compliments=nice_things)
