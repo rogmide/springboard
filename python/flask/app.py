@@ -9,19 +9,7 @@ debug = DebugToolbarExtension(app)
 
 @app.route('/')
 def home_page():
-    html = '''
-    <html>
-        <body>
-            <h1>
-                
-            </h1>
-            <p>
-                Work Still in Progress!
-            </p>
-        </body>
-    <html>
-    '''
-    return html
+    return render_template('home.html')
 
 
 @app.route('/hello')
@@ -32,7 +20,7 @@ def say_hello():
 
 @app.route('/goodbye')
 def say_bye():
-    return 'Good Bye'
+    return render_template('goodbye.html')
 
 
 @app.route('/html')

@@ -1,0 +1,22 @@
+body {
+    background-color: darkgray;
+    margin: 20px;
+    color: rgb(236, 244, 244);
+}
+
+.mad_form {
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    width: 100px;
+    margin-top: 10px;
+}
+
+input {
+    margin-bottom: 5px;
+    max-width: 150px;
+}
+
+

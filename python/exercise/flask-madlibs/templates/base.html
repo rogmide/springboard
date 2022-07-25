@@ -6,21 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/app.css">
-    <title>{% block title %} {% endblock %}</title>
+    <title>Game</title>
 </head>
 
 <body>
-    <nav class="navbar">
-        <a href="/">Home</a>
-        <a href="/form">Greet V1</a>
-        <a href="/form-2"> Greet V2</a>
-        <a href="/lucky">Lucky</a>
-        <a href="/hello">Hello</a>
-        <a href="/goodbye">Good Bye</a>
-    </nav>
+    
     <main id="content">
         {% block content %} {% endblock %}
     </main>
+
     <script src="/static/app.js"></script>
 </body>
 

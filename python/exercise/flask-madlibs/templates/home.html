@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %} Home Page {% endblock %}
+{% block content %} 
+
+    <h1>Madlibs</h1>
+
+    <form action="" class="mad_form">
+        <label for="id_place"> Place: </label>
+        <input type="text" placeholder="" name="place" id="id_place">
+        <label for="id_noun"> Noun </label>
+        <input type="type" placeholder="" name="noun" id="id_noun">
+        <label for="id_verb"> Verb </label>
+        <input type="type" name="verb" id="id_verb">
+        <label for="id_adjective"> Adjective </label>
+        <input type="type" name="adjective" id="id_adjective">
+        <label for="id_plural_noun"> Plural Noun </label>
+        <input type="type" name="plural_noun" id="id_plural_noun">
+        <button>Submit!</button>
+    </form>
+
+{% endblock %}
+
+
