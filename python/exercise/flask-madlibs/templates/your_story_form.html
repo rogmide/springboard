@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %} Story {% endblock %}
+{% block content %} 
+
+<h1>Create your Story</h1>
+<form action="/home">
+    <p><label for="id_your_story">Your Story</label></p>
+    <textarea id="id_your_story" name="your_story" rows="4" cols="50"></textarea>
+    <br>
+    <label class="special" for="">Note: Don't add the Ans, add insted {place}
+        {noun} {verb} {adjective} {plural_noun}
+        <br>
+        <label class="special" for=""> Sample: When to {place}, to {verb} and {noun}, etc.. </label>
+    </label>
+    <label class="special" for=""> Then you can choose your custom story selecting "Customer Story" in  Choose a Story:</label>
+    </label>
+    <br>
+    <button>Submit!</button>
+</form>
+
+{% endblock %}

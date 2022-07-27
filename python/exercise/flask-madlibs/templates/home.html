@@ -1,23 +1,53 @@
 {% extends 'base.html' %}
-{% block title %} Home Page {% endblock %}
-{% block content %} 
+{% block title %} Build Your Story {% endblock %}
+{% block content %}
 
-    <h1>Madlibs</h1>
+<h1>Madlibs</h1>
+<div class="main">
 
-    <form action="" class="mad_form">
-        <label for="id_place"> Place: </label>
-        <input type="text" placeholder="" name="place" id="id_place">
-        <label for="id_noun"> Noun </label>
-        <input type="type" placeholder="" name="noun" id="id_noun">
-        <label for="id_verb"> Verb </label>
-        <input type="type" name="verb" id="id_verb">
-        <label for="id_adjective"> Adjective </label>
-        <input type="type" name="adjective" id="id_adjective">
-        <label for="id_plural_noun"> Plural Noun </label>
-        <input type="type" name="plural_noun" id="id_plural_noun">
-        <button>Submit!</button>
-    </form>
+    <div class="form">
+
+
+        <form action="/story" class="mad_form">
+            <label for="id_place"> Place: </label>
+            <input required type="text" placeholder="" name="place" id="id_place">
+            <label for="id_noun"> Noun </label>
+            <input required type="type" placeholder="" name="noun" id="id_noun">
+            <label for="id_verb"> Verb </label>
+            <input required type="type" name="verb" id="id_verb">
+            <label for="id_adjective"> Adjective </label>
+            <input required type="type" name="adjective" id="id_adjective">
+            <label for="id_plural_noun"> Plural Noun </label>
+            <input required type="type" name="plural_noun" id="id_plural_noun">
+            <label for="id_story">Choose a Story:</label>
+            <select required class="the_story" id="id_story" name="story">
+                <option value=""></option>
+                <option value="epic">Epic</option>
+                <option value="romantic">Romantic</option>
+                <option value="sad">Sad</option>
+                <option value="customer">Customer Story</option>
+            </select>
+            <div class="center">
+                <button class="sub-form">Submit!</button>
+                <br>
+                <a class="link_create" href="/your_story_form">Create Story</a>
+            </div>
+        </form>
+    </div>
+    <div class="what_story">
+        <p class="this_story"></p>
+    </div>
+
+</div>
+<div>
+
+</div>
+
+<script type="text/javascript">
+    // Making a variable here so that way i can use it in javascritp
+    let send_story = '{{ send_story }}'
+    console.log(send_story)
+
+</script>
 
 {% endblock %}
-
-

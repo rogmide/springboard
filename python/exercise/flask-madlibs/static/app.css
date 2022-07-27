@@ -12,6 +12,8 @@ body {
 button {
     width: 100px;
     margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 20px;
 }
 
 input {
@@ -19,4 +21,30 @@ input {
     max-width: 150px;
 }
 
+h2 {
+    font-weight: lighter;
+    color: bisque;
+}
 
+#id_story {
+    max-width: 158px;
+}
+
+.main {
+    display: flex;
+}
+
+.what_story {
+    margin-left: 20px;
+}
+
+.special {
+    color: rgba(39, 38, 38, 0.545);
+    font-weight: bolder;
+}
+
+.link_create {
+    text-decoration: none;
+    margin-top: 10px;
+    margin-left: 30px;
+}
