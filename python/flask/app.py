@@ -1,9 +1,14 @@
-# you need to add the next 2 line all the time for using flask
-from flask import Flask, request, render_template
+from crypt import methods
+from flask import Flask, request, render_template, redirect, flash
 from flask_debugtoolbar import DebugToolbarExtension
 from random import randint, choice, sample
+
+from importlib_metadata import method_cache
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '123'
+# This is for the redirect happen automatlic if is True you can use it for debug stuff
+app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 debug = DebugToolbarExtension(app)
 
 
@@ -105,18 +110,21 @@ def find_post(id):
     return f'<p>{post}</p>'
 
 
-#using variables to send to the html template
-#that we can use like this <h1> {{variable here}} </h1> in the html
+# using variables to send to the html template
+# that we can use like this <h1> {{variable here}} </h1> in the html
 @app.route('/lucky')
 def lucky_number():
     num = randint(1, 3)
     return render_template('lucky.html', lucky_num=num, msg='Your so Lucky!')
 
+
 @app.route('/form')
 def show_form():
     return render_template('form.html')
 
+
 COMPLIMENTS = ['cool', 'clever', 'tenacious', 'awesome', 'Pythonic']
+
 
 @app.route('/greet')
 def get_greeting():
@@ -124,20 +132,58 @@ def get_greeting():
     name = request.args['username']
     return render_template('greet.html', username=name, compliment=nice_thing)
 
+
 @app.route('/spell/<word>')
-def spell_word(word):    
+def spell_word(word):
     return render_template('spell_word.html', word=word)
+
 
 @app.route('/form-2')
 def show_form2():
     return render_template('form_2.html')
 
-# interesting method Get for dirctionary or list dont give error if the 
+# interesting method Get for dirctionary or list dont give error if the
 # item that you looking for is not there
+
+
 @app.route('/greet-2')
 def get_greeting_2():
     name = request.args['username']
-    wants_compliments = request.args.get('wants_compliments') # THIS IS IMPORTAN
+    wants_compliments = request.args.get(
+        'wants_compliments')  # THIS IS IMPORTAN
     nice_things = sample(COMPLIMENTS, 3)
     return render_template('/greet-2.html', username=name, wants_compliments=wants_compliments,
-    compliments=nice_things)
+                           compliments=nice_things)
+
+
+@app.route('/old-home-page')
+def redirect_old_page():
+    '''Redirect to New Home Page'''
+    flash('That Page Has Move! We have a new page!')
+    return redirect('/')
+
+
+MOVIES = {'Amadeus', 'Chicken Run', 'Dances With Wolves'}
+
+
+@app.route('/movies')
+def show_all_movies():
+    '''Show list of all movies in fake DB'''
+    return render_template('/movies.html', movies=MOVIES)
+
+# Coming from a FOR in MOvies as a POST request
+# we handle the POST request and then we redirected to the same place with new Data
+
+
+@app.route('/movies/new', methods=['POST'])
+def add_movie():
+    title = request.form['title']
+    # add to pretend DB
+    if title in MOVIES:
+        # flash('MESSAGES', 'CATEGORY')
+        flash('Movie is Already Save', 'error')
+    else:
+        MOVIES.add(title)
+        flash('Created Your Movie', 'success')
+
+    return redirect('/movies')

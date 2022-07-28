@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %} Movies {% endblock %}
+{% block content %}
+
+
+
+
+<h1>All Movies</h1>
+
+<ul>
+    {% for movie in movies %}
+    <li> {{ movie }} </li>
+    {% endfor %}
+</ul>
+
+
+
+<script>
+
+    // Look At this you action to a place with POST to use that data
+</script>
+<form action="/movies/new" method="POST">
+    <input type="text" placeholder="movie title" name="title">
+    <button>Subtmit!</button>
+</form>
+
+
+
+{% endblock %}
