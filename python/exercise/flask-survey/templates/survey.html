@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %} Surveys {% endblock %}
+{% block content %}
+
+<div>
+    <script>
+    // self.question = question
+    // self.choices = choices
+    // self.allow_text = allow_text
+    </script>
+
+
+    <h4> {{ current_question.question }} </h4>
+    {% if current_question.choices %}
+    <div class="yes-no">
+        <button>Yes</button><button>No</button>
+    </div>
+    {% endif %}
+
+</div>
+
+{% endblock %}

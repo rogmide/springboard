@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %} Questions {% endblock %}
+{% block content %}
+
+<div class="question">
+    <h1>{{ title }}</h1>
+    <h3> {{ instructions }} </h3>
+    <form action="/q" method="POST">
+        <button type="submit">Take the survey!</button>
+    </form>
+</div>
+
+{% endblock %}

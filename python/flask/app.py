@@ -1,5 +1,5 @@
 from crypt import methods
-from flask import Flask, request, render_template, redirect, flash
+from flask import Flask, request, render_template, redirect, flash, jsonify
 from flask_debugtoolbar import DebugToolbarExtension
 from random import randint, choice, sample
 
@@ -177,6 +177,7 @@ def show_all_movies():
 
 @app.route('/movies/new', methods=['POST'])
 def add_movie():
+    '''NEED TO LEARN MORE ABOUT POST METHODS'''
     title = request.form['title']
     # add to pretend DB
     if title in MOVIES:
@@ -187,3 +188,9 @@ def add_movie():
         flash('Created Your Movie', 'success')
 
     return redirect('/movies')
+
+# respon with JSON can be dictionary and list
+@app.route('/movies/json')
+def get_movies_json():
+    info = {"name": "Whiskey", "cute": "cats"}
+    return jsonify(info)
