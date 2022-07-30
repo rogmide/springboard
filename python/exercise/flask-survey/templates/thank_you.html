@@ -3,7 +3,17 @@ content %}
 
 <div class="question">
   <h1>Thanks You!!!</h1>
+  <br>
 </div>
+
+{% if session["already_done"] %}
+
+<form action="/retake">
+  <button type="submit" class="btn btn-secondary">Re-take?</button>
+</form>
+
+{% endif %}
+
 
 <br />
 {% for to_show in result %}
@@ -13,15 +23,11 @@ content %}
   <h3 class="chosen_awswer">{{ to_show[1] }}</h3>
 </div>
 <div>
-
-    {% if to_show[2] %}
-    <h3 class="comments">Why: {{ to_show[2] }}</h3>
-    {% else %}
-    <h3 class="comments">Why: No comments</h3>
-    {% endif %}
-
-
-
+  {% if to_show[2] %}
+  <h3 class="comments">Why: {{ to_show[2] }}</h3>
+  {% else %}
+  <h3 class="comments"></h3>
+  {% endif %}
 </div>
 
 {% endfor %} {% endblock %}
