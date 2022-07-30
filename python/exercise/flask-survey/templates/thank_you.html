@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% block title %} Questions {% endblock %} {% block
+content %}
+
+<div class="question">
+  <h1>Thanks You!!!</h1>
+</div>
+
+<br />
+{% for to_show in result %}
+
+<div class="show_result">
+  <h3>{{ to_show[0] }}</h3>
+  <h3 class="chosen_awswer">{{ to_show[1] }}</h3>
+</div>
+<div>
+
+    {% if to_show[2] %}
+    <h3 class="comments">Why: {{ to_show[2] }}</h3>
+    {% else %}
+    <h3 class="comments">Why: No comments</h3>
+    {% endif %}
+
+
+
+</div>
+
+{% endfor %} {% endblock %}

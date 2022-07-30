@@ -1,0 +1,16 @@
+{% extends 'base.html' %} {% block title %} Answers {% endblock %} {% block
+content %} 
+
+{% for q in result %}
+
+    <h2>{{ q[0] }}</h2>
+
+    {% if q[1] == 1  %}
+        <h2> Yes </h2>
+    {% else %}
+        <h2> No </h2>
+    {% endif %}
+
+
+{% endfor %} 
+{% endblock %}

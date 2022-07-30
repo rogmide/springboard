@@ -1,22 +1,44 @@
-{% extends 'base.html' %}
-{% block title %} Surveys {% endblock %}
-{% block content %}
+{% extends 'base.html' %} {% block title %} Surveys {% endblock %} {% block
+content %}
 
-<div>
-    <script>
+<div class="current_question">
+  <script>
     // self.question = question
     // self.choices = choices
     // self.allow_text = allow_text
-    </script>
+  </script>
 
+  <h4>{{ current_question.question }}</h4>
 
-    <h4> {{ current_question.question }} </h4>
-    {% if current_question.choices %}
-    <div class="yes-no">
-        <button>Yes</button><button>No</button>
-    </div>
-    {% endif %}
+  {% if current_question.choices == ['Yes', 'No'] %}
 
+  <div class="button_holder">
+    <form action="/q/1" method="POST">
+      <button type="submit" class="btn btn-secondary">Yes</button>
+    </form>
+    <form action="/q/0" method="POST">
+      <button type="submit" class="btn btn-secondary">No</button>
+    </form>
+  </div>
+
+  {% else %}
+  <div class="multiple_options">
+    {% for choice in current_question.choices %}
+
+    <form
+      class="multi-option"
+      action="/q/2{{ current_question.choices.index(choice) }}{{ why }}"
+      method="POST"
+    >
+      <button type="submit" class="btn btn-secondary">{{ choice }}</button>
+    </form>
+
+    {% endfor %}
+  </div>
+  {% if current_question.allow_text %}
+
+  <label for="id_why">Add why if you like:</label>
+  <textarea id="id_why" name="why_not" rows="4" cols="50"></textarea>
+
+  {% endif %} {% endif %} {% endblock %}
 </div>
-
-{% endblock %}

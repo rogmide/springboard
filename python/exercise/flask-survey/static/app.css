@@ -1,19 +1,71 @@
 body {
-    background-color: rgb(117, 119, 121);
-    color: rgb(238, 235, 232);
-    margin: 0;
-    padding: 0;
+  background-color: rgb(155, 158, 161);
+  color: rgb(238, 235, 232);
+  margin-top: 20px;
+  margin-left: 20px;
 }
 
 #content {
-    margin-left: 20px;
+  margin-left: 20px;
 }
 
 h1 {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 h3 {
-    margin-top: 0;
-    margin-left: 10px;
+  margin-top: 0;
+  margin-left: 10px;
+}
+
+.yes {
+  margin-right: 10px;
+}
+
+.button_holder {
+  display: flex;
+  flex-direction: row;
+}
+
+.multiple_options {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+
+.show_result{
+    display: flex;
+}
+
+.comments{
+    margin-bottom: 10px;
+    margin-left: 30px;
+    font-size: 20px;
+    color: rgb(122, 123, 140);
+}
+
+.chosen_awswer{
+    color: rgb(122, 123, 140);
+}
+
+#id_why {
+  width: 300px;
+}
+
+.btn {
+  margin-right: 20px;
+}
+
+.yes-no {
+  margin-top: 20px;
+}
+
+.current_question {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.alert {
+  width: 250px;
 }
