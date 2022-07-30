@@ -23,6 +23,12 @@ def print_cookies():
 @app.route("/")
 def index():
     """Homepage."""
+    print("********SESSION*************")
+    print(session['username'])
+    print(session['leaderboard'])
+    print("*********************")
+    # session['username'] = 'SomethingHERE'
+    # session['leaderboard'] = ['butters', 'stevie chick', 'the gray lady']
     return render_template("index.html")
 
 
@@ -148,6 +154,7 @@ def verify_secret_code():
         session["entered-pin"] = True
         return redirect("/secret-invite")
     else:
+        session["entered-pin"] = False
         return redirect("/login-form")
 
 
