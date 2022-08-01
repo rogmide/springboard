@@ -63,6 +63,8 @@ class ColorViewsTestCase(TestCase):
 
     def test_session_count_set(self):
         with app.test_client() as client:
+            
+            # Use Next line to change something in the client in this case Session
             with client.session_transaction() as change_session:
                 change_session['count'] = 999
 

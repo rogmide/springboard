@@ -14,6 +14,8 @@ def index():
     """Show homepage."""
 
     # Keep a count of how many times page is visited
+    
+    # .get('val that you looking for', 'here is a default val that you set')
     session['count'] = session.get('count', 0) + 1
 
     return render_template("index.html")
