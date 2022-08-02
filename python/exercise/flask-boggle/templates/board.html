@@ -1,0 +1,33 @@
+{% extends 'base.html' %} {% block title %} Board {% endblock %} {% block
+game_board %}
+
+<div class="letter_game_board">
+  {% for row in board %}
+  <div class="letter_row">
+    {% for letter in row %}
+
+    <div class="letter_div"><h3 class="each_letter">{{ letter }}</h3></div>
+
+    {% endfor%}
+  </div>
+  {% endfor%}
+</div>
+
+<div class="quess_form_div">
+  <h1 class="h1">Quess a Word</h1>
+  <form action="/">
+    <div class="inside_form_container">
+      <input
+        id="work_quess"
+        type="text"
+        name="word_guess"
+        class="form-control"
+        aria-label="Small"
+        aria-describedby="inputGroup-sizing-sm"
+      />
+      <input id="submit_word" class="btn btn-light" type="submit" />
+    </div>
+  </form>
+</div>
+
+{% endblock %}
