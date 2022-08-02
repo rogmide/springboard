@@ -6,6 +6,12 @@ from unittest import TestCase
 app.config['TESTING'] = True
 app.config['DEBUG_TB_HOSTS'] = ['dont-show-debug-toolbar']
 
+    # setUp will run before every test
+    # tearDown will run after every test
+
+    # With @ decorator will run before 
+    # the test and at the end of all test run 
+    # uncomment and run the test and you will see
 
 class ColorViewsTestCase(TestCase):
     # @classmethod
