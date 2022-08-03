@@ -12,10 +12,17 @@
     />
 
     <link rel="stylesheet" href="/static/app.css" />
-    <title>{% block title %}{% endblock %} </title>
+    <title>{% block title %}{% endblock %}</title>
   </head>
   <body>
-    {% block game_board %} {% endblock %}
+    <div class="main">
+      <div class="main_board">
+        <div class="container board">{% block game_board %} {% endblock %}</div>
+        <div class="container word_result">
+          <h2 class="is_a_word"></h2>
+        </div>
+      </div>
+    </div>
 
     <script
       src="https://code.jquery.com/jquery-3.6.0.js"

@@ -16,9 +16,7 @@ def get_home():
 
 @app.route('/check_word/<word>')
 def check_for_word(word):
-    print(word)
 
     is_a_word = Boggle().check_valid_word(session['board'], word)
-    print(is_a_word)
-
-    return '''<h1> Works </h1>'''
+    
+    return {"result": is_a_word}

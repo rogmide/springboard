@@ -46,5 +46,27 @@ input {
 }
 
 .inside_form_container {
-    display: flex;
+  display: flex;
+}
+
+.main_board {
+  display: flex;
+  justify-content: center;
+}
+
+.board {
+  display: flex;
+  flex-direction: column;
+}
+
+.letter_game_board {
+  align-self: center;
+}
+
+.quess_form_div {
+  align-self: center;
+}
+
+.word_result {
+  margin-top: 20px;
 }
