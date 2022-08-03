@@ -23,8 +23,8 @@ class Boggle():
 
         board = []
 
-        for y in range(5):
-            row = [choice(string.ascii_uppercase) for i in range(5)]
+        for y in range(10):
+            row = [choice(string.ascii_uppercase) for i in range(10)]
             board.append(row)
 
         return board
@@ -134,8 +134,8 @@ class Boggle():
         # Find starting letter --- try every spot on board and,
         # win fast, should we find the word at that place.
 
-        for y in range(0, 5):
-            for x in range(0, 5):
+        for y in range(0, 10):
+            for x in range(0, 10):
                 if self.find_from(board, word, y, x, seen=set()):
                     return True
 
