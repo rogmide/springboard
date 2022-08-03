@@ -18,6 +18,7 @@ game_board %}
   <form action="/">
     <div class="inside_form_container">
       <input
+        autofocus
         id="work_quess"
         type="text"
         name="word_guess"
@@ -28,6 +29,42 @@ game_board %}
       <input id="submit_word" class="btn btn-light" type="submit" />
     </div>
   </form>
+</div>
+
+<div
+  class="modal fade"
+  id="myModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modal-h5"></h2>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div id="question">
+          <h2 class="is_a_word"></h2>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btnClose btn btn-secondary"
+          data-bs-dismiss="modal"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
 
 {% endblock %}

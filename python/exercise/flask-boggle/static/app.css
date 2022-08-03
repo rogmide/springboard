@@ -70,3 +70,8 @@ input {
 .word_result {
   margin-top: 20px;
 }
+
+.modal-content {
+  background-color: darkgrey;
+  color: aliceblue;
+}
