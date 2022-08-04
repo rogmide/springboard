@@ -75,3 +75,8 @@ input {
   background-color: darkgrey;
   color: aliceblue;
 }
+
+.red {
+    color: red;
+    margin-top: 2px;
+}

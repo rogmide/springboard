@@ -8,6 +8,7 @@ boggle_game = Boggle()
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '123'
 app.debug = True
+app.config['TESTING'] = True
 toolbar = DebugToolbarExtension(app)
 
 
@@ -35,7 +36,7 @@ def check_for_word(word):
 
 
 @app.route('/keep_score/', methods=['POST'])
-def kepp_score_and_time_play():
+def keep_score_and_time_play():
     '''
     Get the score that are in the from end, make sure that if the score is higher than before
     will store the new score in a session, returning the new higher score or the same score

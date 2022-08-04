@@ -1,5 +1,7 @@
 keeping_track_score();
 
+let words = [];
+
 $("#submit_word").on("click", async function (e) {
   e.preventDefault();
   check_for_word();
@@ -37,16 +39,27 @@ async function check_for_word() {
       $("#myModal").modal("toggle");
     }
     if (res.data.result === "ok") {
-      $(".is_a_word").text(`Ding! Ding! Ding! ${word} is on the Board!`);
-      $("#myModal").modal("toggle");
+      if ($.inArray($("#work_quess").val(), words) === -1) {
+        console.log("somethings");
+        $(".is_a_word").text(`Ding! Ding! Ding! ${word} is on the Board!`);
+        $("#myModal").modal("toggle");
 
-      //Score the player for the word guess
-      if ($(".score").text()) {
-        let temp = $(".score").text();
-        temp = parseInt(temp);
-        $(".score").text((temp += $("#work_quess").val().length));
+        //Score the player for the word guess
+        if ($(".score").text()) {
+          let temp = $(".score").text();
+          temp = parseInt(temp);
+          $(".score").text((temp += $("#work_quess").val().length));
+
+          words.push($("#work_quess").val());
+        }
+      } else {
+        $(".red").text(`You say ${word} already!`);
+        setInterval(() => {
+          $(".red").text(``);
+        }, 3000);
       }
     }
+
     if (res.data.result === "not-on-board") {
       $(".is_a_word").text(`${word} is a word, but is not in the Board`);
       $("#myModal").modal("toggle");
