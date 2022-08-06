@@ -52,8 +52,8 @@ Answer the following questions below:
   variable = {"a": 1, "b": 2}
 
   # 1
-  c = variable.get('c', 'default')
-  c = default 
+  # if there is a C c = c or c = default
+  c = variable.get('c', 'default') 
 
   # 2
   if 'c' in variable:
@@ -78,8 +78,8 @@ Answer the following questions below:
   'foods?type=pretzel'). How might you choose which one is a better fit
   for an application?
 
-  I will use /foods/pretzel if i need to pass only one parameter 
-  and for 'foods?type=pretzel' i will use a query string in need to pass multiples parameter
+  I will use /foods/pretzel when I need to access a route or doing a POST where I don't need anyone to see the parameters
+  And for 'foods?type=pretzel' I will use a query string in need to pass multiple parameter, visible parameters
 
 - How do you collect data from a URL placeholder parameter using Flask?
 
