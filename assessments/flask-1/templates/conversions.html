@@ -1,0 +1,15 @@
+{% extends 'base.html' %} {% block title %} Converter {% endblock %} {% block
+result %}
+
+<!-- ('conversions.html', c_from=c_from, c_to=c_to, result=result) -->
+
+<div class="result">
+  <h2 class="welcome">
+    <span class="top_result">{{ c_amount }} {{ c_from }} equals </span><br />
+    <span class="middle_result">{{ result }}</span> {{ c_to }}
+    <br>
+    <span class="bot_result"> as {{ date }} </span>
+  </h2>
+</div>
+
+{% endblock%}

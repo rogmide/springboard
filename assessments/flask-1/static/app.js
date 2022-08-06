@@ -24,16 +24,8 @@ $("#convert").click(async (e) => {
     return;
   }
 
-  e.preventDefault();
-
-  let c_data = JSON.stringify({
-    c_from: $("#from").val(),
-    c_to: $("#to").val(),
-    c_amount: $("#amount").val(),
-  });
-
   try {
-    let res = await axios.post(`/keep_score/`, c_data);
+    let res = await axios.get(`/conversions`);
     console.log(res);
   } catch (error) {
     console.log(error);
