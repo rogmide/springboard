@@ -1,0 +1,59 @@
+{% extends 'base.html' %} {% block title %} Converter {% endblock %} {% block
+converter %}
+
+<form action="/converter" class="row g-3 needs-validation converter" novalidate>
+  <div class="col-md-4">
+    <label for="from" class="form-label">From:</label>
+    <input type="text" class="form-control" id="from" value="" required />
+    <div class="valid-feedback">Looks good!</div>
+    <select
+      id="select_from"
+      class="form-select"
+      multiple
+      aria-label="multiple select example"
+    >
+      <option value="" selected>10 More Use Currency !</option>
+      <option value="USD">US dollar (USD)</option>
+      <option value="EUR">Euro (EUR)</option>
+      <option value="GBP">Pound Sterling (GBP)</option>
+      <option value="AUD">Australian (AUD)</option>
+      <option value="CAD">Canadian dollar (CAD)</option>
+      <option value="CNH">Chinese (CNH)</option>
+      <option value="HKD">Hong Kong (HKD)</option>
+      <option value="NZD">New Zealand (NZD)</option>
+    </select>
+  </div>
+  <div class="col-md-4">
+    <label for="to" class="form-label">to:</label>
+    <input type="text" class="form-control" id="to" value="" required />
+    <div class="valid-feedback">Looks good!</div>
+    <select
+      id="select_to"
+      class="form-select"
+      multiple
+      aria-label="multiple select example"
+    >
+      <option value="" selected>10 More Use Currency !</option>
+      <option value="USD">US dollar (USD)</option>
+      <option value="EUR">Euro (EUR)</option>
+      <option value="GBP">Pound Sterling (GBP)</option>
+      <option value="AUD">Australian (AUD)</option>
+      <option value="CAD">Canadian dollar (CAD)</option>
+      <option value="CNH">Chinese (CNH)</option>
+      <option value="HKD">Hong Kong (HKD)</option>
+      <option value="NZD">New Zealand (NZD)</option>
+    </select>
+  </div>
+  <div class="col-md-4">
+    <label for="amount" class="form-label">Amount</label>
+    <input type="text" class="form-control" id="amount" value="" required />
+    <div class="valid-feedback">Looks good!</div>
+  </div>
+  <div class="col-12">
+    <button id="convert" class="btn btn-secondary" type="submit">
+      Convert
+    </button>
+  </div>
+</form>
+
+{% endblock%}
