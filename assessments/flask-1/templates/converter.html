@@ -77,6 +77,16 @@ converter %}
       name="amount"
     />
     <div class="valid-feedback">Looks good!</div>
+    <div hidden class="loader">
+      <div
+        class="spinner-border"
+        style="color: #6c757d; width: 4rem; height: 4rem"
+        role="status"
+      >
+        <span class="sr-only"></span>
+      </div>
+      <h2 class="loading" style="color: #6c757d">Loading...</h2>
+    </div>
   </div>
   <div class="col-12">
     <button id="convert" class="btn btn-secondary" type="submit">

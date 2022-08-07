@@ -2,7 +2,7 @@ from forex_python.converter import CurrencyRates, RatesNotAvailableError
 from flask import Flask, request, render_template, redirect, flash, session, json
 import datetime
 import json
-from currency import convert_currency
+from currency import convert_currency, last_six_month_change
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '123'
@@ -46,9 +46,10 @@ def get_conversions_result():
     c_amount = request.args.get('amount', 100)
 
     result = convert_currency(c_from, c_to, c_amount)
+    result_six_month = last_six_month_change(c_from, c_to, c_amount)
 
     if result is None:
         return redirect('/converter')
 
     date = datetime.date.today()
-    return render_template('conversions.html', c_from=c_from, c_to=c_to, c_amount=c_amount, result=round(result, 2), date=date.strftime("%b %d %Y"))
+    return render_template('conversions.html', c_from=c_from, c_to=c_to, c_amount=c_amount, result=round(result, 2), result_six_month=result_six_month, date=date.strftime("%b %d %Y"))

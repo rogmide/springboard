@@ -64,3 +64,13 @@ html {
   font-size: 15px;
   color: black;
 }
+
+.spinner-border {
+    margin-top: 50px;
+    margin-left: 75px;
+}
+
+.loading {
+    margin-left: 45px;
+}
+
