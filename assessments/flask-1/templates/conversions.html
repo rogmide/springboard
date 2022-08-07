@@ -5,13 +5,23 @@ result %}
 
 <div class="result">
   <h2 class="welcome">
-    <span class="top_result">{{ c_amount }} {{ c_from }} equals </span><br />
-    <span class="middle_result">{{ result }}</span> {{ c_to }}
+    <span class="top_result">{{ c_amount }} <span class="get_from">{{ c_from }}</span> equals </span><br />
+    <span class="middle_result">{{ result }}</span> <span class="get_too">{{ c_to }} </span>
     <br />
     <span class="bot_result"> as {{ date }} </span>
   </h2>
 </div>
 
+<h5 hidden class="myJSon"> {{ result_six_month }} </h5>
+
+
 <div class="container" id="myPlot" style="width: 100%; max-width: 700px"></div>
+
+
+<script type="text/javascript">
+    // Making a variable here so that way i can use it in javascritp
+    let result_six_month = '{{ result_six_month|safe }}'
+
+</script>
 
 {% endblock%}

@@ -6,10 +6,11 @@ import json
 
 try:
     c = CurrencyRates()
-    a = c.convert('USD', 'USD', 100, datetime.date.today())
+    a = c.convert('UasdSD', 'USD', 100, datetime.date.today())
+    # a = c.get_rates('USssdD')
     print(a)
-except:
-    print("here")
+except RatesNotAvailableError as error:
+    print(error)
 # else:
     # print("result is")
 # finally:

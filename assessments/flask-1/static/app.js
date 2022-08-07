@@ -25,37 +25,64 @@ $("#convert").click(async (e) => {
   }
 
   try {
-
-    $('.loader').removeAttr('hidden');
+    $(".loader").removeAttr("hidden");
     let res = await axios.get(`/conversions`);
-
-    console.log(res);
   } catch (error) {
     console.log(error);
   }
 });
 
+function build_chart() {
+  const currency_story = JSON.parse($(".myJSon").text());
 
+  let xArray = [
+    currency_story["5"][0],
+    currency_story["4"][0],
+    currency_story["3"][0],
+    currency_story["2"][0],
+    currency_story["1"][0],
+    currency_story["0"][0],
+  ];
+  let yArray = [
+    currency_story["5"][1],
+    currency_story["4"][1],
+    currency_story["3"][1],
+    currency_story["2"][1],
+    currency_story["1"][1],
+    currency_story["0"][1],
+  ];
 
+  // Define Data
+  let data = [
+    {
+      x: xArray,
+      y: yArray,
+      mode: "markers",
+    },
+  ];
 
-let xArray = [50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150];
-var yArray = [7, 8, 8, 9, 9, 9, 10, 11, 14, 14, 15];
+  // Define Layout
+  let layout = {
+    xaxis: {
+      range: [40, 80, 90],
+      title: "Base on 100" + " " + $(".get_from").text(),
+    },
+    yaxis: {
+      range: [
+        currency_story["5"][1],
+        currency_story["4"][1],
+        currency_story["3"][1],
+        currency_story["2"][1],
+        currency_story["1"][1],
+        currency_story["0"][1],
+      ],
+      title: $(".get_too").text(),
+    },
+    title: "Currency change in the last 180 days",
+  };
 
-// Define Data
-let data = [
-  {
-    x: xArray,
-    y: yArray,
-    mode: "markers",
-  },
-];
+  // Display using Plotly
+  Plotly.newPlot("myPlot", data, layout);
+}
 
-// Define Layout
-let layout = {
-  xaxis: { range: [40, 160], title: "Square Meters" },
-  yaxis: { range: [5, 16], title: "Price in Millions" },
-  title: "House Prices vs. Size",
-};
-
-// Display using Plotly
-Plotly.newPlot("myPlot", data, layout);
+build_chart();
