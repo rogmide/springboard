@@ -33,49 +33,51 @@ $("#convert").click(async (e) => {
 });
 
 function build_chart() {
-  const currency_story = JSON.parse(result_six_month);
+  try {
+    const currency_story = JSON.parse(result_six_month);
 
-  let xArray = [
-    currency_story["5"][0],
-    currency_story["4"][0],
-    currency_story["3"][0],
-    currency_story["2"][0],
-    currency_story["1"][0],
-    currency_story["0"][0],
-  ];
-  let yArray = [
-    currency_story["5"][1],
-    currency_story["4"][1],
-    currency_story["3"][1],
-    currency_story["2"][1],
-    currency_story["1"][1],
-    currency_story["0"][1],
-  ];
+    let xArray = [
+      currency_story["5"][0],
+      currency_story["4"][0],
+      currency_story["3"][0],
+      currency_story["2"][0],
+      currency_story["1"][0],
+      currency_story["0"][0],
+    ];
+    let yArray = [
+      currency_story["5"][1],
+      currency_story["4"][1],
+      currency_story["3"][1],
+      currency_story["2"][1],
+      currency_story["1"][1],
+      currency_story["0"][1],
+    ];
 
-  // Define Data
-  let data = [
-    {
-      x: xArray,
-      y: yArray,
-      mode: "line",
-    },
-  ];
+    // Define Data
+    let data = [
+      {
+        x: xArray,
+        y: yArray,
+        mode: "line",
+      },
+    ];
 
-  // Define Layout
-  let layout = {
-    xaxis: {
-      range: [40, 80, 90],
-      title: "Base on 50" + " " + $(".get_from").text(),
-    },
-    yaxis: {
-      range: [0, 50, 100, 150, 200],
-      title: $(".get_too").text(),
-    },
-    title: "Currency change in the last 180 days",
-  };
+    // Define Layout
+    let layout = {
+      xaxis: {
+        range: [40, 80, 90],
+        title: "Base on 50" + " " + $(".get_from").text(),
+      },
+      yaxis: {
+        range: [0, 50, 100, 150, 200],
+        title: $(".get_too").text(),
+      },
+      title: "Currency change in the last 180 days",
+    };
 
-  // Display using Plotly
-  Plotly.newPlot("myPlot", data, layout);
+    // Display using Plotly
+    Plotly.newPlot("myPlot", data, layout);
+  } catch (error) {}
 }
 
 build_chart();
