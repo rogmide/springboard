@@ -38,7 +38,6 @@ function build_chart() {
 
   try {
     const currency_story = JSON.parse(result_six_month);
-    console.log(currency_story)
     $('.c_from_symbol').text(currency_story["6"][1])
     $('.c_to_symbol').text(currency_story["7"][1])
 
