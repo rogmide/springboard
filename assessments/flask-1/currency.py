@@ -4,6 +4,9 @@ import datetime
 
 
 def convert_currency(c_from, c_to, c_amount):
+    '''
+    Get the current currency change from one to another one
+    '''
     try:
         currency = CurrencyRates()
         result = currency.convert(c_from, c_to, int(
@@ -16,6 +19,7 @@ def convert_currency(c_from, c_to, c_amount):
 
 
 def last_six_month_change(c_from, c_to, c_amount):
+    '''Get the last 180 days of the currency change and return a json'''
 
     try:
         result = []
@@ -24,7 +28,7 @@ def last_six_month_change(c_from, c_to, c_amount):
         json_result = {}
 
         for i in range(0, 6):
-            result.append([currency.convert(c_from, c_to, 100, datetime.date.today(
+            result.append([currency.convert(c_from, c_to, 50, datetime.date.today(
             ) - datetime.timedelta(days)), datetime.date.today() - datetime.timedelta(days)])
             days += 30
 

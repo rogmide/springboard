@@ -33,7 +33,7 @@ $("#convert").click(async (e) => {
 });
 
 function build_chart() {
-  const currency_story = JSON.parse($(".myJSon").text());
+  const currency_story = JSON.parse(result_six_month);
 
   let xArray = [
     currency_story["5"][0],
@@ -57,7 +57,7 @@ function build_chart() {
     {
       x: xArray,
       y: yArray,
-      mode: "markers",
+      mode: "line",
     },
   ];
 
@@ -65,17 +65,10 @@ function build_chart() {
   let layout = {
     xaxis: {
       range: [40, 80, 90],
-      title: "Base on 100" + " " + $(".get_from").text(),
+      title: "Base on 50" + " " + $(".get_from").text(),
     },
     yaxis: {
-      range: [
-        currency_story["5"][1],
-        currency_story["4"][1],
-        currency_story["3"][1],
-        currency_story["2"][1],
-        currency_story["1"][1],
-        currency_story["0"][1],
-      ],
+      range: [0, 50, 100, 150, 200],
       title: $(".get_too").text(),
     },
     title: "Currency change in the last 180 days",
