@@ -2,10 +2,9 @@
 converter %}
 
 <form action="/conversions" class="row g-3 needs-validation converter">
-  {% with messages = get_flashed_messages() %} {% if messages %} {% for message
-  in messages %}
-  <h5 class="not_valid_currency">{{ message }}</h5>
-  {% endfor %} {% endif %} {% endwith %}
+  {% with messages = get_flashed_messages() %} {% if messages %}
+  <h5 class="not_valid_currency">{{ messages[0] }}</h5>
+  {% endif %} {% endwith %}
   <div class="col-md-4">
     <label for="from" class="form-label">From:</label>
     <input
