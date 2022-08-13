@@ -1,0 +1,14 @@
+-- insert into studios (name, founded_in) VALUES ('Orion Pictures', '1980-10-10')
+-- insert into movies (title, release_year, runtime, rating, studio_id) 
+-- VALUES ('Amadeus',1984, 180, 'R', 4)
+-- DELETE from studios where id = 4
+-- SELECT * from movies INNER join studios on public.movies.studio_id = studio_id
+-- insert into movies (title, release_year, runtime, rating) 
+-- VALUES ('My Sec Indie Movie',2020, 110, 'R')
+-- insert into studios (name, founded_in) VALUES ('Cat Car Cat Pictures', '1980-12-12')
+-- SELECT * from studios
+-- SELECT * from studios RIGHT join movies on movies.studio_id = studio_id;
+-- SELECT * from studios left join movies on movies.studio_id = studio_id;
+-- SELECT * from studios full join movies on movies.studio_id = studio_id
+-- SELECT name, count(*) as total from movies join studios on movies.studio_id = studios.id group by studios.name ORDER by total desc
+
