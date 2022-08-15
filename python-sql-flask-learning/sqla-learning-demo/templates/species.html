@@ -1,0 +1,15 @@
+{% extends 'base.html' %} {% block title %} List of Pets {% endblock %} {% block
+    list %}
+    
+    <h1 class="welcome">{{ species }}</h1>
+    
+    <ul>
+      {% for p in pets %}
+      <li><a href="/{{p.species}}"> {{ p.name.upper() }}</a></li>
+      {% endfor %}
+    </ul>
+    
+    <a href="/">Go Back!</a>
+    
+    {% endblock%}
+    

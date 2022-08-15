@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block title %} List of Pets {% endblock %} {% block
+list %}
+
+<h1 class="welcome">List of Pets</h1>
+
+<ul>
+  {% for p in pets %}
+  <li><a href="/{{p.id}}"> {{ p.name.upper() }}</a></li>
+  {% endfor %}
+</ul>
+
+<h2>Add New Pet!</h2>
+<form
+  action="/
+"
+  method="post"
+>
+    <input type="text" name="name" placeholder="Name">
+    <input type="text" name="species" placeholder="Species">
+    <input type="number" name="hunger" placeholder="Hunger">
+    <button>Submit Pet</button>
+</form>
+
+{% endblock%}
