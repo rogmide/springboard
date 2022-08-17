@@ -1,0 +1,43 @@
+{% extends 'base.html' %} {% block title %} User Login {% endblock %} {% block
+content %}
+
+<h2>Create a user</h2>
+<div class="form_holder">
+  <form class="form-group" action="/users/new" method="POST">
+    <div class="form-group">
+      <label for="id_first_name">First Name:</label>
+      <input
+        class="form-control"
+        id="id_first_name"
+        name="first_name"
+        type="text"
+        placeholder="Enter a first name"
+      />
+    </div>
+    <div class="form-group">
+      <label for="id_last_name">Last Name:</label>
+      <input
+        class="form-control"
+        id="id_last_name"
+        name="last_name"
+        type="text"
+        placeholder="Enter a last name"
+      />
+    </div>
+    <div class="form-group">
+      <label for="id_img_user">Image URL:</label>
+      <input
+        class="form-control"
+        id="id_img_user"
+        name="img_user"
+        type="text"
+        placeholder="Provide an image of this user"
+      />
+    </div>
+    <div class="button_holder">
+      <button type="button" class="btn btn-danger">Add</button>
+    </div>
+  </form>
+</div>
+
+{% endblock%}

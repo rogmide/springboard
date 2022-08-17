@@ -1,6 +1,49 @@
-
 /* CSS Here */
-html {
-    background-color: grey;
-    color: white;
+body {
+  background-color: rgb(234, 226, 226);
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.btn-secondary {
+  width: fit-content;
+}
+
+.user_holder {
+  display: flex;
+}
+
+.user_img {
+  width: 150px;
+  height: 150px;
+}
+
+.user_img_border {
+  border: 1px solid green;
+  box-shadow: 2px 1px;
+  border-radius: 5px;
+}
+
+.name {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.form-control {
+  width: 365px;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+.form_holder {
+  width: fit-content;
+}
+
+.button_holder {
+  display: flex;
+  justify-content: flex-end;
 }

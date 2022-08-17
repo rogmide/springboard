@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% block title %} All Users {% endblock %} {% block
+content %}
+<div class="user_holder container">
+  <div class="user_img_border">
+    <img
+      class="user_img"
+      src="{{ user.image_url }}"
+      alt="user img from db or default"
+    />
+  </div>
+  <div class="name">
+    <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+    <div>
+      <button type="button" class="btn btn-primary">Edit</button>
+      <button type="button" class="btn btn-danger">Delete</button>
+    </div>
+  </div>
+</div>
+
+<br />
+
+{% endblock%}
