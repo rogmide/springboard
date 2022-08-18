@@ -1,9 +1,9 @@
-{% extends 'base.html' %} {% block title %} User Login {% endblock %} {% block
+{% extends 'base.html' %} {% block title %} Edit Login {% endblock %} {% block
 content %}
 
-<h2>Create a user</h2>
-<div class="form_holder">
-  <form class="form-group" action="/users/new" method="POST">
+<h2>Edit a user</h2>
+<div class="form_holder edit_button">
+  <form class="form-group" action="/users/{{ user.id }}/edit" method="POST">
     <div class="form-group">
       <label for="id_first_name">First Name:</label>
       <input
@@ -12,6 +12,7 @@ content %}
         name="first_name"
         type="text"
         placeholder="Enter a first name"
+        value="{{ user.first_name }}"
       />
     </div>
     <div class="form-group">
@@ -22,6 +23,7 @@ content %}
         name="last_name"
         type="text"
         placeholder="Enter a last name"
+        value="{{ user.last_name }}"
       />
     </div>
     <div class="form-group">
@@ -32,12 +34,22 @@ content %}
         name="img_user"
         type="text"
         placeholder="Provide an image of this user"
+        value="{{ user.image_url }}"
       />
     </div>
-    <div class="button_holder">
-      <button type="submit" class="btn btn-success">Add</button>
-    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+    <button type="button" class="cancel_edit btn btn-light">Cancel</button>
   </form>
+  <div>
+    
+  </div>
 </div>
+
+<script type="text/javascript">
+  // Making a variable here so that way i can use it in javascritp
+  let user_id = '{{ user.id|safe }}'
+  // console.log(result_six_month)
+
+</script>
 
 {% endblock%}

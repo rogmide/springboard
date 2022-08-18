@@ -6,7 +6,7 @@ content %}
 <ul>
   {% for u in users %}
   <li>
-    <a href="/users/{{ u.id }}"> {{ u.first_name }} {{ u.last_name }} </a>
+    <a href="/users/{{ u.id }}"> {{ u.fullname }} </a>
   </li>
   {% endfor %}
 </ul>

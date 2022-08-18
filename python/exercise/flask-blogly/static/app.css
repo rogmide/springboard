@@ -47,3 +47,11 @@ body {
   display: flex;
   justify-content: flex-end;
 }
+
+.edit_button {
+  display: flex;
+}
+
+.edit_button button {
+  margin-left: 5px;
+}

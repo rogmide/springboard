@@ -10,13 +10,23 @@ content %}
   </div>
   <div class="name">
     <h2>{{ user.first_name }} {{ user.last_name }}</h2>
-    <div>
-      <button type="button" class="btn btn-primary">Edit</button>
-      <button type="button" class="btn btn-danger">Delete</button>
+    <div class="edit_button">
+      <form action="/users/{{ user.id }}/edit" method="get">
+        <button type="submit" class="btn btn-primary">Edit</button>
+      </form>
+      <form action="/users/{{ user.id }}/delete" method="POST">
+        <button type="submit" class="delete_user btn btn-danger">Delete</button>
+      </form>
     </div>
   </div>
 </div>
 
 <br />
+
+<script type="text/javascript">
+  // Making a variable here so that way i can use it in javascritp
+  let user_id = "{{ user.id|safe }}";
+  // console.log(result_six_month)
+</script>
 
 {% endblock%}

@@ -1,3 +1,4 @@
+from distutils.command.build_scripts import first_line_re
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
@@ -17,7 +18,8 @@ class User(db.Model):
 
     @classmethod
     def get_all_users(cls):
-        return cls.query.all()
+        '''Get all the user in the DB'''
+        return cls.query.order_by(User.last_name.asc()).all()
 
     @classmethod
     def get_user_by_id(cls, id):
@@ -25,8 +27,28 @@ class User(db.Model):
 
     # this way is a better representation of the class at the time we print the class
     def __repr__(self):
+        '''Better Representation of the class'''
         user = self
         return f'<User id={user.id} name={user.first_name} last_name={user.last_name} image_url=SomeIMg>'
+
+    @property
+    def fullname(self):
+        '''Property to acces to the user full name'''
+        return '{} {} {}'.format(self.first_name, self.middle_name if self.middle_name else '', self.last_name)
+
+    @fullname.setter
+    def fullname(self, name):
+        '''Set User full name variables first, middle and last name
+        Note: middle name can be empty
+        '''
+        self.first_name, self.middle_name, self.last_name = name.split(' ')
+
+    @fullname.deleter
+    def fullname(self, name):
+        '''Set User full name variables first, middle and last name to None
+        Note: middle name can be empty
+        '''
+        self.first_name, self.middle_name, self.last_name = None, None, None
 
     id = db.Column(db.Integer,
                    primary_key=True,
@@ -35,6 +57,9 @@ class User(db.Model):
     first_name = db.Column(db.String(50),
                            nullable=False,
                            unique=True)
+
+    middle_name = db.Column(db.String(50),
+                            nullable=True)
 
     last_name = db.Column(db.String(50),
                           nullable=False)

@@ -30,7 +30,7 @@ def get_users_page():
 
 
 @app.route('/users/new')
-def get_new_user_from():
+def get_new_user_form():
     '''Get New User From Page'''
 
     return render_template('new_user.html')
@@ -40,7 +40,16 @@ def get_new_user_from():
 def add_user_to_db():
     '''Add a new user to the db'''
 
-    print('FINISH WORK HERE FOR TOMORROW')
+    first_name = request.form["first_name"]
+    last_name = request.form['last_name']
+    img_user = request.form['img_user']
+
+    new_user = User(first_name=first_name,
+                    last_name=last_name, image_url=img_user if img_user else None)
+
+    db.session.add(new_user)
+    db.session.commit()
+
     return redirect('/users')
 
 
@@ -51,3 +60,39 @@ def get_user_detail_page(id):
     user = User.get_user_by_id(id)
 
     return render_template('user_details.html', user=user)
+
+
+@app.route('/users/<int:id>/edit')
+def get_edit_user_form(id):
+    '''Show Form to change User Information that can be Edit'''
+
+    user = User.get_user_by_id(id)
+
+    return render_template('edit_user.html', user=user)
+
+
+@app.route('/users/<int:id>/edit', methods=['POST'])
+def edit_user_in_db(id):
+    '''Edit a user information in the database'''
+
+    user = User.get_user_by_id(id)
+
+    user.first_name = request.form["first_name"]
+    user.last_name = request.form['last_name']
+    user.image_url = request.form['img_user'] if request.form['img_user'] else None
+
+    db.session.add(user)
+    db.session.commit()
+
+    return redirect(f'/users')
+
+
+@app.route('/users/<int:id>/delete', methods=['POST'])
+def delete_user_db(id):
+    '''Delete a user on the database usin a id'''
+
+    User.query.filter(User.id == int(id)).delete()
+
+    db.session.commit()
+
+    return redirect(f'/users') 
