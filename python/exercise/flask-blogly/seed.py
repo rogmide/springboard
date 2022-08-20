@@ -1,6 +1,3 @@
-"""Seed file to make sample data for pets db."""
-
-from turtle import title
 from models import User, Post, db
 from app import app
 
