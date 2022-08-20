@@ -1,4 +1,15 @@
 {% extends 'base.html' %} {% block title %} User Login {% endblock %} {% block
 content %}
 
-{% endblock%}
+<h1>Blogly Recent Posts</h1>
+
+{% if posts %} {% for p in posts %}
+
+<h2 class="display-4 mt-3">{{ p.title }}</h2>
+<p>{{ p.content }}</p>
+<p class="fst-italic">
+  By {{ p.user.fullname }} on {{ p.create_at.strftime("%a %B %d, %I:%M:%S %p")
+  }}
+</p>
+
+{% endfor %} {% endif %} {% endblock%}

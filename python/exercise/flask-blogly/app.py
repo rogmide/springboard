@@ -19,7 +19,9 @@ def home_page():
     # db.drop_all()
     # db.create_all()
 
-    return redirect('/users')
+    posts = Post.get_last_post()
+
+    return render_template('home.html', posts=posts)
 
 
 @app.route('/users')
@@ -158,6 +160,7 @@ def edit_post_by_id(id):
 
     return redirect(f'/posts/{id}')
 
+
 @app.route('/posts/<int:id>/delete', methods=['POST'])
 def delete_post_by_id(id):
     '''Handle Delete of a Post'''
@@ -172,3 +175,10 @@ def delete_post_by_id(id):
     db.session.commit()
 
     return redirect(f'/users/{user_id}')
+
+
+@app.errorhandler(404)
+def not_found(e):
+    '''404 Error Handeling'''
+
+    return render_template("404.html")

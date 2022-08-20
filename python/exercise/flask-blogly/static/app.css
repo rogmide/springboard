@@ -56,3 +56,27 @@ body {
 .edit_button button {
   margin-left: 5px;
 }
+
+.edit_post {
+  display: flex;
+}
+
+a {
+  margin-right: 5px;
+}
+
+.sad_face {
+  width: 300px;
+  height: 300px;
+  margin-left: 300px;
+}
+
+.center_404 {
+  display: flex;
+  justify-content: center;
+}
+
+.center_img {
+  display: flex;
+  flex-direction: column;
+}

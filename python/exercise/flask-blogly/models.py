@@ -1,6 +1,6 @@
 from distutils.command.build_scripts import first_line_re
 from flask_sqlalchemy import SQLAlchemy
-from datetime import date
+from datetime import date, datetime
 
 db = SQLAlchemy()
 
@@ -83,32 +83,21 @@ class Post(db.Model):
     def get_all_posts_for_user(cls, user_id):
         '''Get all the post in the DB'''
         return cls.query.filter(Post.user_id == user_id).all()
-    
+
     @classmethod
     def get_post_by_id(cls, id):
         '''Get all the post in the DB'''
         return cls.query.filter(Post.id == id).first()
 
-    # this way is a better representation of the class at the time we print the class
+    @classmethod
+    def get_last_post(cls):
+        # Ticker.query.order_by('updated desc').limit(1)
+        # return cls.query.order_by(User.last_name.asc()).all()
+        return cls.query.order_by(Post.create_at.desc()).limit(3)
+
     def __repr__(self):
         '''Better Representation of the class'''
         return f'id={self.id} title={self.title} create_at={self.create_at} user_id={self.user_id}'
-
-    # # Property if needed in the future
-    # @property
-    # def some_property(self):
-    #     return ''
-    #     # return '{} {} {}'.format(self.first_name, self.middle_name if self.middle_name else '', self.last_name)
-
-    # @some_property.setter
-    # def fullname(self, name):
-    #     return
-    #     # self.first_name, self.middle_name, self.last_name = name.split(' ')
-
-    # @some_property.deleter
-    # def fullname(self, name):
-    #     return
-    #     # self.first_name, self.middle_name, self.last_name = None, None, None
 
     id = db.Column(db.Integer,
                    primary_key=True,
@@ -121,9 +110,9 @@ class Post(db.Model):
     content = db.Column(db.Text,
                         nullable=True)
 
-    create_at = db.Column(db.Date,
+    create_at = db.Column(db.DateTime,
                           nullable=False,
-                          default=date.today().strftime("%Y/%m/%d"))
+                          default=datetime.now().strftime("%Y/%m/%d, %I:%M:%S %p"))
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
