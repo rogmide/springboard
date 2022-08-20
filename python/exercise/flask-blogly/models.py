@@ -1,5 +1,6 @@
 from distutils.command.build_scripts import first_line_re
 from flask_sqlalchemy import SQLAlchemy
+from datetime import date
 
 db = SQLAlchemy()
 
@@ -71,3 +72,59 @@ class User(db.Model):
     def greet(self):
         '''Print Data of the Pet'''
         return f'Hi, i am {self.first_name} the {self.last_name}'
+
+
+class Post(db.Model):
+    '''Pet Model'''
+
+    __tablename__ = 'posts'
+
+    @classmethod
+    def get_all_posts_for_user(cls, user_id):
+        '''Get all the post in the DB'''
+        return cls.query.filter(Post.user_id == user_id).all()
+    
+    @classmethod
+    def get_post_by_id(cls, id):
+        '''Get all the post in the DB'''
+        return cls.query.filter(Post.id == id).first()
+
+    # this way is a better representation of the class at the time we print the class
+    def __repr__(self):
+        '''Better Representation of the class'''
+        return f'id={self.id} title={self.title} create_at={self.create_at} user_id={self.user_id}'
+
+    # # Property if needed in the future
+    # @property
+    # def some_property(self):
+    #     return ''
+    #     # return '{} {} {}'.format(self.first_name, self.middle_name if self.middle_name else '', self.last_name)
+
+    # @some_property.setter
+    # def fullname(self, name):
+    #     return
+    #     # self.first_name, self.middle_name, self.last_name = name.split(' ')
+
+    # @some_property.deleter
+    # def fullname(self, name):
+    #     return
+    #     # self.first_name, self.middle_name, self.last_name = None, None, None
+
+    id = db.Column(db.Integer,
+                   primary_key=True,
+                   autoincrement=True)
+
+    title = db.Column(db.String(50),
+                      nullable=False,
+                      unique=True)
+
+    content = db.Column(db.Text,
+                        nullable=True)
+
+    create_at = db.Column(db.Date,
+                          nullable=False,
+                          default=date.today().strftime("%Y/%m/%d"))
+
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+    user = db.relationship('User', backref='posts')

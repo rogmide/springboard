@@ -1,6 +1,6 @@
 from crypt import methods
 from flask import Flask, request, redirect, render_template
-from models import User, db, connect_db
+from models import User, Post, db, connect_db
 
 app = Flask(__name__)
 
@@ -10,12 +10,14 @@ app.config['SQLALCHEMY_ECHO'] = True
 app.config['SECRET_KEY'] = "123"
 
 connect_db(app)
-# db.create_all()
 
 
 @app.route('/')
 def home_page():
     '''Show Home Page'''
+
+    # db.drop_all()
+    # db.create_all()
 
     return redirect('/users')
 
@@ -59,7 +61,9 @@ def get_user_detail_page(id):
 
     user = User.get_user_by_id(id)
 
-    return render_template('user_details.html', user=user)
+    posts = user.posts
+
+    return render_template('user_details.html', user=user, posts=posts)
 
 
 @app.route('/users/<int:id>/edit')
@@ -95,4 +99,76 @@ def delete_user_db(id):
 
     db.session.commit()
 
-    return redirect(f'/users') 
+    return redirect(f'/users')
+
+
+@app.route('/users/<int:id>/posts/new')
+def get_all_user_posts(id):
+    '''Show the form to add a new Post'''
+
+    user = User.get_user_by_id(id)
+
+    return render_template('post_new_form.html', user=user)
+
+
+@app.route('/users/<int:id>/posts/new', methods=['POST'])
+def add_post_for_user(id):
+    '''Show the form to add a new Post'''
+
+    title = request.form['title']
+    content = request.form['content']
+
+    new_post = Post(title=title, content=content, user_id=id)
+
+    db.session.add(new_post)
+    db.session.commit()
+
+    return redirect(f'/users/{id}')
+
+
+@app.route('/posts/<int:id>')
+def get_postby_id(id):
+    '''Get and Show Post by Id'''
+
+    post = Post.get_post_by_id(id)
+
+    return render_template('post_detail.html', post=post)
+
+
+@app.route('/posts/<int:id>/edit')
+def fill_post_by_id(id):
+    '''Show Post that is going to be edit by Id'''
+
+    post = Post.get_post_by_id(id)
+
+    return render_template('post_edit.html', post=post, user=post.user)
+
+
+@app.route('/posts/<int:id>/edit', methods=['POST'])
+def edit_post_by_id(id):
+    '''Handle the post edition and redirect back to the post detail'''
+
+    post = Post.get_post_by_id(id)
+
+    post.title = request.form['title']
+    post.content = request.form['content']
+
+    db.session.add(post)
+    db.session.commit()
+
+    return redirect(f'/posts/{id}')
+
+@app.route('/posts/<int:id>/delete', methods=['POST'])
+def delete_post_by_id(id):
+    '''Handle Delete of a Post'''
+
+    post = Post.get_post_by_id(id)
+    user_id = post.user_id
+
+    Post.query.filter(Post.id == id).delete()
+    # print('HEREHERHEHRHERHEHRKJHLKJHSDKFLJHKLASDJHFKLSAJHDFKLJASHDFLKJHSDAF',post.id, post.title)
+    # user_id = post.user.id
+
+    db.session.commit()
+
+    return redirect(f'/users/{user_id}')

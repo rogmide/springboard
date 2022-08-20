@@ -1,0 +1,36 @@
+{% extends 'base.html' %} {% block title %} User Login {% endblock %} {% block
+content %}
+
+<h2>Add Post for {{ user.fullname }}</h2>
+<div class="form_holder">
+  <form class="form-group" action="/users/{{ user.id }}/posts/new" method="POST">
+    <div class="form-group">
+      <label for="id_title">Title</label>
+      <input
+        required
+        class="form-control"
+        id="id_title"
+        name="title"
+        type="text"
+        placeholder="Enter a title"
+      />
+    </div>
+    <div class="form-group">
+      <label for="id_Content">Content</label>
+      <textarea
+        class="form-control"
+        id="id_Content"
+        name="content"
+        rows="4"
+        cols="50"
+      >
+      </textarea>
+    </div>
+    <div class="button_holder">
+      <a href="" class="btn btn-light m-1">Cancel</a>
+      <button type="submit" class="btn btn-success m-1">Add</button>
+    </div>
+  </form>
+</div>
+
+{% endblock%}
