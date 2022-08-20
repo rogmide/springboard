@@ -1,5 +1,5 @@
 from flask import Flask, request, redirect, render_template
-from models import Department, Employee, db, connect_db
+from models import Department, Employee, db, connect_db, get_directory
 
 app = Flask(__name__)
 
@@ -27,4 +27,30 @@ def home_page():
     # db.session.add(e)
     # db.session.commit()
 
+    # TESTING RELATIONSHIP
+    # emp = Employee.query.get(1)
+    # print(emp.dept.dept_name, emp.dept.dept_phone)
+
+    # dept = Department.query.get('mktg')
+    # emp = dept.employees
+
+    # for e in emp:
+    #     print(emp, dept)
+
+    # # TYPE OF QUERY
+    # Employee.query.filter(Employee.name == 'Jane')
+    # Employee.query.filter(Employee.name != 'Jane')
+    # Employee.query.filter(Employee.id > 65)
+    # Employee.query.filter(Employee.name.like('%Jane%'))  # LIKE
+    # Employee.query.filter(Employee.name.ilike('%Jane%'))  # iLIKE 
+    # Employee.query.filter(Employee.id.in_(22, 33, 44))  # IN ()
+
     return render_template('home.html')
+
+
+@app.route('/phones')
+def list_phones():
+
+    emps = Employee.query.all()
+
+    return render_template('phones.html', emps=emps)

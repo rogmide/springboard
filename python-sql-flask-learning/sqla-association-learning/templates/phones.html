@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% block title %} Title Here {% endblock %} {% block
+content %}
+
+<div class="container">
+  <h1 class="display-5 mt-5">Phones Nombers</h1>
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <th>Employee</th>
+      <th>Deparment</th>
+      <th>Phone</th>
+    </thead>
+    <tbody>
+      {% for emp in emps %}
+
+      <tr>
+        <td>{{ emp.name }}</td>
+        <td>{{ emp.dept.dept_code }}</td>
+        {% if emp.dept.dept_phone %}
+        <td>{{ emp.dept.dept_phone }}</td>
+        {% else %}
+        <td class="text-danger">No Phone</td>
+        {% endif %}
+      </tr>
+
+      {% endfor %}
+    </tbody>
+  </table>
+
+  {% endblock%}
+</div>
