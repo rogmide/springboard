@@ -13,7 +13,7 @@ def connect_db(app):
 
 
 class User(db.Model):
-    '''Pet Model'''
+    '''User Model'''
 
     __tablename__ = 'users'
 
@@ -69,9 +69,6 @@ class User(db.Model):
                           nullable=True,
                           default='https://cdn-icons-png.flaticon.com/512/906/906331.png?w=826&t=st=1660696447~exp=1660697047~hmac=794234f31e068797117461494bd6b8f0f9889bcb0927355efe4b454f6bd7e9e5')
 
-    def greet(self):
-        '''Print Data of the Pet'''
-        return f'Hi, i am {self.first_name} the {self.last_name}'
 
 
 class Post(db.Model):
@@ -91,9 +88,9 @@ class Post(db.Model):
 
     @classmethod
     def get_last_post(cls):
-        # Ticker.query.order_by('updated desc').limit(1)
-        # return cls.query.order_by(User.last_name.asc()).all()
-        return cls.query.order_by(Post.create_at.desc()).limit(3)
+        '''Get last 3 post added'''
+
+        return cls.query.order_by(Post.id.desc()).limit(3)
 
     def __repr__(self):
         '''Better Representation of the class'''
@@ -114,6 +111,6 @@ class Post(db.Model):
                           nullable=False,
                           default=datetime.now().strftime("%Y/%m/%d, %I:%M:%S %p"))
 
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'))
 
     user = db.relationship('User', backref='posts')

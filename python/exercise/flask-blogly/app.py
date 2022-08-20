@@ -169,8 +169,6 @@ def delete_post_by_id(id):
     user_id = post.user_id
 
     Post.query.filter(Post.id == id).delete()
-    # print('HEREHERHEHRHERHEHRKJHLKJHSDKFLJHKLASDJHFKLSAJHDFKLJASHDFLKJHSDAF',post.id, post.title)
-    # user_id = post.user.id
 
     db.session.commit()
 
