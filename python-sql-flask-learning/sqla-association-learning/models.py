@@ -40,7 +40,8 @@ class Employee(db.Model):
     # Setting up a relationship this - deparment to Employee - and backref="name of variable" to reference back
     dept = db.relationship('Department', backref='employees')
     assignments = db.relationship('EmployeeProject', backref='employee')
-    projects = db.relationship('Project', secondary='employees_projects', backref='employees')
+    projects = db.relationship(
+        'Project', secondary='employees_projects', backref='employees')
 
 
 class Project(db.Model):
@@ -50,6 +51,7 @@ class Project(db.Model):
 
     proj_code = db.Column(db.Text, primary_key=True)
     proj_name = db.Column(db.Text, nullable=False, unique=True)
+    
     assignments = db.relationship('EmployeeProject', backref='project')
 
 

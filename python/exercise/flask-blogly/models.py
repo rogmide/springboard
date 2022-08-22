@@ -70,7 +70,6 @@ class User(db.Model):
                           default='https://cdn-icons-png.flaticon.com/512/906/906331.png?w=826&t=st=1660696447~exp=1660697047~hmac=794234f31e068797117461494bd6b8f0f9889bcb0927355efe4b454f6bd7e9e5')
 
 
-
 class Post(db.Model):
     '''Pet Model'''
 
@@ -111,6 +110,58 @@ class Post(db.Model):
                           nullable=False,
                           default=datetime.now().strftime("%Y/%m/%d, %I:%M:%S %p"))
 
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'))
+    user_id = db.Column(db.Integer, db.ForeignKey(
+        'users.id', ondelete='CASCADE'))
 
     user = db.relationship('User', backref='posts')
+    tagged = db.relationship('PostTag', backref='post')
+    tags = db.relationship(
+        'Tag', secondary='post_tags', backref='posts')
+
+
+class Tag(db.Model):
+    '''Model for Tag Table'''
+
+    __tablename__ = 'tags'
+
+    # @classmethod
+    # def get_last_post(cls):
+    #     '''Get last 3 post added'''
+
+    #     return cls.query.order_by(Post.id.desc()).limit(3)
+
+    def __repr__(self):
+        '''Better Representation of the class'''
+        return f'< id={self.id} tag_name={self.tag_name} >'
+
+    id = db.Column(db.Integer,
+                   primary_key=True,
+                   autoincrement=True)
+
+    tag_name = db.Column(db.String(50),
+                         nullable=False,
+                         unique=True)
+
+    tagged = db.relationship('PostTag', backref='tags')
+
+
+class PostTag(db.Model):
+    '''Relationship post and tag'''
+
+    __tablename__ = 'post_tags'
+
+    # @classmethod
+    # def get_last_post(cls):
+    #     '''Get last 3 post added'''
+
+    #     return cls.query.order_by(Post.id.desc()).limit(3)
+
+    def __repr__(self):
+        '''Better Representation of the class'''
+        return f'< post_id={self.post_id} tag_id={self.tag_id} >'
+
+    post_id = db.Column(db.Integer, db.ForeignKey(
+        'posts.id'), primary_key=True)
+
+    tag_id = db.Column(db.Integer, db.ForeignKey(
+        'tags.id'), primary_key=True)
