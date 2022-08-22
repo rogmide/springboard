@@ -52,12 +52,12 @@ nadine = Employee(name='Nadine')
 db.session.add_all([df, dl, dm, leonard, liz, maggie, nadine])
 db.session.commit()
 
-# pc = Project(proj_code='car', proj_name='Design Car',
-#              assignments=[EmployeeProject(emp_id=liz.id, role='Chair'),
-#                           EmployeeProject(emp_id=maggie.id)])
-# ps = Project(proj_code='server', proj_name='Deploy Server',
-#              assignments=[EmployeeProject(emp_id=liz.id),
-#                           EmployeeProject(emp_id=leonard.id, role='Auditor')])
+pc = Project(proj_code='car', proj_name='Design Car',
+             assignments=[EmployeeProject(emp_id=liz.id, role='Chair'),
+                          EmployeeProject(emp_id=maggie.id)])
+ps = Project(proj_code='server', proj_name='Deploy Server',
+             assignments=[EmployeeProject(emp_id=liz.id),
+                          EmployeeProject(emp_id=leonard.id, role='Auditor')])
 
-# db.session.add_all([ps, pc])
-# db.session.commit()
+db.session.add_all([ps, pc])
+db.session.commit()
