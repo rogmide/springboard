@@ -26,5 +26,8 @@ content %}
     </tbody>
   </table>
 
-  {% endblock%}
+  <h5 class="display-3">Joins</h5>
+  {% for ep in emps_dept %}
+  <h2>{{ ep.name }} - ({{ ep.dept_phone }})</h2>
+  {% endfor %} {% endblock%}
 </div>

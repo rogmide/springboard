@@ -39,6 +39,32 @@ class Employee(db.Model):
     # Setting up a relationship this - deparment to Employee - and backref="name of variable" to reference back
     dept = db.relationship('Department', backref='employees')
 
+    # assignments = db.relationship('EmployeeProject', backref='employee')
+    projects = db.relationship('Project', secondary='employees_projects', backref='employees')
+
+
+class Project(db.Model):
+    '''Project Model'''
+
+    __tablename__ = 'projects'
+
+    proj_code = db.Column(db.Text, primary_key=True)
+    proj_name = db.Column(db.Text, nullable=False, unique=True)
+
+    # assignments = db.relationship('EmployeeProject', backref='project')
+
+
+class EmployeeProject(db.Model):
+    '''Many - to - Many Relationship'''
+
+    __tablename__ = 'employees_projects'
+
+    emp_id = db.Column(db.Integer, db.ForeignKey(
+        'employee.id'), primary_key=True)
+    proj_code = db.Column(db.Text, db.ForeignKey(
+        'projects.proj_code'), primary_key=True)
+    role = db.Column(db.Text)
+
 
 def get_directory():
     all_emps = Employee.query.all()
@@ -48,3 +74,31 @@ def get_directory():
             print(emp.name, emp.dept.dept_name, emp.dept.dept_phone)
         else:
             print(emp.name)
+
+
+def get_directory_join():
+
+    directory = db.session.query(
+        Employee.name, Department.dept_name, Department.dept_phone).join(Department).all()
+
+    for name, dept_name, dept_phone in directory:
+        print(name, dept_name, dept_phone)
+
+
+def get_directory_join2():
+
+    # Here you can get the full obj and work with the Obj
+    directory = db.session.query(Employee, Department).join(Department).all()
+
+    for emp, dept in directory:
+        print(emp.name, dept.dept_phone)
+
+
+def get_directory_all_join():
+
+    # Here you can get the full obj and work with the Obj
+    directory = db.session.query(
+        Employee, Department).outerjoin(Department).all()
+
+    for emp, dept in directory:
+        print(emp, dept)

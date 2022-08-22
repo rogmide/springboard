@@ -1,5 +1,5 @@
 from flask import Flask, request, redirect, render_template
-from models import Department, Employee, db, connect_db, get_directory
+from models import Department, Employee, Project, EmployeeProject, db, connect_db, get_directory, get_directory_join, get_directory_join2, get_directory_all_join
 
 app = Flask(__name__)
 
@@ -52,5 +52,7 @@ def home_page():
 def list_phones():
 
     emps = Employee.query.all()
+    # emps_dept = db.session.query(Employee.name, Department.dept_phone).join(Department).all()
+    emps_dept = db.session.query(Employee.name, Department.dept_phone).join(Department).filter(Employee.state == 'DC')
 
-    return render_template('phones.html', emps=emps)
+    return render_template('phones.html', emps=emps, emps_dept=emps_dept)
