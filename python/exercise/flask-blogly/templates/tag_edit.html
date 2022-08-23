@@ -16,6 +16,28 @@ content %}
         value="{{ tag.tag_name }}"
       />
     </div>
+    <div class="list_of_post">
+      {% for p in tag.posts %}
+      <input
+        id="{{ p.id }}"
+        type="checkbox"
+        name="ids"
+        value="{{ p.id }}"
+        checked
+      />
+      <label for="{{ p.id }}">{{ p.title }} </label>
+      <br />
+      {% endfor %} {% for all_p in posts %}
+      <input
+        id="{{ all_p.id }}"
+        type="checkbox"
+        name="ids"
+        value="{{ all_p.id }}"
+      />
+      <label for="{{ all_p.id }}">{{ all_p.title }} </label>
+      <br />
+      {% endfor %}
+    </div>
     <div class="button_holder">
       <a href="/tags" class="btn btn-light">Cancel</a>
       <button type="submit" class="btn btn-success">Edit</button>

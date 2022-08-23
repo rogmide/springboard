@@ -218,9 +218,15 @@ def handle_add_tag_to_db():
 def get_tag_to_be_edit(id):
     '''Show the tag that will be edited'''
 
+    # cls.query.filter(Post.id == id).first()
     tag = Tag.get_tag_by_id(id)
+    posts = Post.query.all()
 
-    return render_template('tag_edit.html', tag=tag)
+    for t_p in tag.posts:
+        if t_p in posts:
+            posts.remove(t_p)
+
+    return render_template('tag_edit.html', tag=tag, posts=posts)
 
 
 @app.route('/tags/<int:id>/edit', methods=['POST'])
@@ -229,6 +235,12 @@ def handdle_edit_tag(id):
 
     tag = Tag.get_tag_by_id(id)
     tag.tag_name = request.form['tag_name']
+
+    post_ids = request.form.getlist("ids")
+    tag.posts = Post.query.filter(Post.id.in_(post_ids)).all()
+
+    # for p in posts:
+    #     p.tagged.append(PostTag(post_id=p.id, tag_id=id))
 
     db.session.add(tag)
     db.session.commit()

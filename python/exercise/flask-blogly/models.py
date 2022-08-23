@@ -89,7 +89,7 @@ class Post(db.Model):
     def get_last_post(cls):
         '''Get last 3 post added'''
 
-        return cls.query.order_by(Post.id.desc()).limit(3)
+        return cls.query.order_by(Post.id.desc()).limit(5)
 
     def __repr__(self):
         '''Better Representation of the class'''
