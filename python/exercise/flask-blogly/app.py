@@ -1,6 +1,6 @@
 from crypt import methods
 from flask import Flask, request, redirect, render_template
-from models import User, Post, db, connect_db
+from models import User, Post, Tag, PostTag, db, connect_db
 
 app = Flask(__name__)
 
@@ -173,6 +173,76 @@ def delete_post_by_id(id):
     db.session.commit()
 
     return redirect(f'/users/{user_id}')
+
+
+@app.route('/tags')
+def get_all_tags():
+    '''Get the tags from the Db'''
+
+    tags = Tag.get_all_tags()
+
+    return render_template('tags.html', tags=tags)
+
+
+@app.route('/tags/<int:id>')
+def get_tag_detail_by_id(id):
+    '''Render tag detail using the tag id'''
+
+    tag = Tag.get_tag_by_id(id)
+    posts = PostTag.query.filter(PostTag.tag_id == id).all()
+
+    return render_template('tag_details.html', tag=tag, posts=posts)
+
+
+@app.route('/tags/new')
+def show_new_tag_form():
+    '''Show page with form to add a new tag'''
+
+    return render_template('tag_new.html')
+
+
+@app.route('/tags/new', methods=['POST'])
+def handle_add_tag_to_db():
+    '''Add the tag that is created to the db'''
+
+    new_tag = Tag(tag_name=request.form['tag_name'])
+    db.session.add(new_tag)
+    db.session.commit()
+
+    return redirect('/tags')
+
+
+@app.route('/tags/<int:id>/edit')
+def get_tag_to_be_edit(id):
+    '''Show the tag that will be edited'''
+
+    tag = Tag.get_tag_by_id(id)
+
+    return render_template('tag_edit.html', tag=tag)
+
+
+@app.route('/tags/<int:id>/edit', methods=['POST'])
+def handdle_edit_tag(id):
+    '''Show the tag that will be edited'''
+
+    tag = Tag.get_tag_by_id(id)
+    tag.tag_name = request.form['tag_name']
+
+    db.session.add(tag)
+    db.session.commit()
+
+    return redirect('/tags')
+
+
+@app.route('/tags/<int:id>/delete', methods=['POST'])
+def handdle_delite_tag(id):
+    '''Show the tag that will be edited'''
+
+    Tag.query.filter(Tag.id == id).delete()
+
+    db.session.commit()
+
+    return redirect('/tags')
 
 
 @app.errorhandler(404)
