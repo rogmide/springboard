@@ -1,8 +1,10 @@
 from crypt import methods
-from flask import Flask, request, redirect, render_template
+from flask import Flask, request, redirect, render_template, flash
 from models import User, Post, Tag, PostTag, db, connect_db
 
 app = Flask(__name__)
+
+# flash(f"User {new_user.full_name} added.")
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///users_exercise'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -189,9 +191,9 @@ def get_tag_detail_by_id(id):
     '''Render tag detail using the tag id'''
 
     tag = Tag.get_tag_by_id(id)
-    posts = PostTag.query.filter(PostTag.tag_id == id).all()
+    # posts = PostTag.query.filter(PostTag.tag_id == id).all()
 
-    return render_template('tag_details.html', tag=tag, posts=posts)
+    return render_template('tag_details.html', tag=tag)
 
 
 @app.route('/tags/new')

@@ -5,13 +5,11 @@ content %}
     <h2 class="display-3">{{ tag.tag_name }}</h2>
 
     <div class="user_post">
-      {% if posts %}
       <ul>
-        {% for p in posts %}
-        <li><a href="/posts/{{ p.post.id }}"> {{ p.post.title }} </a></li>
+        {% for p in tag.posts %}
+        <li><a href="/posts/{{ p.id }}"> {{ p.title }} </a></li>
         {% endfor %}
       </ul>
-      {% endif %}
     </div>
     <div class="edit_button">
       <form action="/tags/{{ tag.id }}/edit" method="get">
