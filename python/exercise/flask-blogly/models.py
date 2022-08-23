@@ -124,11 +124,17 @@ class Tag(db.Model):
 
     __tablename__ = 'tags'
 
-    # @classmethod
-    # def get_last_post(cls):
-    #     '''Get last 3 post added'''
+    @classmethod
+    def get_all_tags(cls):
+        '''Get last 3 post added'''
 
-    #     return cls.query.order_by(Post.id.desc()).limit(3)
+        return cls.query.order_by(Tag.tag_name.asc()).all()
+
+    @classmethod
+    def get_tag_by_id(cls, id):
+        '''Get last 3 post added'''
+
+        return cls.query.get(id)
 
     def __repr__(self):
         '''Better Representation of the class'''
@@ -161,7 +167,7 @@ class PostTag(db.Model):
         return f'< post_id={self.post_id} tag_id={self.tag_id} >'
 
     post_id = db.Column(db.Integer, db.ForeignKey(
-        'posts.id'), primary_key=True)
+        'posts.id', ondelete='CASCADE'), primary_key=True)
 
     tag_id = db.Column(db.Integer, db.ForeignKey(
-        'tags.id'), primary_key=True)
+        'tags.id', ondelete='CASCADE'), primary_key=True)

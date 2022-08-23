@@ -1,0 +1,26 @@
+{% extends 'base.html' %} {% block title %} User Login {% endblock %} {% block
+content %}
+
+<h2>Edit tag</h2>
+<br />
+<div class="form_holder">
+  <form class="form-group" action="/tags/{{ tag.id }}/edit" method="POST">
+    <div class="form-group">
+      <label for="id_name">Name: </label>
+      <input
+        class="form-control"
+        id="id_name"
+        name="tag_name"
+        type="text"
+        placeholder="Enter a name for the tag"
+        value="{{ tag.tag_name }}"
+      />
+    </div>
+    <div class="button_holder">
+      <a href="/tags" class="btn btn-light">Cancel</a>
+      <button type="submit" class="btn btn-success">Edit</button>
+    </div>
+  </form>
+</div>
+
+{% endblock%}
