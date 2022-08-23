@@ -5,8 +5,14 @@ content %}
 
 {% if posts %} {% for p in posts %}
 
+<h1></h1>
 <h2 class="display-4 mt-3">{{ p.title }}</h2>
 <p>{{ p.content }}</p>
+<h5>
+  Tags: {% for t in p.tags %}
+  <span class="tags_looks">{{ t.tag_name }}</span>
+  {% endfor %}
+</h5>
 <p class="fst-italic">
   By {{ p.user.fullname }} on {{ p.create_at.strftime("%a %B %d, %I:%M:%S %p")
   }}

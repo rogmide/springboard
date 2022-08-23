@@ -80,3 +80,13 @@ a {
   display: flex;
   flex-direction: column;
 }
+
+.tags_looks {
+  background-color: rgb(3 123 255);
+  color: white;
+  border-radius: 5px;
+  padding-left: 7px;
+  padding-right: 7px;
+  font-size: 15px;
+  font-style: italic;
+}
