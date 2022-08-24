@@ -162,12 +162,6 @@ class PostTag(db.Model):
 
     __tablename__ = 'post_tags'
 
-    # @classmethod
-    # def get_last_post(cls):
-    #     '''Get last 3 post added'''
-
-    #     return cls.query.order_by(Post.id.desc()).limit(3)
-
     def __repr__(self):
         '''Better Representation of the class'''
         return f'< post_id={self.post_id} tag_id={self.tag_id} >'
