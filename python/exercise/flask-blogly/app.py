@@ -200,7 +200,9 @@ def get_tag_detail_by_id(id):
 def show_new_tag_form():
     '''Show page with form to add a new tag'''
 
-    return render_template('tag_new.html')
+    posts = Post.get_all_post()
+
+    return render_template('tag_new.html', posts=posts)
 
 
 @app.route('/tags/new', methods=['POST'])
@@ -208,6 +210,10 @@ def handle_add_tag_to_db():
     '''Add the tag that is created to the db'''
 
     new_tag = Tag(tag_name=request.form['tag_name'])
+
+    post_ids = request.form.getlist("ids")
+    new_tag.posts = Post.query.filter(Post.id.in_(post_ids)).all()
+
     db.session.add(new_tag)
     db.session.commit()
 

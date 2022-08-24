@@ -2,7 +2,7 @@
 content %}
 
 <h2>Create a tag</h2>
-<br>
+<br />
 <div class="form_holder">
   <form class="form-group" action="/tags/new" method="POST">
     <div class="form-group">
@@ -15,8 +15,15 @@ content %}
         placeholder="Enter a name for the tag"
       />
     </div>
+    <div class="list_of_post">
+      {% for p in posts %}
+      <input id="{{ p.id }}" type="checkbox" name="ids" value="{{ p.id }}" />
+      <label for="{{ p.id }}">{{ p.title }} </label>
+      <br />
+      {% endfor %}
+    </div>
     <div class="button_holder">
-      <a href="/tags" class="btn btn-light ">Cancel</a>
+      <a href="/tags" class="btn btn-light">Cancel</a>
       <button type="submit" class="btn btn-success">Add</button>
     </div>
   </form>

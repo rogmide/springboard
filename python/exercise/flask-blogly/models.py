@@ -91,6 +91,12 @@ class Post(db.Model):
 
         return cls.query.order_by(Post.id.desc()).limit(5)
 
+    @classmethod
+    def get_all_post(cls):
+        '''Get last 3 post added'''
+
+        return cls.query.order_by(Post.id.desc()).all()
+
     def __repr__(self):
         '''Better Representation of the class'''
         return f'id={self.id} title={self.title} create_at={self.create_at} user_id={self.user_id}'
