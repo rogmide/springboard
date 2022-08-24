@@ -93,7 +93,7 @@ class Post(db.Model):
 
     @classmethod
     def get_all_post(cls):
-        '''Get last 3 post added'''
+        '''Get all post from the db'''
 
         return cls.query.order_by(Post.id.desc()).all()
 
