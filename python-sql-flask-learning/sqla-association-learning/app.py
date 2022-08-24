@@ -1,5 +1,7 @@
+from crypt import methods
 from flask import Flask, request, redirect, render_template
 from models import Department, Employee, Project, EmployeeProject, db, connect_db, get_directory, get_directory_join, get_directory_join2, get_directory_all_join
+from forms import AddSnackForm
 
 app = Flask(__name__)
 
@@ -46,6 +48,15 @@ def home_page():
     # Employee.query.filter(Employee.id.in_(22, 33, 44))  # IN ()
 
     return render_template('home.html')
+
+
+@app.route('/snacks/new', methods=['GET', 'POST'])
+def add_snack():
+    '''Create form to add Snacks'''
+
+    form = AddSnackForm()
+
+    return render_template('add_snack_form.html', form=form)
 
 
 @app.route('/phones')
