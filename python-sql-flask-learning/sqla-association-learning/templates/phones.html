@@ -14,7 +14,7 @@ content %}
 
       <tr>
         <td>{{ emp.name }}</td>
-        <td>{{ emp.dept.dept_code }}</td>
+        <td>{{ emp.dept.dept_name }}</td>
         {% if emp.dept.dept_phone %}
         <td>{{ emp.dept.dept_phone }}</td>
         {% else %}
@@ -26,8 +26,9 @@ content %}
     </tbody>
   </table>
 
-  <h5 class="display-3">Joins</h5>
+  <!-- <h5 class="display-3">Joins</h5>
   {% for ep in emps_dept %}
   <h2>{{ ep.name }} - ({{ ep.dept_phone }})</h2>
-  {% endfor %} {% endblock%}
+  {% endfor %} -->
+  <a href="/employees/new" class="btn btn-success"> Add Employee</a> {% endblock%}
 </div>

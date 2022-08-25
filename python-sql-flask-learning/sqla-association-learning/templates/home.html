@@ -1,6 +1,18 @@
 {% extends 'base.html' %} {% block title %} Title Here {% endblock %} {% block
-    content %}
+content %}
 
-    <h1 class="welcome">Base Template </h1>
+<h1 class="welcome">Base Template</h1>
 
+{% for msg in get_flashed_messages() %}
+<p>{{ msg }}</p>
+{% endfor %}
+
+<ul>
+  <li>
+    <a href="/snacks/new">Add new Snack</a>
+  </li>
+  <li>
+    <a href="/phones">Phones Directory</a>
+  </li>
+</ul>
 {% endblock%}
