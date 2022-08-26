@@ -1,15 +1,32 @@
 {% extends 'base.html' %} {% block title %} Title Here {% endblock %} {% block
 content %}
 <div class="container">
-  <h1>Add New Employee</h1>
+  <h1 class="display-1 text-center">Add New Employee</h1>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      
+      <!-- {{ form.name.label(class_="text-info") }}
+      {{ form.name(class_="form-control form-control-lg") }}
+      {{ form.state.label(class_="text-info") }}
+      {{ form.state(class_="form-control form-control-lg") }} -->
 
-  <form method="POST">
-    {{ form.hidden_tag() }} {% for field in form if field.widget.input_type !=
-    'hidden' %}
-    <p>{{ field.label }} {{ field }}</p>
-    {% endfor %}
-    <button>Submit</button>
-  </form>
+      <form method="POST">
+        {{ form.hidden_tag() }} {% for field in form if field.widget.input_type
+        != 'hidden' %}
+        <div class="form-group">
+          {{ field.label }} {{ field(class="form-control") }} {% for err in
+          field.errors %}
+          <small class="form-text"> {{ err }} </small>
+          {% endfor %}
+        </div>
+
+        {% endfor %}
+        <br />
+        <button class="btn btn-sm btn-success">Submit</button>
+        <a class="btn btn-danger btn-sm" href="/phones">Go Back</a>
+      </form>
+    </div>
+  </div>
 </div>
 
 {% endblock%}

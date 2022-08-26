@@ -2,7 +2,7 @@ from crypt import methods
 from xml.dom.minidom import Document
 from flask import Flask, request, redirect, render_template, flash
 from models import Department, Employee, Project, EmployeeProject, db, connect_db, get_directory, get_directory_join, get_directory_join2, get_directory_all_join
-from forms import AddSnackForm, NewEmployeeForm
+from forms import AddSnackForm, EmployeeForm
 
 app = Flask(__name__)
 
@@ -87,14 +87,14 @@ def list_phones():
 @app.route('/employees/new', methods=['GET', 'POST'])
 def add_employeed():
 
-    form = NewEmployeeForm()
+    form = EmployeeForm()
 
     # This for some reason is not working for me
     depts = db.session.query(Department.dept_code, Department.dept_name)
     # i create de list using this query to the database and it works
-    
+
     depts2 = [(d.dept_code, d.dept_name) for d in Department.query.all()]
-    
+
     form.dept_code.choices = depts2
 
     if form.validate_on_submit():
@@ -110,3 +110,24 @@ def add_employeed():
     else:
 
         return render_template('add_employee_form.html', form=form)
+
+
+@app.route('/employees/<int:id>/edit', methods=["GET", "POST"])
+def edit_employee(id):
+
+    edit_emp = Employee.query.get_or_404(id)
+    form = EmployeeForm(obj=edit_emp)
+
+    depts2 = [(d.dept_code, d.dept_name) for d in Department.query.all()]
+    form.dept_code.choices = depts2
+
+    if form.validate_on_submit():
+        edit_emp.name = form.name.data
+        edit_emp.state = form.state.data
+        edit_emp.dept_code = form.dept_code.data
+        db.session.add(edit_emp)
+        db.session.commit()
+
+        return redirect('/phones')
+    else:
+        return render_template('edit_employee_form.html', form=form)

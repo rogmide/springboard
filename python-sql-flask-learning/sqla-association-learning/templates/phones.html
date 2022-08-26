@@ -13,7 +13,12 @@ content %}
       {% for emp in emps %}
 
       <tr>
-        <td>{{ emp.name }}</td>
+        <td>
+          {{ emp.name }}
+          <a class="btn btn-sm btn-info" href="/employees/{{ emp.id }}/edit"
+            >Edit</a
+          >
+        </td>
         <td>{{ emp.dept.dept_name }}</td>
         {% if emp.dept.dept_phone %}
         <td>{{ emp.dept.dept_phone }}</td>
@@ -30,5 +35,6 @@ content %}
   {% for ep in emps_dept %}
   <h2>{{ ep.name }} - ({{ ep.dept_phone }})</h2>
   {% endfor %} -->
-  <a href="/employees/new" class="btn btn-success"> Add Employee</a> {% endblock%}
+  <a href="/employees/new" class="btn btn-success"> Add Employee</a> {%
+  endblock%}
 </div>
