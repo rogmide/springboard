@@ -1,6 +1,32 @@
 {% extends 'base.html' %} {% block title %} Title Here {% endblock %} {% block
-    content %}
+content %}
 
-    <h1 class="welcome">Base Template </h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h1 class="display-1">Adoption Agency</h1>
+      <br />
+      <h1 class="display-5"><span class="pet_color">Pets</span></h1>
+
+      <div class="pet_holder">
+        {% for p in pets %}
+        <div class="pet">
+          <img
+            src="{{ p.photo_url }}"
+            alt="Img of the pet that is on display"
+          />
+          <p>
+            <span class="pet_name">{{ p.name }}</span>
+            {% if p.available %}
+            <span class="pet_available">is available!</span>
+            {% endif %}
+          </p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <a class="btn btn-sm btn-success" href="">Add a Pet</a>
+</div>
 
 {% endblock%}
