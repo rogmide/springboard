@@ -38,7 +38,7 @@ class Pet(db.Model):
 
     photo_url = db.Column(db.Text,
                           nullable=True,
-                          default='https://cdn-icons-png.flaticon.com/512/906/906331.png?w=826&t=st=1660696447~exp=1660697047~hmac=794234f31e068797117461494bd6b8f0f9889bcb0927355efe4b454f6bd7e9e5')
+                          default='https://cdn-icons-png.flaticon.com/512/5540/5540629.png')
 
     age = db.Column(db.Integer,
                     nullable=True)
