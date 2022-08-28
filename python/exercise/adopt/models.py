@@ -20,6 +20,11 @@ class Pet(db.Model):
         '''Get all the pet in the DB'''
         return cls.query.order_by(Pet.age.asc()).all()
 
+    @classmethod
+    def get_pet_by_id(cls, id):
+        '''Get a Pet from db by Id'''
+        return cls.query.get_or_404(id)
+
     def __repr__(self):
         '''Better Representation of the class'''
         p = self

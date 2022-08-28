@@ -1,0 +1,19 @@
+{{ pet_form.hidden_tag() }} 
+{% for field in pet_form if field.widget.input_type != 'hidden' %}
+
+<div class="form-group">
+  
+  {{ field.label }} 
+  {{ field(class_="form-control") }} 
+  
+  {% for err in field.errors %}
+  <small class="form-text"> {{ err }} </small>
+  
+  {% endfor %}
+</div>
+
+{% endfor %}
+
+<br />
+<button class="btn btn-sm btn-success">Submit</button>
+<a class="btn btn-danger btn-sm" href="/">Go Back</a>

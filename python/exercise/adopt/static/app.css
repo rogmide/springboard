@@ -29,10 +29,23 @@ img {
 }
 
 .pet {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .some_margin {
   margin-bottom: 20px;
+}
+
+.form-text {
+  color: red;
+}
+
+.flash_messages {
+  color: #767474;
+}
+
+.info_for_pet {
+  display: flex;
+  justify-content: space-around;
 }

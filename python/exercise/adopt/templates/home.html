@@ -8,30 +8,59 @@ content %}
       <br />
       <h1 class="display-5"><span class="pet_color">Pets</span></h1>
 
-      {% with messages = get_flashed_messages() %} 
-      {% if messages %}
-      <ul class="flashes">
-        {% for message in messages %}
-        <li>{{ message }}</li>
-        {% endfor %}
-      </ul>
-      {% endif %} {% endwith %}
+      {% with messages = get_flashed_messages() %} {% if messages %} {% for
+      message in messages %}
+      <h2 class="flash_messages">{{ message }}</h2>
+      {% endfor %} {% endif %} {% endwith %}
 
       <div class="pet_holder">
-        {% for p in pets %}
+        {% for p in pets %} {% if p.available %}
         <div class="pet">
           <img
             src="{{ p.photo_url }}"
             alt="Img of the pet that is on display"
           />
-          <p>
+          <p class="info_for_pet">
             <span class="pet_name">{{ p.name }}</span>
             {% if p.available %}
             <span class="pet_available">is available!</span>
+            {% else %}
+            <span class="pet_available">not available</span>
             {% endif %}
+            <a class="btn btn-outline-secondary btn-sm" href="{{ p.id }}"
+              >Edit</a
+            >
           </p>
         </div>
-        {% endfor %}
+        {% endif %} {% endfor %}
+      </div>
+      <br />
+      <div>
+        <h1 class="display-5">
+          <span class="pet_color">Not available at this time</span>
+        </h1>
+      </div>
+
+      <div class="pet_holder">
+        {% for p in pets %} {% if not p.available %}
+        <div class="pet">
+          <img
+            src="{{ p.photo_url }}"
+            alt="Img of the pet that is on display"
+          />
+          <p class="info_for_pet">
+            <span class="pet_name">{{ p.name }}</span>
+            {% if p.available %}
+            <span class="pet_available">is available!</span>
+            {% else %}
+            <span class="pet_available">not available</span>
+            {% endif %}
+            <a class="btn btn-outline-secondary btn-sm" href="{{ p.id }}"
+              >Edit</a
+            >
+          </p>
+        </div>
+        {% endif %} {% endfor %}
       </div>
     </div>
   </div>
