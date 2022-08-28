@@ -1,6 +1,7 @@
 
 /* CSS Here */
-html {
+body {
     background-color: grey;
     color: white;
+    margin-top: 20px;
 }
