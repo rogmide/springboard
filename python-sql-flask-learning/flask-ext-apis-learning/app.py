@@ -57,6 +57,14 @@ connect_db(app)
 # THIS IS THE NEXT EXERCISE TO LOOK AT
 # ================================================================================================
 
+@app.route('/')
+def index_page():
+    '''Show the index page'''
+
+    todos = Todo.query.all()
+
+    return render_template('index.html', todos=todos)
+
 @app.route('/api/todos')
 def list_todos():
     '''Show all Todos from the db'''

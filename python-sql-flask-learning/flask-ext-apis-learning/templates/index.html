@@ -1,0 +1,15 @@
+{% extends 'base.html' %} {% block title %} Todo {% endblock %} {% block content
+%}
+
+<div class="container">
+  <h1 class="welcome">Todos List</h1>
+</div>
+
+<div class="container">
+  {% for todo in todos %}
+  <li>{{todo.title}} - <button data-id="{{ todo.id }}" class="delete_todo btn btn-secondary">X</button></li>
+
+  {% endfor %}
+</div>
+
+{% endblock%}
