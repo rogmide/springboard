@@ -2,8 +2,31 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
+
 def connect_db(app):
     db.app = app
     db.init_app(app)
 
 # Model go Below
+
+
+class Todo(db.Model):
+    '''Todo Model'''
+
+    __tablename__ = 'todos'
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    title = db.Column(db.Text, nullable=False)
+    done = db.Column(db.Boolean, default=False)
+
+    def __repr__(self):
+        return f'<Todo {self.id} title={self.title} done={self.done}>'
+
+
+def serialice(model):
+    '''Return Dictionary of the model'''
+    return {
+        'id': model.id,
+        'title': model.title,
+        'done': model.done
+    }
