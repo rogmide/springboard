@@ -1,5 +1,3 @@
-from crypt import methods
-from turtle import title
 import requests
 from hidden_stuff import API_SECRET_KEY
 from flask import Flask, redirect, render_template, flash, request, jsonify
