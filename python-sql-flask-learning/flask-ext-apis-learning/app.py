@@ -118,6 +118,4 @@ def delete_todo(id):
     db.session.delete(todo)
     db.session.commit()
 
-    db.session.commit()
-
     return (jsonify(delete=f'Todo-id: {id} deleted'), 200)
