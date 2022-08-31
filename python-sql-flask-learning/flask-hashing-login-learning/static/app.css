@@ -1,6 +1,10 @@
 
 /* CSS Here */
-html {
+body {
     background-color: grey;
     color: white;
+}
+
+.form-control {
+    width: fit-content;
 }
