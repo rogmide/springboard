@@ -7,3 +7,7 @@ body {
 .collapse {
   justify-content: flex-end;
 }
+
+.form-control {
+  max-width: 300px;
+}
