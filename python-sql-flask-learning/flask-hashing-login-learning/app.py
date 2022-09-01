@@ -1,7 +1,7 @@
 from pydoc import importfile
 from flask import Flask, request, redirect, render_template, session, flash
-from models import User, db, connect_db
-from forms import RegisterForm
+from models import User, Tweet, db, connect_db
+from forms import RegisterForm, TweetForm
 from flask_bcrypt import Bcrypt
 
 app = Flask(__name__)
@@ -32,6 +32,9 @@ def home_page():
     # print('===========', user_pws)
     # isOwner = bcrypt.check_password_hash(user_pws, 'asdfasdfa')
     # print('===========', isOwner)
+
+    # db.drop_all()
+    # db.create_all()
 
     return render_template('home.html')
 
@@ -75,8 +78,8 @@ def login():
 
         if user:
             session['user_id'] = user.id
-            flash('Your are login')
-            return redirect('/')
+            flash(f'Welcome Back, {user.username}!')
+            return redirect('/tweets')
         else:
             form.username.errors = ['Invalid username/password']
 
@@ -93,6 +96,29 @@ def get_secret_page():
         return render_template('secret.html')
 
 
+@app.route('/tweets', methods=['GET', 'POST'])
+def get_tweets_page():
+    '''Check if user is login and render tweets pages'''
+
+    if 'user_id' not in session:
+        flash('Please login first!')
+        return redirect('/')
+
+    form = TweetForm()
+
+    all_tweets = Tweet.query.all()
+
+    if form.validate_on_submit():
+        text = form.text.data
+        new_tweet = Tweet(text=text, user_id=session['user_id'])
+        db.session.add(new_tweet)
+        db.session.commit()
+
+        return redirect('/tweets')
+
+    return render_template('tweets.html', form=form, all_tweets=all_tweets)
+
+
 @app.route('/logout')
 def logout():
     '''logout user from the app'''
@@ -100,14 +126,3 @@ def logout():
     # just remove the user_id from the session
     session.pop('user_id', None)
     return redirect('/')
-
-
-@app.route('/tweets')
-def get_tweets_page():
-    '''Check if user is login and render tweets pages'''
-
-    if 'user_id' not in session:
-        flash('Please login first!')
-        return redirect('/')
-    else:
-        return render_template('tweets.html')

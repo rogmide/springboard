@@ -50,8 +50,23 @@ class User(db.Model):
 
         if u and bcrypt.check_password_hash(u.password, pwd):
             # return intance of user
-            print('====================', u)
             return u
 
         else:
             return False
+
+
+class Tweet(db.Model):
+
+    __tablename__ = 'tweets'
+
+    id = db.Column(db.Integer,
+                   primary_key=True,
+                   autoincrement=True)
+
+    text = db.Column(db.Text,
+                     nullable=False)
+
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+    user = db.relationship('User', backref='tweets')

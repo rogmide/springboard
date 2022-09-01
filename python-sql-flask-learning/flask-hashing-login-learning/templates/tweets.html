@@ -1,11 +1,29 @@
-{% extends 'base.html' %} {% block content %}
-
-{% include 'form_.html' %}
+{% extends 'base.html' %} {% block content %} {% include 'form_.html' %}
 
 <div class="container">
-        <br>
-  <h1 class="display-6">Some Tweets</h1>
-  {% include 'form_.html' %}
+  <br />
+  <h1 class="display-2">Tweets</h1>
+
+  <form method="POST">
+    {{ form.hidden_tag() }} {% for field in form if field.widget.input_type !=
+    'hidden' %}
+    <p>
+      {{ field.label }} {{ field(class_="form-control
+      form-control-sm") }} {% for error in field.errors %} {{ error }} {% endfor
+      %}
+    </p>
+    {% endfor %}
+
+    <button class="btn btn-success" type="submit">Post Tweet</button>
+  </form>
+
+  <br>
+  {% for t in all_tweets %}
+    <ul>
+        <li><b>{{ t.user.username }}</b> - {{ t.text }}</li>
+    </ul>
+  {% endfor %}
+
 </div>
 
 {% endblock %}

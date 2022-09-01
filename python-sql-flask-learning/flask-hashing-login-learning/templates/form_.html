@@ -2,7 +2,7 @@
     {% with messages = get_flashed_messages() %}
     {% if messages %}
       {% for message in messages %}
-        <p class="lead">{{ message }}</p>
+        <p class="form-text text-danger text-lg">{{ message }}</p>
       {% endfor %}
     {% endif %}
   {% endwith %}
