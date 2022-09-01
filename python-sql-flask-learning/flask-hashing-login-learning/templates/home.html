@@ -2,10 +2,17 @@
 content %}
 
 <div class="container">
-  <h1>Register or Login</h1>
-
-  <a class="btn btn-secondary" href="/register">Register</a>
-  <a class="btn btn-secondary" href="/login">Login</a>
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <!-- <h1 class="display-6">{{ message }}</h1> -->
+    {% endfor %}
+  {% endif %}
+{% endwith %}
 </div>
 
+<div class="container">
+  <h1>Stupid Twitter</h1>
+
+</div>
 {% endblock%}
