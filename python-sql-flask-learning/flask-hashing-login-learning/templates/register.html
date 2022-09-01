@@ -9,7 +9,9 @@
     {{ user_regi.hidden_tag() }} {% for field in user_regi if
       field.widget.input_type != 'hidden' %}
       <p>
-        {{ field.label }} {{ field(class_="text_field form-control form-control-sm") }} {% for error in field.errors %} {{ error }}
+        {{ field.label }} {{ field(class_="text_field form-control form-control-sm") }} 
+        {% for error in field.errors %} 
+        <span class="form-text text-danger">{{ error }}</span>
         {% endfor %}
       </p>
   {% endfor %}

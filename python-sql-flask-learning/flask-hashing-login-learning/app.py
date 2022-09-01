@@ -1,9 +1,9 @@
-from crypt import methods
-from pydoc import importfile
 from flask import Flask, request, redirect, render_template, session, flash
 from models import User, Tweet, db, connect_db
 from forms import RegisterForm, TweetForm
 from flask_bcrypt import Bcrypt
+from sqlalchemy.exc import IntegrityError
+
 
 app = Flask(__name__)
 
@@ -52,7 +52,11 @@ def register():
         pwd = form.password.data
         user = User.register(name, pwd)
         db.session.add(user)
-        db.session.commit()
+        try:
+            db.session.commit()
+        except IntegrityError:
+            form.username.errors.append('Username Taken. Please pick another')
+            return render_template('register.html', user_regi=form)
 
         session['user_id'] = user.id
 
