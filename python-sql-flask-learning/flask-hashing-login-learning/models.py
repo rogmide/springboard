@@ -50,9 +50,8 @@ class User(db.Model):
 
         if u and bcrypt.check_password_hash(u.password, pwd):
             # return intance of user
+            print('====================', u)
             return u
+
         else:
             return False
-
-        # return instance of user w/username and hashed pwd
-        return cls(username=username, password=hashed_utf8)

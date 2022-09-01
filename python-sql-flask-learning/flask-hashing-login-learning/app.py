@@ -46,12 +46,13 @@ def register():
 
         name = form.username.data
         pwd = form.password.data
-
         user = User.register(name, pwd)
         db.session.add(user)
         db.session.commit()
 
         session['user_id'] = user.id
+
+        flash('Your sign in!')
 
         return redirect('/')
     else:
@@ -72,13 +73,14 @@ def login():
 
         user = User.authenticate(name, pwd)
 
-        session['user_id'] = user.id if user else user
-
-        flash('Your are login')
-
-        return redirect('/')
+        if user:
+            session['user_id'] = user.id
+            flash('Your are login')
+            return redirect('/')
+        else:
+            flash('User or Password is not correct')
+            return redirect('/')
     else:
-
         return render_template('login.html', user_regi=form)
 
 
