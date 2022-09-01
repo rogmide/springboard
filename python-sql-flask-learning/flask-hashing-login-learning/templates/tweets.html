@@ -8,22 +8,27 @@
     {{ form.hidden_tag() }} {% for field in form if field.widget.input_type !=
     'hidden' %}
     <p>
-      {{ field.label }} {{ field(class_="form-control
-      form-control-sm") }} {% for error in field.errors %} {{ error }} {% endfor
-      %}
+      {{ field.label }} {{ field(class_="form-control form-control-sm") }} {%
+      for error in field.errors %} {{ error }} {% endfor %}
     </p>
     {% endfor %}
 
     <button class="btn btn-success" type="submit">Post Tweet</button>
   </form>
 
-  <br>
+  <br />
   {% for t in all_tweets %}
-    <ul>
-        <li><b>{{ t.user.username }}</b> - {{ t.text }}</li>
-    </ul>
+  <ul>
+    <li>
+      <b>{{ t.user.username }}</b> - {{ t.text }} {% if session['user_id'] ==
+      t.user_id %}
+      <form style="display: inline" action="/tweets/{{ t.id }}" method="POST">
+        <button class="btn btn-sm btn-danger">X</button>
+      </form>
+      {% endif %}
+    </li>
+  </ul>
   {% endfor %}
-
 </div>
 
 {% endblock %}

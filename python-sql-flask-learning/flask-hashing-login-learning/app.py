@@ -1,3 +1,4 @@
+from crypt import methods
 from pydoc import importfile
 from flask import Flask, request, redirect, render_template, session, flash
 from models import User, Tweet, db, connect_db
@@ -55,7 +56,7 @@ def register():
 
         session['user_id'] = user.id
 
-        flash('Your sign in!')
+        flash('Welcome! Successfully Created Your Account!', 'success')
 
         return redirect('/')
     else:
@@ -78,7 +79,7 @@ def login():
 
         if user:
             session['user_id'] = user.id
-            flash(f'Welcome Back, {user.username}!')
+            flash(f'Welcome Back, {user.username}!', 'primary')
             return redirect('/tweets')
         else:
             form.username.errors = ['Invalid username/password']
@@ -90,7 +91,7 @@ def login():
 def get_secret_page():
 
     if 'user_id' not in session:
-        flash('You mush be logged to get here')
+        flash('You mush be logged to get here', 'danger')
         return redirect('/')
     else:
         return render_template('secret.html')
@@ -101,7 +102,7 @@ def get_tweets_page():
     '''Check if user is login and render tweets pages'''
 
     if 'user_id' not in session:
-        flash('Please login first!')
+        flash('Please login first!', 'danger ')
         return redirect('/')
 
     form = TweetForm()
@@ -113,10 +114,29 @@ def get_tweets_page():
         new_tweet = Tweet(text=text, user_id=session['user_id'])
         db.session.add(new_tweet)
         db.session.commit()
-
+        flash('Tweet is Created', 'info ')
         return redirect('/tweets')
 
     return render_template('tweets.html', form=form, all_tweets=all_tweets)
+
+
+@app.route('/tweets/<int:id>', methods=['POST'])
+def delete_tweet(id):
+    '''Delete Tweet for a user'''
+
+    if 'user_id' not in session:
+        flash('Plz login first', 'danger')
+        return redirect('/login')
+
+    tweet = Tweet.query.get_or_404(id)
+
+    if tweet.user_id == session['user_id']:
+        db.session.delete(tweet)
+        db.session.commit()
+        flash('Tweet Deleted', 'info')
+        return redirect('/tweets')
+    flash('Is not your tweet to delete', 'danger')
+    return redirect('/tweets')
 
 
 @app.route('/logout')
@@ -125,4 +145,5 @@ def logout():
 
     # just remove the user_id from the session
     session.pop('user_id', None)
+    flash('Goodbye', 'info')
     return redirect('/')
