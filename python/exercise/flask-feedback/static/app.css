@@ -1,0 +1,9 @@
+/* CSS Here */
+body {
+  background-color: rgb(255, 255, 255);
+  color: black;
+}
+
+.collapse {
+  justify-content: flex-end;
+}
