@@ -4,13 +4,15 @@
 
   <form class="form-control" method="POST">
     {{ user_regi.hidden_tag() }} {% for field in user_regi if
-    field.widget.input_type != 'hidden' %}
-    <p>
-      {{ field.label }} {{ field(class_="text_field form-control form-control-sm") }} {% for error in field.errors %} {{ error }}
-      {% endfor %}
-    </p>
-    {% endfor %}
-
+      field.widget.input_type != 'hidden' %}
+      <p>
+        {% for error in field.errors %} 
+        <span class="form-text text-danger"> {{ error }} </span>
+        <br>
+        {% endfor %}
+        {{ field.label }} {{ field(class_="text_field form-control form-control-sm") }} 
+      </p>
+  {% endfor %}
     <button class="btn btn-success" type="submit">Login</button>
   </form>
 </div>

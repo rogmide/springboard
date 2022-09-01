@@ -1,18 +1,10 @@
-{% extends 'base.html' %} {% block title %} Title Here {% endblock %} {% block
+{% extends 'base.html' %} {% block title %} Twitter {% endblock %} {% block
 content %}
 
-<div class="container">
-  {% with messages = get_flashed_messages() %}
-  {% if messages %}
-    {% for message in messages %}
-      <p class="lead">{{ message }}</p>
-    {% endfor %}
-  {% endif %}
-{% endwith %}
-</div>
+{% include 'form_.html' %}
 
 <div class="container">
-  <h1>Stupid Twitter</h1>
+  <h1></h1>
 
 </div>
 {% endblock%}

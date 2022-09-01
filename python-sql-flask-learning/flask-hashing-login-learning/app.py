@@ -78,10 +78,9 @@ def login():
             flash('Your are login')
             return redirect('/')
         else:
-            flash('User or Password is not correct')
-            return redirect('/')
-    else:
-        return render_template('login.html', user_regi=form)
+            form.username.errors = ['Invalid username/password']
+
+    return render_template('login.html', user_regi=form)
 
 
 @app.route('/secret')
@@ -101,3 +100,14 @@ def logout():
     # just remove the user_id from the session
     session.pop('user_id', None)
     return redirect('/')
+
+
+@app.route('/tweets')
+def get_tweets_page():
+    '''Check if user is login and render tweets pages'''
+
+    if 'user_id' not in session:
+        flash('Please login first!')
+        return redirect('/')
+    else:
+        return render_template('tweets.html')
