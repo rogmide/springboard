@@ -1,0 +1,33 @@
+li {
+  margin-left: 10px;
+  border-bottom: 2px solid black;
+  border-radius: 5px;
+}
+
+#card_container {
+  margin-top: 20px;
+  background-color: #308834;
+  width: 100vw;
+  height: 100vh;
+  border-radius: 20px;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
+}
+
+#card_holder > img {
+  width: 25vw;
+  height: 50vh;
+  border-radius: 20px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  margin-top: 20px;
+}
+
+#btn_gimme_card {
+  margin-top: 10px;
+  margin-bottom: 60px;
+}
