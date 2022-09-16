@@ -31,3 +31,30 @@ li {
   margin-top: 10px;
   margin-bottom: 60px;
 }
+
+#pokemon_holder {
+    width: auto;
+    height: auto;
+}
+
+#poke_img {
+    width: 20vw;
+    height: 20vh;
+    margin-left: 20%;
+}
+
+.card-title{
+    text-align: center;
+}
+
+#poke_container {
+    margin-top: 20px;
+
+    width: 100vw;
+    height: 100vh;
+    border-radius: 20px;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+}
