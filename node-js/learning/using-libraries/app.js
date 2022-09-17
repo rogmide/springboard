@@ -27,7 +27,9 @@ const line = "And Eternity in an hour";
 //   }
 // });
 
-fs.appendFile("poem.txt", "\nAPPEND ME!!!", 'utf8', (err) => {
+fs.appendFile("poem.txt", "\nAPPEND ME!!!", "utf8", (err) => {
+  // ###############################################
+  // CHECK FOR ERROR FRIST - ALMOST EVERYONE DO THAT
   if (err) {
     console.log("ERROR", err);
     process.exit(1);
