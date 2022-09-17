@@ -108,7 +108,6 @@
 //   .then((data) => console.log(data))
 //   .catch((err) => console.log(err));
 
-
 // let mockAjaxRequest = new Promise(function (resolve, reject) {
 //   let probSuccess = 0.5;
 //   let requestTime = 1000;
@@ -131,3 +130,78 @@
 //   })
 //   .then((data) => console.log(data))
 //   .catch((err) => console.log(err));
+
+// base_url = "https://swapi.dev/api/";
+
+// async function getSWData() {
+//   let movieData = await axios.get(base_url + "films/");
+//   console.log(movieData);
+// }
+
+// getSWData();
+
+// function changerColor(el, color) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       el.css("color", color);
+//       resolve();
+//     }, 500);
+//   });
+// }
+
+// async function rainbow(el) {
+//   for (let i = 0; i < 100; i++) {
+//     await changerColor(
+//       el,
+//       "#" + Math.floor(Math.random() * 16777215).toString(16)
+//     );
+//   }
+// }
+
+// rainbow($("h1"));
+
+// ###########################################################
+// ASYNC AWAIT LOVE YOUUUUUUUUUUUUUUUUUUUUUU
+// ###########################################################
+
+// base_url = "https://deckofcardsapi.com/api/";
+
+// const deck = {
+//   async init() {
+//     let res = await axios.get(base_url + "deck/new/");
+//     this.deck_id = res.data.deck_id;
+//   },
+//   async shuffle() {
+//     let res = await axios.get(base_url + `deck/${this.deck_id}/shuffle/`);
+//     console.log(res);
+//   },
+// };
+
+// ###########################################################
+// Will Start Using Classes in the Future Probably
+// ###########################################################
+base_url = "https://pokeapi.co/api/v2/";
+
+class Pokemon {
+  constructor(id) {
+    this.id = id;
+    this.types = [];
+  }
+
+  async getInfo() {
+    let res = await axios.get(base_url + `pokemon/${this.id}`);
+    this.name = res.data.name;
+    res.data.types.forEach((type) => {
+      this.types.push(type.type.name);
+    });
+  }
+
+  async getThreePokemon() {
+    let { data: p1 } = await axios.get(base_url + `pokemon/1`);
+    console.log(p1.name);
+    let { data: p2 } = await axios.get(base_url + `pokemon/2`);
+    console.log(p2.name);
+    let { data: p3 } = await axios.get(base_url + `pokemon/3`);
+    console.log(p3.name);
+  }
+}
