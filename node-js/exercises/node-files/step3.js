@@ -34,7 +34,9 @@ function cat() {
             console.log("ERROR", err);
             process.exit(1);
           } else {
-            console.log("It Works");
+            console.log(
+              `No output, but ${my_path[1]} contains contents of ${my_path[2]}`
+            );
           }
         });
       }
@@ -58,7 +60,9 @@ async function webCat() {
           console.log("ERROR", err);
           process.exit(1);
         } else {
-          console.log("It Works");
+          console.log(
+            `No output, but ${my_path[1]} contains contents of ${my_path[2]}`
+          );
         }
       });
     } catch (error) {
