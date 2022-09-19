@@ -16,28 +16,39 @@ class MarkovMachine {
 
   makeChains() {
     // TODO
-    let res = {};
+    let chains = {};
 
     for (let i = 0; i < this.words.length; i++) {
-      if (!(this.words[i] in res)) {
-        res[this.words[i]] = [this.words[i + 1]];
+      if (!(this.words[i] in chains)) {
+        chains[this.words[i]] = [this.words[i + 1] || null];
       } else {
-        res[this.words[i]].push(this.words[i + 1] ? this.words[i + 1] : null);
+        chains[this.words[i]].push(this.words[i + 1] || null);
       }
     }
-    console.log(res);
-    return res;
+    this.chains = chains;
   }
 
   /** return random text from chains */
 
   makeText(numWords = 100) {
     // TODO
+    
+    let keys = Object.keys(this.chains);
+    let output = [];
+    let val = "";
+    while (output.length < numWords) {
+      let key = keys[Math.floor(Math.random() * keys.length)];
+      val =
+        this.chains[key][Math.floor(Math.random() * this.chains[key].length)];
+      if (val === null) {
+        break;
+      }
+      output.push(val);
+    }
+    return output.join(" ");
   }
 }
 
-const mm = new MarkovMachine("the cat in the hat is in the hat");
-const mm2 = new MarkovMachine("in the hat is in the hat");
-// const mm3 = new MarkovMachine(
-//   "You are old,’ said the Dormouse, who was talking. Alice could only see her. She is such a new pair of white kid gloves and the blades of grass, but she remembered the number of bathing machines in the kitchen that did not like the wind, and was just beginning to grow up any more if you’d like it put the Dormouse again, so she went nearer to make out that it was certainly English. ‘I don’t quite understand you,’ she said, ‘for her hair goes in such confusion that she was looking down with it."
-// );
+const mm2 = new MarkovMachine("Some Can Love This Happen Hate");
+console.log(mm2.chains);
+console.log(mm2.makeText(10));
