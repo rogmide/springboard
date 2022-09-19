@@ -32,7 +32,7 @@ class MarkovMachine {
 
   makeText(numWords = 100) {
     // TODO
-    
+
     let keys = Object.keys(this.chains);
     let output = [];
     let val = "";
@@ -49,6 +49,9 @@ class MarkovMachine {
   }
 }
 
-const mm2 = new MarkovMachine("Some Can Love This Happen Hate");
-console.log(mm2.chains);
-console.log(mm2.makeText(10));
+// const mm2 = new MarkovMachine("Some Can Love This Happen Hate");
+// console.log(mm2.chains);
+// console.log(mm2.makeText(10));
+
+module.exports = MarkovMachine;
+
