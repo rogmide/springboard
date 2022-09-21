@@ -1,4 +1,5 @@
 class ExpressError extends Error {
+  
   constructor(msg, status) {
     // ##############################################
     // super to run the constructior from Error Class
@@ -8,3 +9,5 @@ class ExpressError extends Error {
     console.error(this.stack);
   }
 }
+
+module.exports = ExpressError

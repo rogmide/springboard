@@ -13,17 +13,35 @@ const CANDIES = [
 
 // ########################################################
 // GIVING A ARRAY OR OBJECT RES.SEND WILL MAKE IT A JSON RES
-app.get("/candies", (req, res) => {
-  //   res.send(CANDIES);
-  res.json(CANDIES);
+app.get("/candies", (req, res, next) => {
+  // res.send(CANDIES);
+  return res.json(CANDIES);
 });
 
-app.post("/candies", (req, res) => {
-  if (req.body.name === "something")
-    throw new ExpressError("Bad Candy Sorry", 403);
+app.post("/candies", (req, res, next) => {
+  try {
+    if (req.body.name === "something")
+      throw new ExpressError("Bad Candy Sorry", 403);
+    CANDIES.push(req.body);
+    res.status(201).json(CANDIES);
+  } catch (err) {
+    return next(err);
+  }
+});
 
-  CANDIES.push(req.body);
-  res.status(201).json(CANDIES);
+app.use((req, res, next) => {
+  const e = new ExpressError("Page Not Found", 404);
+  next(e);
+});
+
+// ########################################################
+// APP.USE WILL RUN BEFORE EVERYTHING YOU NED TO TELL THE ROUTE
+// TO KEEP GOING WITH next();
+// Only if everything on top dont RUN
+app.use((err, req, res, next) => {
+  let status = err.status || 500;
+  let message = err.msg;
+  return res.status(status).json({ error: { message, status } });
 });
 
 // ########################################################
