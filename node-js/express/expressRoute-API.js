@@ -40,7 +40,7 @@ app.use((req, res, next) => {
 // Only if everything on top dont RUN
 app.use((err, req, res, next) => {
   let status = err.status || 500;
-  let message = err.msg;
+  let message = err.msg || "Default Msg";
   return res.status(status).json({ error: { message, status } });
 });
 
