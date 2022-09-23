@@ -1,10 +1,13 @@
 const express = require("express");
 const customError = require("./customError");
+const fs = require("fs");
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+let TODAY = new Date();
 
 // ########################################################
 // ROUTES
@@ -14,9 +17,13 @@ app.get("/", (req, res, next) => {
 
 app.get("/mean", (req, res, next) => {
   try {
-    let { nums } = req.query;
+    let { nums, save = false } = req.query;
     if (!op_mean(nums)) next(erroNumber());
-    res.json(to_return("Mean", op_mean(nums)));
+    let result = op_mean(nums);
+    if (save === "true") {
+      storeFileData(`Mean of ${nums}: "${result}" on ${use_Time()}`);
+    }
+    res.json(to_return("Mean", result));
   } catch (err) {
     next(err);
   }
@@ -24,8 +31,12 @@ app.get("/mean", (req, res, next) => {
 
 app.get("/median", (req, res, next) => {
   try {
-    let { nums } = req.query;
-    return res.json(to_return("Media", op_median(nums)));
+    let { nums, save = false } = req.query;
+    result = op_median(nums);
+    if (save === "true") {
+      storeFileData(`Median of ${nums}: "${result}" on ${use_Time()}`);
+    }
+    return res.json(to_return("Media", result));
   } catch (error) {
     next(error);
   }
@@ -33,8 +44,12 @@ app.get("/median", (req, res, next) => {
 
 app.get("/mode", (req, res, next) => {
   try {
-    let { nums } = req.query;
-    return res.json(to_return("Mode", op_mode(nums)));
+    let { nums, save = false } = req.query;
+    let result = op_mode(nums);
+    if (save === "true") {
+      storeFileData(`Mode of ${nums}: "${result}" on ${use_Time()}`);
+    }
+    return res.json(to_return("Mode", result));
   } catch (error) {
     next(error);
   }
@@ -96,6 +111,24 @@ function to_return(op, result) {
 function erroNumber() {
   const e = new customError("Enter Valid Numbers", 400);
   return e;
+}
+
+function storeFileData(data) {
+  fs.appendFile("results.txt", `\n${data}`, "utf8", (err) => {
+    if (err) {
+      process.exit(1);
+    } else {
+      console.log(`Results.txt file updated`);
+    }
+  });
+}
+
+function use_Time() {
+  let date =
+    TODAY.getFullYear() + "-" + (TODAY.getMonth() + 1) + "-" + TODAY.getDate();
+  let time =
+    TODAY.getHours() + ":" + TODAY.getMinutes() + ":" + TODAY.getSeconds();
+  return date + " at " + time;
 }
 
 // ########################################################
