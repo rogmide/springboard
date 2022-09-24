@@ -6,6 +6,10 @@ const USER = [
   { id: 2, username: "RevenMan" },
 ];
 
+//#############################################
+// Express req.params is what is coming in the URL as params
+// Express req.body is what coming in the json req body
+
 router.get("/", (req, res) => {
   res.json({ user: USER });
 });

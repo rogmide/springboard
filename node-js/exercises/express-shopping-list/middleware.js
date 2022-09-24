@@ -7,16 +7,4 @@ function logger(req, res, next) {
   return next();
 }
 
-function checkPassword(req, res, next) {
-  try {
-    if (req.query.password === "abc") {
-      return next();
-    } else {
-      throw new ExpressError("Missing Password", 402);
-    }
-  } catch (error) {
-    return next(error);
-  }
-}
-
-module.exports = { logger, checkPassword };
+module.exports = { logger };
