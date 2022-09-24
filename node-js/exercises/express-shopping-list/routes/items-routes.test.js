@@ -37,7 +37,7 @@ describe("GET /items/:name", function () {
     expect(resp.statusCode).toBe(200);
     expect(resp.body).toEqual({ item: gasCooker });
   });
-  test("Responds with 404 if can't find cat", async function () {
+  test("Responds with 404 if can't find item", async function () {
     const resp = await request(app).get(`/items/nada`);
     expect(resp.statusCode).toBe(404);
   });
