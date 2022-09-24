@@ -4,13 +4,13 @@ const items = require("../fakeDb");
 const ExpressError = require("../expressError");
 
 // ############################
-// GET THE ITEMS FROM FAKEDBF
+// GET THE ITEMS FROM FAKEDB
 router.get("/", (req, res) => {
   return res.json({ items: items });
 });
 
 // ############################
-// ADD ITEMS TO FAKEDBF
+// ADD ITEMS TO FAKEDB
 router.post("/", (req, res) => {
   const newItem = { name: req.body.name, price: req.body.price };
   items.push(newItem);
@@ -19,7 +19,7 @@ router.post("/", (req, res) => {
 });
 
 // ############################
-// GET ITEMS BY NAME FROM FAKEDBF
+// GET ITEMS BY NAME FROM FAKEDB
 router.get("/:name", function (req, res) {
   const item = items.find((item) => item.name === req.params.name);
   if (item !== undefined) {
@@ -30,7 +30,7 @@ router.get("/:name", function (req, res) {
 });
 
 // ############################
-// UPDATE A ITEMS BY NAME ON FAKEDBF
+// UPDATE A ITEMS BY NAME ON FAKEDB
 router.patch("/:name", function (req, res) {
   const item = items.find((item) => item.name === req.params.name);
   if (item !== undefined) {
@@ -42,7 +42,7 @@ router.patch("/:name", function (req, res) {
 });
 
 // ############################
-// DELETE A ITEMS BY NAME ON FAKEDBF
+// DELETE A ITEMS BY NAME ON FAKEDB
 router.delete("/:name", function (req, res) {
   const item_index = items.findIndex((item) => item.name === req.params.name);
   if (item_index !== -1) {
