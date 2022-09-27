@@ -34,3 +34,10 @@ describe("Get /users/:id", () => {
     expect(res.body).toEqual({ user: testUser });
   });
 });
+
+describe("Get /users/:id", () => {
+  test("Responds with 404 for invalid id", async () => {
+    const res = await request(app).get(`/users/0`);
+    expect(res.statusCode).toBe(404);
+  });
+});
