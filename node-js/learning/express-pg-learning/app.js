@@ -18,7 +18,7 @@ app.use((req, res, next) => {
 
 app.use((err, req, res, next) => {
   let status = err.status || 500;
-  let message = err.msg || "Default Msg";
+  let message = err.message || "Default Msg";
   return res.status(status).json({ error: { message, status } });
 });
 
