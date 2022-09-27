@@ -1,10 +1,13 @@
 const express = require("express");
 const ExpressError = require("./expressError");
+const usersRoutes = require("./routes/users");
 
 const app = express();
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true })); 
+app.use(express.urlencoded({ extended: true }));
+
+app.use("/users", usersRoutes);
 
 // ########################################################
 // ERROR HANDELER 404
