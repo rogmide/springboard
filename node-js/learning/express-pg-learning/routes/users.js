@@ -5,7 +5,17 @@ const db = require("../db");
 router.get("/", async (req, res, next) => {
   try {
     const results = await db.query(`SELECT * FROM users`);
-    return res.json(results.rows);
+    return res.json({ users: results.rows });
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.get("/:id", async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const results = await db.query(`select * from users where id=$1`, [id]);
+    return res.json({ user: results.rows[0] });
   } catch (error) {
     next(error);
   }

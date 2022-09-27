@@ -19,9 +19,18 @@ afterAll(async () => {
   await db.end();
 });
 
-describe("IS Working?", () => {
-  test("blaa", () => {
-    console.log(testUser);
-    expect(1).toBe(1);
+describe("Get /users", () => {
+  test("Get a list with one user", async () => {
+    const res = await request(app).get("/users");
+    expect(res.statusCode).toBe(200);
+    expect(res.body).toEqual({ users: [testUser] });
+  });
+});
+
+describe("Get /users/:id", () => {
+  test("Get a single user", async () => {
+    const res = await request(app).get(`/users/${testUser.id}`);
+    expect(res.statusCode).toBe(200);
+    expect(res.body).toEqual({ user: testUser });
   });
 });
