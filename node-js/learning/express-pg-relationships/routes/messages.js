@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../db");
+const ExpressError = require("../expressError");
 
 router.get("/:id", async (req, res, next) => {
   try {
@@ -23,9 +24,30 @@ router.get("/:id", async (req, res, next) => {
         `,
       [id]
     );
+    if (tagsREsults.rows.length === 0) {
+      throw new ExpressError(`Message not found with id: ${id}`, 404);
+    }
     let msg = msgResults.rows[0];
     msg.tags = tagsREsults.rows.map((r) => r.tag);
     return res.send(msg);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.patch("/:id", async (req, res, next) => {
+  try {
+    const { msg } = req.body;
+    const id = req.params.id;
+
+    const results = await db.query(
+      "update messages set msg=$1 where id=$2 returning *",
+      [msg, id]
+    );
+    if (results.rows.length === 0) {
+      throw new ExpressError(`Can't find msg with id of ${id}`, 404);
+    }
+    return res.send(results.rows[0]);
   } catch (error) {
     next(error);
   }

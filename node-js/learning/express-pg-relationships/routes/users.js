@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../db");
+const ExpressError = require("../expressError");
 
-router.get("/", async (req, res) => {
+router.get("/", async (req, res, next) => {
   try {
     const results = await db.query(
       `SELECT * 
@@ -17,7 +18,7 @@ router.get("/", async (req, res) => {
 
 // #############################################
 // One to Many Relationships
-router.get("/:id", async (req, res) => {
+router.get("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
     const userResults = await db.query(
@@ -34,6 +35,9 @@ router.get("/:id", async (req, res) => {
       `,
       [id]
     );
+    if (userResults.rows.length === 0) {
+      throw new ExpressError(`User not found with id: ${id}`, 404);
+    }
     const user = userResults.rows[0];
     user.messages = msgResults.rows;
     return res.json(user);
