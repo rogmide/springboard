@@ -41,3 +41,15 @@ describe("Get /users/:id", () => {
     expect(res.statusCode).toBe(404);
   });
 });
+
+describe("Post /users/", () => {
+  test("Create a single user", async () => {
+    const res = await request(app)
+      .post(`/users`)
+      .send({ name: "BillyBob", type: "Staff" });
+    expect(res.statusCode).toBe(201);
+    expect(res.body).toEqual({
+      user: { id: expect.any(Number), name: "BillyBob", type: "Staff" },
+    });
+  });
+});

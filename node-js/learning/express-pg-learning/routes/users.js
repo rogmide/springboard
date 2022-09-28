@@ -21,7 +21,7 @@ router.get("/:id", async (req, res, next) => {
     }
     return res.json({ user: results.rows[0] });
   } catch (error) {
-    console.log("Here")
+    console.log("Here");
     next(error);
   }
 });
@@ -46,7 +46,7 @@ router.post("/", async (req, res, next) => {
       "insert into users (name, type) values ($1, $2) returning *",
       [name, type]
     );
-    return res.status(201).json(results.rows);
+    return res.status(201).json({ user: results.rows[0] });
   } catch (error) {
     next(error);
   }
