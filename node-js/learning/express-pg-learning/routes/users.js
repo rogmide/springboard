@@ -56,11 +56,15 @@ router.patch("/:id", async (req, res, next) => {
   try {
     const { name, type } = req.body;
     const id = req.params.id;
+
     const results = await db.query(
       "update users set name=$1, type=$2 where id=$3 returning *",
       [name, type, id]
     );
-    return res.status(201).json(results.rows[0]);
+    if (results.rows.length === 0) {
+      throw new ExpressError(`Can't find user with id of ${id}`, 404);
+    }
+    return res.status(200).json({ user: results.rows[0] });
   } catch (error) {
     next(error);
   }

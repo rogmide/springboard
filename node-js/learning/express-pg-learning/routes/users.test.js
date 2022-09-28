@@ -53,3 +53,28 @@ describe("Post /users/", () => {
     });
   });
 });
+
+describe("Patch /users/", () => {
+  test("Update a single user", async () => {
+    const res = await request(app)
+      .patch(`/users/${testUser.id}`)
+      .send({ name: "BillyBob", type: "Staff" });
+    expect(res.statusCode).toBe(200);
+    expect(res.body).toEqual({
+      user: { id: testUser.id, name: "BillyBob", type: "Staff" },
+    });
+  });
+
+  test("Not user found", async () => {
+    const res = await request(app).patch(`/users/0`);
+    expect(res.statusCode).toBe(404);
+  });
+});
+
+describe("Delete /users/", () => {
+  test("Delete a single user", async () => {
+    const res = await request(app).delete(`/users/${testUser.id}`);
+    expect(res.statusCode).toBe(200);
+    expect(res.body).toEqual({ msg: "Deleted!" });
+  });
+});
