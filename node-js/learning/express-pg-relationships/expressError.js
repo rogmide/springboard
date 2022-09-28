@@ -4,7 +4,7 @@ class ExpressError extends Error {
     // ##############################################
     // super to run the constructior from Error Class
     super();
-    this.msg = msg;
+    this.message = msg;
     this.status = status;
     console.error(this.stack);
   }

@@ -1,6 +1,7 @@
 const express = require("express");
 const ExpressError = require("./expressError");
 const usersRoutes = require("./routes/users");
+const mRoutes = require("./routes/messages");
 
 const app = express();
 
@@ -8,6 +9,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/users", usersRoutes);
+app.use("/messages", mRoutes);
 
 // ########################################################
 // ERROR HANDELER 404
@@ -18,7 +20,7 @@ app.use((req, res, next) => {
 
 app.use((err, req, res, next) => {
   let status = err.status || 500;
-  let message = err.msg || "Default Msg";
+  let message = err.message || "Default Msg";
   return res.status(status).json({ error: { message, status } });
 });
 
