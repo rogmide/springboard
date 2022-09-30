@@ -3,12 +3,14 @@
 const express = require("express");
 const ExpressError = require("./expressError");
 const catsRoutes = require("./routes/cats");
+const dogsRoutes = require("./routes/dogs");
 
 const app = express();
 
 app.use(express.json());
 
 app.use("/cats", catsRoutes);
+app.use("/dogs", dogsRoutes);
 
 /** 404 handler */
 
