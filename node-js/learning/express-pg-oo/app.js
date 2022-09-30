@@ -2,17 +2,13 @@
 
 const express = require("express");
 const ExpressError = require("./expressError");
-const companiesRoutes = require("./routes/companies");
-const invoicesRoutes = require("./routes/invoices");
-const industryRoutes = require("./routes/industrys");
+const catsRoutes = require("./routes/cats");
 
 const app = express();
 
 app.use(express.json());
 
-app.use("/companies", companiesRoutes);
-app.use("/invoices", invoicesRoutes);
-app.use("/industrys", industryRoutes);
+app.use("/cats", catsRoutes);
 
 /** 404 handler */
 
