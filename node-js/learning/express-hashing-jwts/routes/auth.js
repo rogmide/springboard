@@ -5,6 +5,7 @@ const ExpressError = require("../expressError");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { BCRYPT_WORK_FACTOR, SECRET_KEY } = require("../config");
+const { ensureLoggedIn, ensureAdmin } = require("../middleware/auth");
 
 router.get("/", async (req, res, next) => {
   try {
@@ -29,6 +30,7 @@ router.post("/register", async (req, res, next) => {
     `,
       [username, hashpwd]
     );
+
     return res.json(results.rows[0]);
   } catch (error) {
     // ######################################
@@ -59,7 +61,7 @@ router.post("/login", async (req, res, next) => {
     const user = results.rows[0];
     if (user) {
       if (await bcrypt.compare(password, user.password)) {
-        const token = jwt.sign({ username }, SECRET_KEY);
+        const token = jwt.sign({ username, type: "admin" }, SECRET_KEY);
         return res.json({ msg: `Logged in!`, token: token });
       }
     }
@@ -69,13 +71,27 @@ router.post("/login", async (req, res, next) => {
   }
 });
 
-router.get("/topsecret", (req, res, next) => {
+router.get("/topsecret", ensureLoggedIn, (req, res, next) => {
   try {
-    const token = req.body._token;
-    const payload = jwt.verify(token, SECRET_KEY);
     return res.json({ msg: "this is top secret" });
   } catch (error) {
     return next(new ExpressError(`First login!`, 401));
+  }
+});
+
+router.get("/private", ensureLoggedIn, (req, res, next) => {
+  try {
+    res.json({ msg: `Welcome to my VIP section ${req.user.username}` });
+  } catch (error) {
+    return next();
+  }
+});
+
+router.get("/adminhome", ensureAdmin, (req, res, next) => {
+  try {
+    res.json({ msg: `Admin dashboard welcome ${req.user.username}` });
+  } catch (error) {
+    return next();
   }
 });
 

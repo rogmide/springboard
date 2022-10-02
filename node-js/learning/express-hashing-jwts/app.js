@@ -2,9 +2,10 @@ const express = require("express");
 const ExpressError = require("./expressError");
 const authRoutes = require("./routes/auth");
 const app = express();
+const { authenticateJTW } = require("./middleware/auth");
 
 app.use(express.json());
-
+app.use(authenticateJTW);
 app.use("/", authRoutes);
 
 /** 404 handler */
@@ -21,7 +22,7 @@ app.use((err, req, res, next) => {
 
   return res.json({
     error: err,
-    // message: err.message,
+    message: err.message,
   });
 });
 
