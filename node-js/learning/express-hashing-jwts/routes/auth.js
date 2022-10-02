@@ -3,7 +3,8 @@ const router = express.Router();
 const db = require("../db");
 const ExpressError = require("../expressError");
 const bcrypt = require("bcrypt");
-const { BCRYPT_WORK_FACTOR } = require("../config");
+const jwt = require("jsonwebtoken");
+const { BCRYPT_WORK_FACTOR, SECRET_KEY } = require("../config");
 
 router.get("/", async (req, res, next) => {
   try {
@@ -58,12 +59,23 @@ router.post("/login", async (req, res, next) => {
     const user = results.rows[0];
     if (user) {
       if (await bcrypt.compare(password, user.password)) {
-        return res.json({ msg: `Logged in!` });
+        const token = jwt.sign({ username }, SECRET_KEY);
+        return res.json({ msg: `Logged in!`, token: token });
       }
     }
     throw new ExpressError(`Invalid username/password!`, 404);
   } catch (error) {
     return next(error);
+  }
+});
+
+router.get("/topsecret", (req, res, next) => {
+  try {
+    const token = req.body._token;
+    const payload = jwt.verify(token, SECRET_KEY);
+    return res.json({ msg: "this is top secret" });
+  } catch (error) {
+    return next(new ExpressError(`First login!`, 401));
   }
 });
 
