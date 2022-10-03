@@ -65,7 +65,7 @@ router.post("/login", async (req, res, next) => {
         return res.json({ msg: `Logged in!`, token: token });
       }
     }
-    throw new ExpressError(`Invalid username/password!`, 404);
+    throw new ExpressError(`Invalid username/password!`, 400);
   } catch (error) {
     return next(error);
   }
