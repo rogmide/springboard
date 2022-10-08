@@ -59,10 +59,6 @@ describe("Books Routes Test", function () {
     test("Can update a book", async function () {
       let res = await request(app).put("/books/0691161518").send({
         isbn: "0691161518",
-        amazon_url: "http://a.co/eobPtX2",
-        author: "Matthew Lane",
-        language: "english",
-        pages: 264,
         publisher: "SuperTest",
         title: "New Title Test",
         year: 2017,
@@ -78,13 +74,7 @@ describe("Books Routes Test", function () {
     test("Test wrong data send", async function () {
       let res = await request(app).put("/books/0691161518").send({
         isbn: "0691161518",
-        amazon_url: "http",
         author: 123456789,
-        language: "english",
-        pages: 264,
-        publisher: "Princeton University Press",
-        title: "New Title Test",
-        year: 2017,
       });
       expect(res.text).toEqual(
         '{"error":{"message":["instance.author is not of a type(s) string"],"status":400}}'
