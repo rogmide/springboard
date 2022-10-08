@@ -5,7 +5,10 @@ const app = express();
 const { authenticateJTW } = require("./middleware/auth");
 
 app.use(express.json());
+// app.use(authenticateJTW); HAS TO RUN BEFORE ANY ROUTE
 app.use(authenticateJTW);
+
+// ROUTES
 app.use("/", authRoutes);
 
 /** 404 handler */
