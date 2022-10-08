@@ -9,6 +9,7 @@ function authenticateJTW(req, res, next) {
     console.log("You have a valid Token!");
     return next();
   } catch (error) {
+    // Dont worry about this error that jwt throw, is just failing the authenticate
     return next();
   }
 }
