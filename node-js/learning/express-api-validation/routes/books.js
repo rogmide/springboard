@@ -2,7 +2,7 @@ const express = require("express");
 const router = new express.Router();
 const ExpressError = require("../expressError");
 const jsonschema = require("jsonschema");
-const bookSchema = require("../schemas/bookSchema.json");
+const bookSchema = require("../schemas/bookSchema");
 
 router.post("/", function (req, res, next) {
   const bookData = req.body.book;
