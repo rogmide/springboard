@@ -28,13 +28,13 @@ nunjucks.configure("views", {
 
 app.get("/", (req, res, next) => {
   //Using moment is nice to work with dates
-  let time = "12:11:00 10 9 22";
-  let date = moment(time).fromNow();
+  // let time = "12:11:00 10 9 22";
+  // let date = moment(time).fromNow();
 
   // Work with Validator
   let vEmail = validator.isEmail("roger@gmail.com");
   let vPhone = validator.isMobilePhone("8131234444");
-  return res.render("index", { date, vEmail, vPhone });
+  return res.render("index", { vEmail, vPhone });
 });
 
 app.get("/dogs/:name", (req, res, next) => {
