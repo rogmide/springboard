@@ -2,6 +2,14 @@ const express = require("express");
 const app = express();
 const ExpressError = require("./expressError");
 const nunjucks = require("nunjucks");
+const cookieParser = require("cookie-parser");
+
+// Serving content to the public is to add css or anything that i need
+app.use(express.static("public"));
+app.use(express.static("js"));
+
+// to parse cookies
+app.use(cookieParser());
 
 // Parse request bodies for JSON
 app.use(express.json());
@@ -19,6 +27,12 @@ app.get("/", (req, res, next) => {
 
 app.get("/dogs/:name", (req, res, next) => {
   return res.render("dog", { name: req.params.name });
+});
+
+app.get("/showmecookies", (req, res, next) => {
+  // Set a cookie to the browser
+  res.cookie("isLoggedin", "definitely");
+  return res.send(req.cookies);
 });
 
 /** 404 handler */
