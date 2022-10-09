@@ -1,8 +1,12 @@
 const express = require("express");
 const app = express();
 const ExpressError = require("./expressError");
+
+// Node Js library - Nice to Use
+// Passport is another one that is nice and i will look at it
 const nunjucks = require("nunjucks");
 const cookieParser = require("cookie-parser");
+const moment = require("moment");
 
 // Serving content to the public is to add css or anything that i need
 app.use(express.static("public"));
@@ -22,7 +26,10 @@ nunjucks.configure("views", {
 });
 
 app.get("/", (req, res, next) => {
-  return res.render("index");
+  //Using moment is nice to work with dates
+  let time = "12:11:00 10 9 22";
+  let date = moment(time).fromNow();
+  return res.render("index", { date });
 });
 
 app.get("/dogs/:name", (req, res, next) => {
