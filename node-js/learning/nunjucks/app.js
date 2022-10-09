@@ -7,6 +7,7 @@ const ExpressError = require("./expressError");
 const nunjucks = require("nunjucks");
 const cookieParser = require("cookie-parser");
 const moment = require("moment");
+const validator = require("validator");
 
 // Serving content to the public is to add css or anything that i need
 app.use(express.static("public"));
@@ -29,7 +30,11 @@ app.get("/", (req, res, next) => {
   //Using moment is nice to work with dates
   let time = "12:11:00 10 9 22";
   let date = moment(time).fromNow();
-  return res.render("index", { date });
+
+  // Work with Validator
+  let vEmail = validator.isEmail("roger@gmail.com");
+  let vPhone = validator.isMobilePhone("8131234444");
+  return res.render("index", { date, vEmail, vPhone });
 });
 
 app.get("/dogs/:name", (req, res, next) => {
