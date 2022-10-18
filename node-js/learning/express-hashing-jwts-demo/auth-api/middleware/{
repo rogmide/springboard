@@ -1,0 +1,27 @@
+{
+	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvZ2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTY2NTUyNjI2NH0.WXkKH-eXkGiZH9K2cREVKnDFhkFp1Z5nBtUhUEiW8O4"
+}
+
+
+{
+	"username": "roger",
+	"password": "12345",
+	"firstName": "roy",
+	    "lastName": "roy",
+    "email": "mail@gmail.com"
+}
+
+SELECT handle,
+             c.name,
+             description,
+             num_employees AS "numEmployees",
+             logo_url AS "logoUrl",
+             (SELECT ARRAY_AGG( 'id: ' || jb.id || ', ' || 'title: ' || jb.title || ', ' || 'Salary: ' || jb.salary || ', ' || 'equity: ' || jb.equity || ', ' || 'company_handle: ' || jb.company_handle ) from jobs as jb where c.handle = jb.company_handle)
+      FROM companies as c
+      where
+      lower( c.name ) LIKE '%%'
+      and
+      (c.num_employees is null 
+      or 
+      c.num_employees  BETWEEN 0 and 1000000)
+      ORDER BY name

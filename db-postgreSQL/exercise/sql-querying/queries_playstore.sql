@@ -19,7 +19,6 @@
 
 --FS
 
---had to look this one up :)
 --SELECT app_name, rating, category FROM analytics WHERE (rating, category) in (SELECT MAX(rating), category FROM analytics WHERE min_installs >= 50000 GROUP BY category ) ORDER BY category;
 --SELECT app_name FROM analytics WHERE app_name ILIKE '%facebook%';
 --SELECT app_name, genres FROM analytics WHERE  array_length(genres, 1) = 2
