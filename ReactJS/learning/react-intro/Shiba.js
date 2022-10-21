@@ -23,8 +23,6 @@
 //https://www.akc.org/wp-content/uploads/2017/11/Shiba-Inu-puppy-standing-outdoors.jpg
 
 //COMPONENT
-const Shiba = () => {
-  return (
-    <img src="https://www.akc.org/wp-content/uploads/2017/11/Shiba-Inu-puppy-standing-outdoors.jpg" />
-  );
-};
+const Shiba = () => (
+  <img src="https://www.akc.org/wp-content/uploads/2017/11/Shiba-Inu-puppy-standing-outdoors.jpg" />
+);
