@@ -1,5 +1,4 @@
 const Animal = (props) => {
-  console.log(props);
   return (
     <div>
       <ul>

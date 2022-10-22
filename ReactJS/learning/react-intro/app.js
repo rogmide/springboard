@@ -1,7 +1,14 @@
 // Main COMPONET
 const App = () => (
   <div>
+    {/* Sample of Children */}
+    <Alert>
+      <h1>HELLO!!!</h1>
+    </Alert>
     <RandomChoice choices={["red", "green", "yellow"]} />
+    <RandomNumRange min={20} max={30} />
+    <RandomNumRange />
+
     <Animal
       name="Stevie Chicks"
       species="Silkie Chicken"
@@ -10,18 +17,10 @@ const App = () => (
       obj1={{ name: "something" }}
       isCute={false}
     />
-    <Animal
-      name="asd33"
-      species="Chick123"
-      emoji="🐔"
-      num={10}
-      obj1={{ name: "something" }}
-      isCute={true}
-    />
     <RandomNumn />
     <RandomNumn />
     <RandomNumn />
-    <Bouncer age={22} />
+    <Bouncer age={18} />
     <TodoList todos={["Walk Chicken", " Feed Chicken", "Eat Chicke"]} />
   </div>
 );
