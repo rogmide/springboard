@@ -22,6 +22,7 @@ const App = () => (
     <RandomNumn />
     <RandomNumn />
     <Bouncer age={22} />
+    <TodoList todos={["Walk Chicken", " Feed Chicken", "Eat Chicke"]} />
   </div>
 );
 

@@ -8,6 +8,7 @@ const Bouncer = (props) => {
     replay = (
       <p>
         You can come in, GO DRINK
+        <br></br>
         <img src="https://cdn.britannica.com/07/190707-050-3B712C76/types-alcohol-shelves-Bucharest-pub-Romania.jpg" />
       </p>
     );
