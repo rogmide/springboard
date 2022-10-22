@@ -1,6 +1,7 @@
 // import logo from "./logo.svg";
 import React from "react";
 import items from "./items";
+import moreItems from "./MoreItem";
 import ShoppingCart from "./ShoppingCart";
 import "./App.css";
 // import { add, multiply } from "./helpers.js";
@@ -13,7 +14,8 @@ function App() {
   // console.log(meow())
   return (
     <div>
-      <ShoppingCart items={items} />
+      <ShoppingCart items={items} username="Carly"/>
+      <ShoppingCart items={moreItems} username="Frosty"/>
     </div>
   );
 }

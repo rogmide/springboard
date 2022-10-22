@@ -1,9 +1,9 @@
 import React from "react";
 
-const ShoppingCart = ({ items }) => {
+const ShoppingCart = ({ items, username }) => {
   return (
     <div>
-      <h1>Shopping Cart</h1>
+      <h1>{username}'s Shopping Cart</h1>
       {items.map((i) => (
         <div key={i.id}>
           <h4>{i.name}</h4>
