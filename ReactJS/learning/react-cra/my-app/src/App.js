@@ -1,18 +1,19 @@
-import logo from "./logo.svg";
+// import logo from "./logo.svg";
+import React from "react";
+import items from "./items";
+import ShoppingCart from "./ShoppingCart";
 import "./App.css";
-import { add, multiply } from "./helpers.js";
-import data, { meow } from "./cats";
+// import { add, multiply } from "./helpers.js";
+// import data, { meow } from "./cats";
 
 function App() {
-  console.log(add(4, 9));
-  console.log(multiply(4, 9));
-  console.log(data);
-  console.log(meow())
+  // console.log(add(4, 9));
+  // console.log(multiply(4, 9));
+  // console.log(data);
+  // console.log(meow())
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
+    <div>
+      <ShoppingCart items={items} />
     </div>
   );
 }
