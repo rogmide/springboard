@@ -1,9 +1,10 @@
 import React from "react";
+import "./CartItem.css";
 
 const CartItem = ({ item }) => {
   let i = item;
   return (
-    <div key={i.id}>
+    <div key={i.id} className="CartItem">
       <h4>{i.name}</h4>
       <img src={i.img} alt="item desc" />
       <ul>

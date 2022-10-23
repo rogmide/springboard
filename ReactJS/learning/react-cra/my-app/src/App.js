@@ -19,7 +19,7 @@ function App() {
   return (
     <div>
       {/* IMAGEN */}
-      <img src={fakeLogo} />
+      <img src={fakeLogo} id="logo"/>
       <ShoppingCart items={items} username="Carly" />
       <ShoppingCart items={moreItems} username="Frosty" />
     </div>
