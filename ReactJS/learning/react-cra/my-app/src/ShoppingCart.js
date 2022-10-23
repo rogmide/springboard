@@ -6,7 +6,6 @@ const ShoppingCart = ({ items, username }) => {
     return acc + i.price * i.qty;
   }, 0);
 
-  console.log(total);
   return (
     <div key={username}>
       <h1>{username}'s Shopping Cart</h1>
