@@ -1,9 +1,12 @@
+import React from "react";
+import "./Pokecard.css";
+
 const Pokecard = ({ pokemon }) => {
   return (
-    <div>
-      <h3>{pokemon.name}</h3>
+    <div className="pokecard">
+      <h3 className="pokecard-name">{pokemon.name}</h3>
       <img
-        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${pokemon.id}.png`}
+        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`}
       />
       <p>Type: {pokemon.type}</p>
       <p>EXP: {pokemon.base_experience}</p>
