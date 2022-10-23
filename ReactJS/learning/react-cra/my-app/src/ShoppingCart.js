@@ -11,7 +11,7 @@ const ShoppingCart = ({ items, username }) => {
     <div className="ShoppingCard" key={username}>
       <h1 className="ShoppingCard-header">{username}'s Shopping Cart</h1>
       {items.map((i) => (
-        <CartItem item={i} />
+        <CartItem item={i} key={i.id} />
       ))}
       <b>Total: </b> {total}
     </div>
