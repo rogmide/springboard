@@ -4,14 +4,21 @@ import "./ColorBox.css";
 
 const ColorBox = () => {
   const [bColor, setBColor] = useState(randomColor());
+  const [isChange, setIsChange] = useState(false);
   return (
     <>
       <div className="ColorBox_Holder">
-        <div className="ColorBox" style={{ backgroundColor: bColor }}></div>
+        <div className="ColorBox" style={{ backgroundColor: bColor }}>
+          {!isChange ? null : <p>“changed!”</p>}
+        </div>
         <button
           className="ColorBox_buttom"
           onClick={() => {
             setBColor(randomColor());
+            setIsChange(true);
+          }}
+          onMouseLeave={() => {
+            setIsChange(false);
           }}
         >
           Change

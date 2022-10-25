@@ -4,12 +4,16 @@
   margin: 10px;
 }
 .ColorBox {
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
   border-radius: 20px;
 }
 
 .ColorBox_buttom {
   width: fit-content;
   align-self: center;
+}
+
+p {
+  font-size: 18px;
 }
