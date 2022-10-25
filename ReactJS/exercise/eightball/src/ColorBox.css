@@ -1,0 +1,15 @@
+.ColorBox_Holder {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+.ColorBox {
+  width: 200px;
+  height: 200px;
+  border-radius: 20px;
+}
+
+.ColorBox_buttom {
+  width: fit-content;
+  align-self: center;
+}
