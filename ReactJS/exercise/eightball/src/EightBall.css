@@ -14,12 +14,14 @@
   cursor: pointer;
 }
 
-p {
+.EightBall-Conunt-Holder {
   display: flex;
+  margin-bottom: 10px;
 }
 
-p div {
-  width: 20px;
+.EightBall-Conunt-Holder div {
+  padding: 5px;
+  width: fit-content;
   font-size: larger;
   font-weight: bolder;
   border-radius: 2px;

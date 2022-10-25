@@ -18,7 +18,9 @@ const EightBall = () => {
   };
   return (
     <>
-      <p>
+      {/* <p> */}
+      {/* Reset the counter for the color onMouseOver */}
+      <div className="EightBall-Conunt-Holder">
         <div
           onMouseOver={() => {
             setRed(0);
@@ -44,7 +46,8 @@ const EightBall = () => {
           {" "}
           {goldenrod}{" "}
         </div>
-      </p>
+      </div>
+      {/* </p> */}
       <div
         className="EightBall"
         style={{ backgroundColor: color }}
