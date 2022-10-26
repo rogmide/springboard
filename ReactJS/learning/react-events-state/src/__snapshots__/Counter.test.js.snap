@@ -5,11 +5,17 @@ exports[`it matches snapshot 1`] = `
   <h1>
     Count is: 0
   </h1>
+  <p>
+    Count
+  </p>
   <button>
     Add
   </button>
   <button>
     Subtract
   </button>
+  <input
+    placeholder="username"
+  />
 </DocumentFragment>
 `;

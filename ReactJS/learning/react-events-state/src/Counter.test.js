@@ -10,3 +10,18 @@ test("it matches snapshot", () => {
   const { asFragment } = render(<Counter />);
   expect(asFragment()).toMatchSnapshot();
 });
+
+// SOME FOR OF TESTING OUR APPS
+// test("playing with query", () => {
+//   const {
+//     getByText,
+//     getAllByText,
+//     queryByText,
+//     getAllByPlaceholderText,
+//     getByLabelText,
+//   } = render(<Counter />);
+//   console.log(getByText(`Count is:`, { exact: false }));
+//   console.log(getAllByText(`Count`, { exact: false }));
+//   console.log(queryByText(`Count`, { exact: false }));
+//   console.log(getAllByPlaceholderText("username"));
+// });
