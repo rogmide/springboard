@@ -8,7 +8,7 @@ const Counter = () => {
       <p>Count</p>
       <button onClick={() => setCount(count + 10)}>Add</button>
       <button onClick={() => setCount(count - 10)}>Subtract</button>
-      <input placeholder="username" />
+      {/* <input placeholder="username" /> */}
     </>
   );
 };

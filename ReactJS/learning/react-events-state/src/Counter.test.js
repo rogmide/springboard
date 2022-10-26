@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 import Counter from "./Counter";
 
 test("it renders without crashing", () => {
@@ -25,3 +25,14 @@ test("it matches snapshot", () => {
 //   console.log(queryByText(`Count`, { exact: false }));
 //   console.log(getAllByPlaceholderText("username"));
 // });
+
+test("button increments counter", () => {
+  const { getByText } = render(<Counter />);
+  const h2 = getByText("Count is: 0");
+  const btn1 = getByText("Add");
+  const btn2 = getByText("Subtract");
+  fireEvent.click(btn1);
+  expect(h2).toHaveTextContent("10");
+  fireEvent.click(btn2);
+  expect(h2).toHaveTextContent("0");
+});

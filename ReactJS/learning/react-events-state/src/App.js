@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       <Toggler />
       {/* <NumberGame /> */}
-      {/* <Counter /> */}
+      <Counter />
       {/* <ButtonGroup /> */}
       {/* <Clicker />
       <Clicker /> */}
