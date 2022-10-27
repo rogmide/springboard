@@ -26,10 +26,10 @@ const CoinGame = () => {
     <>
       <div>
         <h1>Let's flip a coin!</h1>
-        <img src={currentImg} alt="" />
+        {currentImg && <img data-testid="coin_img"  src={currentImg} alt="" />}
       </div>
       <br></br>
-      <button onClick={() => flip()}>flip</button>
+      <button data-testid="flip_btn" onClick={() => flip()}>flip</button>
       <p>
         Out of {numFlip}, there has been {front} heads and {back} tails{" "}
       </p>
