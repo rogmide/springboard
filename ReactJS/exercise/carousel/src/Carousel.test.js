@@ -52,3 +52,26 @@ it("works when you click on the left arrow", function () {
     queryByAltText("Photo by Richard Pasquarella on Unsplash")
   ).toBeInTheDocument();
 });
+
+it("works when you click on the middle pic to the left", function () {
+  const { queryByTestId } = render(<Carousel />);
+  const rightArrow = queryByTestId("right-arrow");
+  fireEvent.click(rightArrow);
+
+  // We are on the sec Pic
+  const leftArrow = queryByTestId("left-arrow");
+  fireEvent.click(leftArrow);
+  const leftArrowGone = queryByTestId("left-arrow");
+  expect(leftArrowGone).toBeNull();
+});
+
+it("works when you click on the middle pic to the right", function () {
+  const { queryByTestId } = render(<Carousel />);
+  const rightArrow = queryByTestId("right-arrow");
+  fireEvent.click(rightArrow);
+  fireEvent.click(rightArrow);
+
+  // We are on the 3 Pic
+  const rightArrowGone = queryByTestId("right-arrow");
+  expect(rightArrowGone).toBeNull();
+});
