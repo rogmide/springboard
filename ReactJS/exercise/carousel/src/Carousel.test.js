@@ -36,3 +36,19 @@ it("works when you click on the right arrow", function () {
     queryByAltText("Photo by Pratik Patel on Unsplash")
   ).toBeInTheDocument();
 });
+
+it("works when you click on the left arrow", function () {
+  const { queryByTestId, queryByAltText } = render(<Carousel />);
+
+  const rightArrow = queryByTestId("right-arrow");
+  fireEvent.click(rightArrow);
+  expect(
+    queryByAltText("Photo by Pratik Patel on Unsplash")
+  ).toBeInTheDocument();
+
+  const leftArrow = queryByTestId("left-arrow");
+  fireEvent.click(leftArrow);
+  expect(
+    queryByAltText("Photo by Richard Pasquarella on Unsplash")
+  ).toBeInTheDocument();
+});
