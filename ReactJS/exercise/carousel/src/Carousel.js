@@ -18,28 +18,40 @@ function Carousel(props) {
     <div className="Carousel">
       <h1>{props.title}</h1>
       <div className="Carousel-main">
-        <i
-          className="fas fa-chevron-circle-left fa-2x"
-          // BUG 1 FIXED
-          onClick={goBackward}
-          data-testid="left-arrow"
-        />
+        {/* BUG 2 FIXED
+        Condition added to make sure 
+        that the array is not going 
+        over or under range
+        */}
+        {cardIdx === 0 ? null : (
+          <i
+            className="fas fa-chevron-circle-left fa-2x"
+            // BUG 1 FIXED
+            onClick={goBackward}
+            data-testid="left-arrow"
+          />
+        )}
+
         <Card
           caption={card.caption}
           src={card.src}
           currNum={cardIdx + 1}
           totalNum={total}
         />
-        <i
-          className="fas fa-chevron-circle-right fa-2x"
-          onClick={goForward}
-          data-testid="right-arrow"
-        />
+
+        {cardIdx === props.cardData.length - 1 ? null : (
+          <i
+            className="fas fa-chevron-circle-right fa-2x"
+            onClick={goForward}
+            data-testid="right-arrow"
+          />
+        )}
       </div>
     </div>
   );
 }
 
+// DEFAULT PROPS
 Carousel.defaultProps = {
   cardData: [
     {
