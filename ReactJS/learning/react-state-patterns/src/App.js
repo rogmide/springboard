@@ -1,14 +1,15 @@
 import "./App.css";
 import SimpleCounter from "./SimpleCounter";
 import NumberList from "./NumberList";
+import Circle from "./Circle";
+import ColorCircles from "./ColorCircles";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        {/* <SimpleCounter /> */}
-        <NumberList />
-      </header>
+      <ColorCircles />
+      {/* <SimpleCounter /> */}
+      {/* <NumberList /> */}
     </div>
   );
 }
