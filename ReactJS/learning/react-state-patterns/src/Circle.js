@@ -1,10 +1,11 @@
 import React from "react";
 import "./Circle.css";
 
-const Circle = ({ color, x, y, idx }) => {
+const Circle = ({ color, x, y, idx, change }) => {
   return (
     <div
       className="Circle"
+      onClick={() => change(idx)}
       style={{
         backgroundColor: color,
         position: "absolute",
