@@ -1,5 +1,6 @@
 import { computeHeadingLevel } from "@testing-library/react";
 import React, { useState } from "react";
+import NumberItem from "./NumberItem";
 
 const NumberList = (props) => {
   const [numbers, setNumbers] = useState([2, 5, 7, 11, 12, 18]);
@@ -9,9 +10,7 @@ const NumberList = (props) => {
   return (
     <ul>
       {numbers.map((n) => (
-        <li>
-          <button onClick={() => remove(n)}>{n}</button>
-        </li>
+        <NumberItem number={n} remove={remove} />
       ))}
     </ul>
   );
