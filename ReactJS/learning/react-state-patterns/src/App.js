@@ -1,7 +1,7 @@
 import "./App.css";
-import SimpleCounter from "./SimpleCounter";
-import NumberList from "./NumberList";
-import Circle from "./Circle";
+// import SimpleCounter from "./SimpleCounter";
+// import NumberList from "./NumberList";
+// import Circle from "./Circle";
 import ColorCircles from "./ColorCircles";
 
 function App() {
