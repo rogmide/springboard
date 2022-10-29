@@ -2,7 +2,7 @@ import "./App.css";
 // import SimpleCounter from "./SimpleCounter";
 // import NumberList from "./NumberList";
 // import Circle from "./Circle";
-import ColorCircles from "./ColorCircles";
+import ColorCircles from "./ColoredCircles1/ColorCircles";
 
 function App() {
   return (
