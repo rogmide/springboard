@@ -12,15 +12,6 @@ const ColorCircles = () => {
     ]);
   };
 
-  //   const changePosition = (idx) => {
-  //     setCircles((cirlces) => {
-  //       const copy = [...cirlces];
-  //       copy[idx].x = randomNumber();
-  //       copy[idx].y = randomNumber();
-  //       return copy;
-  //     });
-  //   };
-
   const changePosition = (idx) => {
     setCircles((cirlces) =>
       cirlces.map((c, i) =>
@@ -35,6 +26,20 @@ const ColorCircles = () => {
       <button onClick={addCircle}>Add Circle</button>
       <br></br>
       <div>
+        <button
+          onClick={() =>
+            setCircles(
+              cirlces.map((c) => ({
+                ...cirlces,
+                color: c.color,
+                x: randomNumber(),
+                y: randomNumber(),
+              }))
+            )
+          }
+        >
+          Random!!!
+        </button>
         {cirlces.map((c, idx) => (
           <Circle
             key={idx}
