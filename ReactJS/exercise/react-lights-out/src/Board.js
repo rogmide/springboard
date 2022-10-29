@@ -77,7 +77,7 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
   return (
     <div className="Board">
       {board.map((r) => (
-        <div>
+        <div className="Board_Row_Holder">
           {" "}
           {r.map((c) => (
             <Cell isLit={c} />
@@ -92,8 +92,8 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
 
 // DEFAULT PROPS
 Board.defaultProps = {
-  nrows: 4,
-  ncols: 4,
+  nrows: 5,
+  ncols: 5,
 };
 
 export default Board;

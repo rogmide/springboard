@@ -1,12 +1,11 @@
 .Cell {
-  height: 100px;
-  width: 100px;
+  height: 15vh;
+  width: 300px;
   background-color: darkgray;
   cursor: pointer;
   /* Change Border */
-  border: solid 2px green;
   border-radius: 10px;
-  
+  margin: 1px;
 }
 
 .Cell-lit {
