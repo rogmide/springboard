@@ -6,9 +6,10 @@ import "./App.css";
 
 function App() {
   return (
-      <div>
-        <Board />
-      </div>
+    <div>
+      <Board nrows={5} ncols={5} />
+      {/* <Board /> */}
+    </div>
   );
 }
 

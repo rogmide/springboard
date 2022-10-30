@@ -34,7 +34,7 @@ import randomTrueFalse from "./helpers";
  *
  **/
 
-function Board({ nrows, ncols, chanceLightStartsOn }) {
+function Board({ nrows, ncols }) {
   const [board, setBoard] = useState(createBoard());
 
   /** create a board nrows high/ncols wide, each cell randomly lit or unlit */
@@ -52,16 +52,7 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
 
   function hasWon() {
     // TODO: check the board in state to determine whether the player has won.
-    let isWinner = true;
-    for (let i = 0; i < board.length; i++) {
-      board[i].filter((c) => {
-        if (c === false) {
-          isWinner = false;
-          return;
-        }
-      });
-    }
-    return isWinner;
+    return board.every((row) => row.every((cell) => cell));
   }
 
   function flipCellsAround(coord) {
@@ -74,6 +65,10 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
         }
       };
 
+      if (hasWon()) {
+        alert("Winner, Winner Chicken Dinner");
+      }
+
       // TODO: Make a (deep) copy of the oldBoard
       // ReactJS is very piky, need to change the STATE other wise will never re-render
       // Had to look the next line of code bcz this dont work
@@ -83,7 +78,7 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
       // doing this -- oldBoard.map((row) => [...row]) -- is macking change on the deep lvl of the array
       // Fucking Brilliant miss that :)
 
-      const boardCopy = oldBoard.map((row) => [...row]);
+      let boardCopy = oldBoard.map((row) => [...row]);
       // TODO: in the copy, flip this cell and the cells around it
       flipCell(y, x, boardCopy);
       flipCell(y, x + 1, boardCopy);
@@ -91,7 +86,6 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
       flipCell(y + 1, x, boardCopy);
       flipCell(y - 1, x, boardCopy);
       // TODO: return the copy
-      console.log(hasWon());
       return boardCopy;
     });
   }
@@ -112,7 +106,9 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
             <Cell
               key={Math.random() * 1000000}
               isLit={c}
-              flipCellsAroundMe={() => flipCellsAround(`${y}-${x}`)}
+              flipCellsAroundMe={() => {
+                flipCellsAround(`${y}-${x}`);
+              }}
             />
           ))}{" "}
         </div>
@@ -125,8 +121,8 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
 
 // DEFAULT PROPS
 Board.defaultProps = {
-  nrows: 5,
-  ncols: 5,
+  nrows: 3,
+  ncols: 3,
 };
 
 export default Board;
