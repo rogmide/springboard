@@ -3,6 +3,12 @@ import Cell from "./Cell";
 import "./Board.css";
 import randomTrueFalse from "./helpers";
 
+// Winning Strategy
+// Go left to Right
+// 1 lit 4 and 5 top
+// 2 lit 2 and 5 top
+// 3 lit 4 top
+
 /** Game board of Lights out.
  *
  * Properties:
@@ -46,25 +52,47 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
 
   function hasWon() {
     // TODO: check the board in state to determine whether the player has won.
+    let isWinner = true;
+    for (let i = 0; i < board.length; i++) {
+      board[i].filter((c) => {
+        if (c === false) {
+          isWinner = false;
+          return;
+        }
+      });
+    }
+    return isWinner;
   }
 
   function flipCellsAround(coord) {
     setBoard((oldBoard) => {
       const [y, x] = coord.split("-").map(Number);
-
       const flipCell = (y, x, boardCopy) => {
         // if this coord is actually on board, flip it
-
         if (x >= 0 && x < ncols && y >= 0 && y < nrows) {
           boardCopy[y][x] = !boardCopy[y][x];
         }
       };
 
       // TODO: Make a (deep) copy of the oldBoard
+      // ReactJS is very piky, need to change the STATE other wise will never re-render
+      // Had to look the next line of code bcz this dont work
+      // const boardCopy = [...oldBoard]
+      // that work for the first time i click but not for the other click do that
+      // what is inside boardCopy never change is the same reference
+      // doing this -- oldBoard.map((row) => [...row]) -- is macking change on the deep lvl of the array
+      // Fucking Brilliant miss that :)
 
+      const boardCopy = oldBoard.map((row) => [...row]);
       // TODO: in the copy, flip this cell and the cells around it
-
+      flipCell(y, x, boardCopy);
+      flipCell(y, x + 1, boardCopy);
+      flipCell(y, x - 1, boardCopy);
+      flipCell(y + 1, x, boardCopy);
+      flipCell(y - 1, x, boardCopy);
       // TODO: return the copy
+      console.log(hasWon());
+      return boardCopy;
     });
   }
 
@@ -76,11 +104,16 @@ function Board({ nrows, ncols, chanceLightStartsOn }) {
 
   return (
     <div className="Board">
-      {board.map((r) => (
-        <div className="Board_Row_Holder">
+      {board.map((r, y) => (
+        // Math.random() for the key for now, so dont yill at me
+        <div key={Math.random() * 1000000} className="Board_Row_Holder">
           {" "}
-          {r.map((c) => (
-            <Cell isLit={c} />
+          {r.map((c, x) => (
+            <Cell
+              key={Math.random() * 1000000}
+              isLit={c}
+              flipCellsAroundMe={() => flipCellsAround(`${y}-${x}`)}
+            />
           ))}{" "}
         </div>
       ))}

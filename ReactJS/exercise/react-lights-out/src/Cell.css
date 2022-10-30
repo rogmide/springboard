@@ -1,7 +1,7 @@
 .Cell {
   height: 15vh;
   width: 300px;
-  background-color: darkgray;
+  background-color: whitesmoke;
   cursor: pointer;
   /* Change Border */
   border-radius: 10px;
@@ -9,5 +9,5 @@
 }
 
 .Cell-lit {
-  background-color: white;
+  background-color: yellowgreen;
 }
