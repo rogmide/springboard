@@ -14,9 +14,11 @@ import "./Cell.css";
  *
  **/
 
-function Cell({ flipCellsAroundMe, isLit }) {
+function Cell({ flipCellsAroundMe, isLit, yx }) {
   const classes = `Cell ${isLit ? "Cell-lit" : ""}`;
-  return <div className={classes} onClick={flipCellsAroundMe} />;
+  return (
+    <div data-testid={yx} className={classes} onClick={flipCellsAroundMe} />
+  );
 }
 
 export default Cell;

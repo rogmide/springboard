@@ -66,7 +66,7 @@ function Board({ nrows, ncols }) {
       };
 
       if (hasWon()) {
-        alert("Winner, Winner Chicken Dinner");
+        alert("You Win!!!");
       }
 
       // TODO: Make a (deep) copy of the oldBoard
@@ -104,7 +104,8 @@ function Board({ nrows, ncols }) {
           {" "}
           {r.map((c, x) => (
             <Cell
-              key={Math.random() * 1000000}
+              key={`${y}_${x}`}
+              yx={`${y}_${x}`}
               isLit={c}
               flipCellsAroundMe={() => {
                 flipCellsAround(`${y}-${x}`);

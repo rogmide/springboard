@@ -7,10 +7,12 @@ import "./App.css";
 function App() {
   return (
     <div>
-      <Board nrows={5} ncols={5} />
-      {/* <Board /> */}
+      {/* <Board nrows={5} ncols={5} /> */}
+      <Board />
     </div>
   );
 }
 
 export default App;
+
+
