@@ -1,28 +1,65 @@
 import React, { useState } from "react";
 
 const UserForm = () => {
-  const [username, setUsername] = useState("ChickenLady");
+  // use a initialState for reset and to star the form
+  const initialState = {
+    username: "",
+    email: "",
+    password: "",
+  };
+  const [formData, setFormData] = useState(initialState);
 
-  // every input of our form has to be in state
-    const handleChange = (evt) => {
-      console.log(evt.target.value);
-      setUsername(evt.target.value);
-    };
+  // One handler for all
+  const handleChange = (e) => {
+    console.log(e.target.name);
+    console.log(e.target.value);
+    const { name, value } = e.target;
+    setFormData((data) => ({
+      // spread to keep all the other data the same
+      ...data,
+      [name]: value,
+    }));
+  };
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    alert(`Created user ${username}`);
+    const { username, email, password } = formData;
+    alert(`Created user ${username} W/ Email: ${email} Password: ${password}`);
+    setFormData(initialState);
   };
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
+      {/* Use htmlFor in read inted of for on a label */}
+
+      <label htmlFor="username">Username: </label>
       <input
+        id="username"
+        name="username"
         type="text"
         placeholder="username"
-        value={username}
+        value={formData.username}
         onChange={handleChange}
       ></input>
-      <button onClick={handleSubmit}>Add me to list!</button>
+      <label htmlFor="email">Email: </label>
+      <input
+        onChange={handleChange}
+        id="email"
+        name="email"
+        type="email"
+        value={formData.email}
+        placeholder="Email"
+      ></input>
+      <label htmlFor="password">Password: </label>
+      <input
+        onChange={handleChange}
+        id="password"
+        name="password"
+        type="password"
+        value={formData.password}
+        placeholder="password"
+      ></input>
+      <button>Add me to list!</button>
     </form>
   );
 };
