@@ -10,10 +10,14 @@ const ShoppingList = () => {
 
   const [item, setItem] = useState(INITIAL_STATE);
 
+  const addItem = (name, qty) => {
+    setItem((item) => [...item, { name, qty }]);
+  };
+
   return (
     <div>
       <h3>Shopping List</h3>
-        <NewItemForm />
+      <NewItemForm addItem={addItem} />
       {item.map(({ id, name, qty }) => (
         <Item id={id} name={name} qty={qty} key={id} />
       ))}

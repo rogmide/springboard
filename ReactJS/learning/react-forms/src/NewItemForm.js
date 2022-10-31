@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const NewItemForm = ({ id, name, qty }) => {
+const NewItemForm = ({ addItem }) => {
   const INITIAL_STATE = {
     name: "",
     qty: "",
@@ -16,8 +16,14 @@ const NewItemForm = ({ id, name, qty }) => {
     }));
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    addItem(formData.name, formData.qty);
+    setFormData(INITIAL_STATE);
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <label htmlFor="name">Product: </label>
       <input
         id="name"
@@ -36,8 +42,7 @@ const NewItemForm = ({ id, name, qty }) => {
         value={formData.qty}
         onChange={handleChange}
       ></input>
-      <p>{formData.name}</p>
-      <p>{formData.qty}</p>
+      <button>Add Items</button>
     </form>
   );
 };
