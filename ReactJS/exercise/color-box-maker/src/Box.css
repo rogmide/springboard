@@ -2,3 +2,13 @@
   border-radius: 10px;
   margin: 10px;
 }
+
+.Box h3 {
+  text-align: right;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.Box h3:hover {
+  cursor: pointer;
+}

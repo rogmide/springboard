@@ -12,7 +12,7 @@ const Box = ({ id, width, height, backgroundColor, removeBox }) => {
         backgroundColor: `${backgroundColor}`,
       }}
     >
-      <h3>X</h3>
+      <h3 onClick={() => removeBox(id)}>X</h3>
     </div>
   );
 };

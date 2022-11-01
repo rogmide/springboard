@@ -6,16 +6,21 @@ import { v4 as uuidv4 } from "uuid";
 
 const BoxList = () => {
   const INITIAL_STATE = [
-    // { id: uuidv4(), width: "50", height: "50", backgroundColor: "red" },
+    // default box to work with app
+    { id: uuidv4(), width: "100", height: "100", backgroundColor: "green" },
   ];
 
   const [box, setBox] = useState(INITIAL_STATE);
 
+  // Add box to the Array
   const addBox = (newBox) => {
     setBox((box) => [...box, { ...newBox, id: uuidv4() }]);
   };
 
-  const removeBox = (id) => {};
+  // Remove box from the Array
+  const removeBox = (id) => {
+    setBox(box.filter((b) => b.id !== id));
+  };
 
   return (
     <>
