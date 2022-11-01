@@ -12,25 +12,41 @@ it("should match snapshot", () => {
 });
 
 // try get by test ID test-box
-it("should add a new box", () => {
+it("should remove/add a new box", () => {
   const { queryByText, getByLabelText } = render(<BoxList />);
+
+  // Selecting
   const inputWidth = getByLabelText("Width:");
   const inputHeight = getByLabelText("Height:");
   const inputBackColor = getByLabelText("Background Color:");
-  const btn = queryByText("Add Box");
+  const btnAddBox = queryByText("Add Box");
 
-  const btn1 = queryByText("X");
+  // Make sure that a Box is on Screen
+  const btn1H3 = queryByText("X");
   expect(queryByText("X")).toBeInTheDocument();
-  expect(queryByText("X")).toHaveStyle({ backgroundColor: "green" });
+  expect(queryByText("X").closest("div")).toHaveStyle({
+    backgroundColor: "green",
+    width: "100px",
+    height: "100px",
+  });
 
-  fireEvent.click(btn1);
+  // Click the X on the box and get remove
+  fireEvent.click(btn1H3);
   expect(queryByText("X")).not.toBeInTheDocument();
 
-  // mocking a input on the app passing a obj
-  fireEvent.change(inputWidth, { target: { value: "100" } });
-  fireEvent.change(inputHeight, { target: { value: "100" } });
+  // Setup Next Box Form to be added
+  fireEvent.change(inputWidth, { target: { value: "150" } });
+  fireEvent.change(inputHeight, { target: { value: "150" } });
   fireEvent.change(inputBackColor, { target: { value: "red" } });
-  fireEvent.click(btn);
+
+  // Click to Add Box
+  fireEvent.click(btnAddBox);
+
+  // Make sure that a new Box is on Screen
   expect(queryByText("X")).toBeInTheDocument();
-  //   expect(queryByText("X")).toHaveStyle("background-color: red");
+  expect(queryByText("X").closest("div")).toHaveStyle({
+    backgroundColor: "red",
+    width: "150px",
+    height: "150px",
+  });
 });
