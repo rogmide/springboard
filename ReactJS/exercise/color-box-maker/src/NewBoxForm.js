@@ -20,8 +20,6 @@ const NewBoxForm = ({ addBox }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { width, height, backgroundColor } = formData;
-    // alert(`${width} ${height} ${backgroundColor}`);
     //Pass the Data Up to the Parent
     addBox({ ...formData });
     setFormData(INITIAL_STATE);
