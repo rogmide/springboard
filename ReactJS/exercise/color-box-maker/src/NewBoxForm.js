@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./NewBoxForm.css";
 
 const NewBoxForm = ({ addBox }) => {
   const INITIAL_STATE = {
@@ -29,11 +30,11 @@ const NewBoxForm = ({ addBox }) => {
   return (
     <>
       <h1>Box Form</h1>
-      <form onSubmit={handleSubmit}>
+      <form className="NewBoxForm" onSubmit={handleSubmit}>
         <label htmlFor="width">Width: </label>
         <input
           id="width"
-          type="range"
+          type="number"
           min="20"
           max="500"
           name="width"
@@ -42,9 +43,10 @@ const NewBoxForm = ({ addBox }) => {
           onChange={handleChange}
         ></input>
         <label htmlFor="height">Height: </label>
+
         <input
           id="height"
-          type="range"
+          type="number"
           min="20"
           max="500"
           name="height"
@@ -61,6 +63,8 @@ const NewBoxForm = ({ addBox }) => {
           value={formData.backgroundColor}
           onChange={handleChange}
         ></input>
+        <br></br>
+
         <button>Add Box</button>
       </form>
     </>
