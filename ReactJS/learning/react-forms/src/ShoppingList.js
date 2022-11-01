@@ -5,7 +5,6 @@ import SimpleForm from "./SimpleForm";
 import { v4 as uuidv4 } from "uuid";
 
 const ShoppingList = () => {
-  console.log();
   const INITIAL_STATE = [
     { id: uuidv4(), name: "Peanut Butter", qty: 2 },
     { id: uuidv4(), name: "Whole Milk", qty: 1 },
