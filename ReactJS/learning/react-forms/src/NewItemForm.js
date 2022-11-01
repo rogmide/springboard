@@ -8,6 +8,8 @@ const NewItemForm = ({ addItem }) => {
 
   const [formData, setFormData] = useState(INITIAL_STATE);
 
+  // FORM WILL HACE HIS INTERNAL STATE
+  // WILL HACE handleChange TO MANAGE THE CHANGE ON THE FORM
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((data) => ({
