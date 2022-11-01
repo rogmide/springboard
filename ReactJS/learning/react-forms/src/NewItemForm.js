@@ -18,7 +18,9 @@ const NewItemForm = ({ addItem }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addItem(formData.name, formData.qty);
+    // addItem is a function that is pass down from parent
+    // and basaclly we pass back data to that parent to work with
+    addItem({ ...formData });
     setFormData(INITIAL_STATE);
   };
 
@@ -33,14 +35,15 @@ const NewItemForm = ({ addItem }) => {
         value={formData.name}
         onChange={handleChange}
       ></input>
-      <label htmlFor="qty">Quantity: </label>
+      <label htmlFor="qty">Quantity: {formData.qty}</label>
       <input
-        id="qty"
-        type="text"
-        name="qty"
-        placeholder="Quantity"
-        value={formData.qty}
         onChange={handleChange}
+        value={formData.qty}
+        id="qty"
+        name="qty"
+        type="range"
+        min="1"
+        max="10"
       ></input>
       <button>Add Items</button>
     </form>
