@@ -33,7 +33,9 @@ const NewBoxForm = ({ addBox }) => {
         <label htmlFor="width">Width: </label>
         <input
           id="width"
-          type="number"
+          type="range"
+          min="20"
+          max="500"
           name="width"
           placeholder="width"
           value={formData.width}
@@ -42,7 +44,9 @@ const NewBoxForm = ({ addBox }) => {
         <label htmlFor="height">Height: </label>
         <input
           id="height"
-          type="number"
+          type="range"
+          min="20"
+          max="500"
           name="height"
           placeholder="height"
           value={formData.height}
