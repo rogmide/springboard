@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Item from "./Item";
 import NewItemForm from "./NewItemForm";
+import SimpleForm from "./SimpleForm";
 import { v4 as uuidv4 } from "uuid";
 
 const ShoppingList = () => {

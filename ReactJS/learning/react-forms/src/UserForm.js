@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import SimpleForm from "./SimpleForm";
 
 const UserForm = () => {
   // use a initialState for reset and to star the form
@@ -29,38 +30,41 @@ const UserForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      {/* Use htmlFor in read inted of for on a label */}
+    <>
+      <form onSubmit={handleSubmit}>
+        {/* Use htmlFor in read inted of for on a label */}
 
-      <label htmlFor="username">Username: </label>
-      <input
-        id="username"
-        name="username"
-        type="text"
-        placeholder="username"
-        value={formData.username}
-        onChange={handleChange}
-      ></input>
-      <label htmlFor="email">Email: </label>
-      <input
-        onChange={handleChange}
-        id="email"
-        name="email"
-        type="email"
-        value={formData.email}
-        placeholder="Email"
-      ></input>
-      <label htmlFor="password">Password: </label>
-      <input
-        onChange={handleChange}
-        id="password"
-        name="password"
-        type="password"
-        value={formData.password}
-        placeholder="password"
-      ></input>
-      <button>Add me to list!</button>
-    </form>
+        <label htmlFor="username">Username: </label>
+        <input
+          id="username"
+          name="username"
+          type="text"
+          placeholder="username"
+          value={formData.username}
+          onChange={handleChange}
+        ></input>
+        <label htmlFor="email">Email: </label>
+        <input
+          onChange={handleChange}
+          id="email"
+          name="email"
+          type="email"
+          value={formData.email}
+          placeholder="Email"
+        ></input>
+        <label htmlFor="password">Password: </label>
+        <input
+          onChange={handleChange}
+          id="password"
+          name="password"
+          type="password"
+          value={formData.password}
+          placeholder="password"
+        ></input>
+        <button>Add me to list!</button>
+      </form>
+      <SimpleForm />
+    </>
   );
 };
 
