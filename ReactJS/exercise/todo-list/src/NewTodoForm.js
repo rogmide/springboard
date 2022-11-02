@@ -26,7 +26,7 @@ const NewTodoForm = ({ addTodo }) => {
     <>
       <h1>Add New Todo</h1>
       <form className="NewTodoForm" onSubmit={handleSubmit}>
-        <label htmlFor="text">Todo: </label>
+        <label htmlFor="text1">Todo: </label>
         <input
           id="text1"
           type="text"

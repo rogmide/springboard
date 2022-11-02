@@ -8,7 +8,7 @@ const Todo = ({ id, text, done, scrach, removeTodo }) => {
     <div className="Todo" key={id}>
       <p>
         {text} -{" "}
-        <span onClick={() => removeTodo(id)}>
+        <span data-testid="todo_trash" onClick={() => removeTodo(id)}>
           <FontAwesomeIcon icon={faTrashCan} />
         </span>{" "}
       </p>
