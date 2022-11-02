@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   //   faHome,
@@ -9,10 +9,23 @@ import {
 import "./Todo.css";
 
 const Todo = ({ id, text, done, scrach, removeTodo, showEdit }) => {
+  const [scrachChange, setScrachChange] = useState(true);
+  const [style, setStyle] = useState("none");
+
+  const setLineThrough = () => {
+    if (scrachChange) {
+      setStyle("line-through");
+      setScrachChange(false);
+    } else {
+      setStyle("none");
+      setScrachChange(true);
+    }
+  };
+
   return (
     <div className="Todo" key={id}>
-      <p>
-        {text} -{" "}
+      <p style={{ textDecoration: `${style}` }}>
+        <span onClick={() => setLineThrough()}> {text}</span> -{" "}
         {/* <span data-testid="todo_edit" onClick={() => showEdit(id)}>
           <FontAwesomeIcon icon={faCheck} />
         </span>{" "} */}

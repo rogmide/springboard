@@ -13,8 +13,13 @@ exports[`should match snapshot 1`] = `
       <div
         class="Todo"
       >
-        <p>
-          Walk the Dog - 
+        <p
+          style="text-decoration: none;"
+        >
+          <span>
+             Walk the Dog
+          </span>
+           - 
           <span
             data-testid="todo_edit"
           >
