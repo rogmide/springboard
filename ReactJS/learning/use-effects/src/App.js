@@ -1,8 +1,10 @@
 // import logo from './logo.svg';
 import "./App.css";
-// import Timer from "./Timer";
+import Timer from "./Timer";
+import TimeWrapper from "./TimerWrapper";
 // import Counter from "./Counter";
-import ProfileViwer from "./ProfileViwer";
+// import ProfileViwer from "./ProfileViwer";
+import ProfileViwerSearch from "./ProfileViwerWithSearch";
 
 function App() {
   return (
@@ -10,8 +12,10 @@ function App() {
       <header className="App-header">
         {/* <Counter /> */}
         {/* <Timer /> */}
-        <ProfileViwer name="rogmide" />
-        <ProfileViwer name="colt" />
+        <TimeWrapper />
+        {/* <ProfileViwer name="rogmide" color="teal" />
+        <ProfileViwer name="colt" color="green" /> */}
+        {/* <ProfileViwerSearch /> */}
       </header>
     </div>
   );

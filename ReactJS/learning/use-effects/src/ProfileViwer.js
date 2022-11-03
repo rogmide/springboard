@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 // 'https://api.github.com/users/rogmide'
 
-const ProfileViwer = ({ name }) => {
+const ProfileViwer = ({ name = "elie", color = "purple" }) => {
   const [data, setData] = useState(null);
   useEffect(() => {
     async function loadProfile() {
@@ -18,7 +18,7 @@ const ProfileViwer = ({ name }) => {
 
   return (
     <div>
-      <h3>{data ? data : "Loading..."}</h3>
+      <h3 style={{ color }}>{data ? data : "Loading..."}</h3>
     </div>
   );
 };
