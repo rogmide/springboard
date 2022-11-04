@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 const Time = () => {
   const [sec, setSec] = useState(0);
-
+  // useRef variable will stay for future render
+  // the variable will not be lost on render
+  const timerID = useRef();
   // If we pass a Empty ARRAY is telling
   // that there is no other dependency
   // and run only one time
   useEffect(() => {
-    const intervalID = setInterval(() => {
+    timerID.current = setInterval(() => {
       setSec((sec) => sec + 1);
     }, 1000);
     // passing a Empty Array
@@ -20,14 +22,20 @@ const Time = () => {
     // Clean up function and is use to clean up code
     // sample, open websocket close db connections etc...
     return () => {
-      console.log("Cleanning Function: " + intervalID);
-      clearInterval(intervalID);
+      console.log("Cleanning Function: " + timerID.current);
+      clearInterval(timerID.current);
     };
+    // Empty Array Passing
   }, []);
+
+  const stopTimer = () => {
+    clearInterval(timerID.current);
+  };
 
   return (
     <div>
       <h3>{sec}</h3>
+      <button onClick={stopTimer}>Stop</button>
     </div>
   );
 };
