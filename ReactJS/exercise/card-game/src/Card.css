@@ -1,0 +1,10 @@
+.card_holder > img {
+  width: 25vw;
+  height: 50vh;
+  border-radius: 20px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  margin-top: 20px;
+}
