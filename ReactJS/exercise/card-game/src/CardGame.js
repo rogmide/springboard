@@ -6,11 +6,20 @@ import { v4 as uuidv4 } from "uuid";
 
 const CardGame = () => {
   const INITIAL_STATE = [];
+  const BASE_URL = "https://deckofcardsapi.com/api/deck/";
   const deckId = useRef();
   const [currDeck, setCurrDeck] = useState(INITIAL_STATE);
-  const [deckUrl, setDeckUrl] = useState(
-    `https://deckofcardsapi.com/api/deck/new/draw/?count=1`
-  );
+  const [deckUrl, setDeckUrl] = useState(``);
+
+  // Loading the Deck that we going to use
+  useEffect(function loadDeck() {
+    async function getDeck() {
+      const res = await axios.get(`${BASE_URL}new/shuffle/`);
+      deckId.current = res.data.deck_id;
+      setDeckUrl(`${BASE_URL}${deckId.current}/draw/?count=1`);
+    }
+    getDeck();
+  }, []);
 
   const gimeCard = () => {
     async function getCard() {
@@ -22,17 +31,13 @@ const CardGame = () => {
           { src: res.data.cards[0].image, id: uuidv4() },
         ]);
         deckId.current = res.data.deck_id;
-        setDeckUrl(
-          `https://deckofcardsapi.com/api/deck/${deckId.current}/draw/?count=1`
-        );
-        console.log(deckId.current);
-        console.log(res.data.remaining);
+        setDeckUrl(`${BASE_URL}${deckId.current}/draw/?count=1`);
+        // console.log(deckId.current);
+        // console.log(res.data.remaining);
       } else {
         setCurrDeck(INITIAL_STATE);
         deckId.current = "new";
-        setDeckUrl(
-          `https://deckofcardsapi.com/api/deck/${deckId.current}/draw/?count=1`
-        );
+        setDeckUrl(`${BASE_URL}${deckId.current}/draw/?count=1`);
         alert("Error: no cards remaining!");
       }
     }
@@ -42,9 +47,11 @@ const CardGame = () => {
   const getShuffleDeck = () => {
     async function getDeck() {
       const res = await axios.get(
-        `https://deckofcardsapi.com/api/deck/${deckId.current}/shuffle/?remaining=true`
+        // Was thinking that needed to keep the same Deck for some reason :(
+        // `${BASE_URL}${deckId.current}/shuffle/?remaining=true`
+        `${BASE_URL}${deckId.current}/shuffle/`
       );
-      alert(`Only ${res.data.remaining - 1} card left on the deck!`);
+      alert(`Deck Shuffle ${res.data.remaining - 1} card remaining`);
       setCurrDeck([]);
     }
     getDeck();
