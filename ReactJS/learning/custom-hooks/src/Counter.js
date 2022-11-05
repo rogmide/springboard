@@ -1,15 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import useLocalStoreState from "./hooks/useLocalStoreState";
 
 const Counter = () => {
-  const [count, setCount] = useState(() => {
-    let value;
-    value = JSON.parse(window.localStorage.getItem("count") || 0);
-    return value;
-  });
+  const [count, setCount] = useLocalStoreState("count", 0);
 
-  useEffect(() => {
-    window.localStorage.setItem("count", count);
-  }, [count]);
   const addToCount = () => {
     setCount((count) => count + 1);
   };
