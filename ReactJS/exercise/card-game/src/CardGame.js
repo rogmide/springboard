@@ -11,7 +11,7 @@ const CardGame = () => {
   const [currDeck, setCurrDeck] = useState(INITIAL_STATE);
   const [deckUrl, setDeckUrl] = useState(``);
 
-  // Loading the Deck that we going to use
+  // Loading the Deck/deckId that we going to use
   useEffect(function loadDeck() {
     async function getDeck() {
       const res = await axios.get(`${BASE_URL}new/shuffle/`);
