@@ -1,0 +1,19 @@
+.clicker-light {
+  background-color: lightblue;
+  border-radius: 10px;
+}
+.clicker-dark {
+  background-color: darkslateblue;
+  border-radius: 10px;
+}
+
+.clicker-dark button {
+  background-color: lightblue;
+  border-radius: 10px;
+}
+
+.clicker-light button {
+  background-color: darkslateblue;
+  border-radius: 10px;
+  color: white;
+}
