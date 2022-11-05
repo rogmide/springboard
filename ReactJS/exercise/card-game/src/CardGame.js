@@ -25,7 +25,7 @@ const CardGame = () => {
     async function getCard() {
       const res = await axios.get(deckUrl);
 
-      if (res.data.remaining != 0) {
+      if (res.data.remaining !== 0) {
         setCurrDeck((cDeck) => [
           ...cDeck,
           { src: res.data.cards[0].image, id: uuidv4() },

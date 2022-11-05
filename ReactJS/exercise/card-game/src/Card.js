@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React from "react";
 import "./Card.css";
 
 const Card = ({ src }) => {
