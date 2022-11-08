@@ -17,7 +17,6 @@ function PokeDex() {
     const newData = await data.getNewData(
       `https://pokeapi.co/api/v2/pokemon/${name}`
     );
-    console.log(newData);
     setPokemon(newData);
   };
   return (
