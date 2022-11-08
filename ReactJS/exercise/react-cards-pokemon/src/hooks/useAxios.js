@@ -3,11 +3,11 @@ import axios from "axios";
 
 const useAxios = () => {
   const getNewData = async (currentUrl, clearData = false) => {
+    if (clearData === true) {
+      return [];
+    }
     try {
       const res = await axios.get(currentUrl);
-      if (clearData === true) {
-        return [];
-      }
       return (oldData) => [...oldData, { ...res.data, id: uuid() }];
     } catch (err) {
       return err;
