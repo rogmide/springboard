@@ -4,11 +4,27 @@ Answer the following questions below:
 
 - What is React? When and why would you use it?
 
+	- React.js is an open-source JavaScript library that is used to build user interfaces by creating reusable UI components. Developers can create large web applications that can change data, without reloading the page. React is fast, scalable, and straightforward. 
+	- I will use ReactJS because is simple to grasp right away. The component-based approach, well-defined lifecycle, and use of just plain JavaScript make React very easy to learn, is simple to learn but with time and practice I know I can make very complex applications in the future.  
+
 - What is Babel?
+
+	- Babel is a toolchain that is mainly used to convert ECMAScript 2015+ code into a backwards compatible version of JavaScript in current and older browsers or environments.
 
 - What is JSX?
 
+	- JSX (JavaScript Syntax Extension) is a React extension to the JavaScript language syntax which provides a way to structure component rendering using syntax familiar to many developers.
+
 - How is a Component created in React?
+
+	 - Write a JavaScript function using normal JS function except that it return a JSX React Element. 
+
+	- Sample		
+	
+		  import React from "react";
+		  function myComponent(){
+  			return <div> Hello World!!! </div>;
+		  }
 
 - What are some difference between state and props?
 
