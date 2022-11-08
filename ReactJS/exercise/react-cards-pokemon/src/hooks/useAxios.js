@@ -1,21 +1,17 @@
-import { useState, useEffect } from "react";
 import { v4 as uuid } from "uuid";
 import axios from "axios";
 
-const useAxios = (url, oldData) => {
-  const [error, setError] = useState(null);
-  const [newData, setNewData] = useState(oldData);
-
-  const getNewData = async () => {
+const useAxios = (url) => {
+  const getNewData = async (currentUrl = url) => {
     try {
-      const res = await axios.get(url);
-      setNewData((oldData) => [...oldData, { ...res.data, id: uuid() }]);
+      const res = await axios.get(currentUrl);
+      return (oldData) => [...oldData, { ...res.data, id: uuid() }];
     } catch (err) {
-      setError(err);
+      return err;
     }
   };
 
-  return { error, getNewData, newData };
+  return { getNewData };
 };
 
 export default useAxios;

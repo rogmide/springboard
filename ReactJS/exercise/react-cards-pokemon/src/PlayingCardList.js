@@ -1,7 +1,4 @@
-import React, { useState } from "react";
-import { v4 as uuid } from "uuid";
-
-import axios from "axios";
+import React, { useState, useEffect } from "react";
 import PlayingCard from "./PlayingCard";
 import "./PlayingCardList.css";
 import useAxios from "./hooks/useAxios";
@@ -10,11 +7,13 @@ import useAxios from "./hooks/useAxios";
  * Can also add a new card at random. */
 function CardTable() {
   const [cards, setCards] = useState([]);
-  const data = useAxios("https://deckofcardsapi.com/api/deck/new/draw/", cards);
+  const data = useAxios(null);
 
-  const addCard = () => {
-    data.getNewData();
-    setCards(data.newData);
+  const addCard = async () => {
+    const newData = await data.getNewData(
+      `https://deckofcardsapi.com/api/deck/new/draw/`
+    );
+    setCards(newData);
   };
 
   return (
