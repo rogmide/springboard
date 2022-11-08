@@ -9,9 +9,10 @@ function CardTable() {
   const [cards, setCards] = useState([]);
   const data = useAxios(null);
 
-  const addCard = async () => {
+  const addCard = async (clearData = false) => {
     const newData = await data.getNewData(
-      `https://deckofcardsapi.com/api/deck/new/draw/`
+      `https://deckofcardsapi.com/api/deck/new/draw/`,
+      clearData
     );
     setCards(newData);
   };
@@ -21,6 +22,7 @@ function CardTable() {
       <h3>Pick a card, any card!</h3>
       <div>
         <button onClick={addCard}>Add a playing card!</button>
+        <button onClick={() => addCard(true)}>Remove Card</button>
       </div>
       <div className="PlayingCardList-card-area">
         {cards.map((cardData) => (
