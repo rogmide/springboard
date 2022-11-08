@@ -16,6 +16,9 @@ function PokeDex() {
       `https://pokeapi.co/api/v2/pokemon/${name}`,
       clearData
     );
+    // newData is a function -- (oldData) => [...oldData, { ...res.data, id: uuid() }]; --
+    // Passing back that function to setPokemon is going to run the "pokemon" as a oldData and
+    // trigger a render
     setPokemon(newData);
   };
   return (

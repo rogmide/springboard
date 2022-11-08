@@ -6,7 +6,6 @@ const useAxios = () => {
     try {
       const res = await axios.get(currentUrl);
       if (clearData === true) {
-        alert("ENTRO AQUI");
         return [];
       }
       return (oldData) => [...oldData, { ...res.data, id: uuid() }];

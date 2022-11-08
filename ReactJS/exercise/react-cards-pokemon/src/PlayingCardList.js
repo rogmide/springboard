@@ -14,6 +14,9 @@ function CardTable() {
       `https://deckofcardsapi.com/api/deck/new/draw/`,
       clearData
     );
+    // newData is a function -- (oldData) => [...oldData, { ...res.data, id: uuid() }]; --
+    // Passing back that function to setCards is going to run the "cards" as a oldData and
+    // trigger a render
     setCards(newData);
   };
 
