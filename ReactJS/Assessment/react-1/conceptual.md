@@ -28,13 +28,37 @@ Answer the following questions below:
 
 - What are some difference between state and props?
 
+
+	> Props are used to pass data from one component to another.
+The state is a local data storage that is local to the component.
+
+	- Props
+
+		- The data is passed from one component to another 
+		- Is immutable 
+		- Props are read-only
+
+	- State 
+
+		 - The Data is passed within the component only.
+		 -  It is Mutable
+		 - State is both read and write.
+
 - What does "downward data flow" refer to in React?
+
+	- Downward data flow is a simple concept that refers to the passing of data and/or functions via props from parent to child components.
 
 - What is a controlled component?
 
+	- Controlled Component is under the control of the component's state, they are predictable as are controlled by the state of the component. It accepts the current values as props and has better control over the form data and values. 
+
 - What is an uncontrolled component?
 
+	- Uncontrolled Component is under the control of the DOM so in order to access any values we need the help of refs. During his life cycle, the data may be lost and has very limited control over form values and data
+
 - What is the purpose of the `key` prop when rendering a list of components?
+
+	- `Key:` is used in React to identify which items in the list are changed, updated, or deleted. We can say that `keys` give an identity to the elements. Is recommended to use a unique `key` like an `ID` in a database, you can use the index of a list but this is not recommended instead, we can use libraries like `UUID` to generate unique `keys`.
 
 - Why is using an array index a poor choice for a `key` prop when rendering a list of components?
 
