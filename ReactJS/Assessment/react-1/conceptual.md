@@ -5,7 +5,7 @@ Answer the following questions below:
 - What is React? When and why would you use it?
 
 	- React.js is an open-source JavaScript library that is used to build user interfaces by creating reusable UI components. Developers can create large web applications that can change data, without reloading the page. React is fast, scalable, and straightforward. 
-	- I will use ReactJS because is simple to grasp right away. The component-based approach, well-defined lifecycle, and use of just plain JavaScript make React very easy to learn, is simple to learn but with time and practice I know I can make very complex applications in the future.  
+	- I will use ReactJS because is simple to grasp right away. The component-based approach, well-defined lifecycle, and use of just plain JavaScript make React very easy to learn, is simple to learn but with time and practice I know I can make very complex applications in the future using React.  
 
 - What is Babel?
 
@@ -17,7 +17,7 @@ Answer the following questions below:
 
 - How is a Component created in React?
 
-	 - Write a JavaScript function using normal JS function except that it return a JSX React Element. 
+	 - Write a JavaScript function except that it return a JSX React Element. 
 
 	- Sample		
 	
@@ -62,7 +62,7 @@ The state is a local data storage that is local to the component.
 
 - Why is using an array index a poor choice for a `key` prop when rendering a list of components?
 
-	- Index doesn't uniquely identify your elements if the array change el index will change this will results in unnecessary renders hitting performance and data mapping issues.
+	- Index doesn't uniquely identify your elements if the array change the index will change this will results in unnecessary renders hitting performance and data mapping issues.
 
 - Describe useEffect.  What use cases is it used for in React components?
 
