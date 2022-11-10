@@ -62,10 +62,26 @@ The state is a local data storage that is local to the component.
 
 - Why is using an array index a poor choice for a `key` prop when rendering a list of components?
 
+	- Index doesn't uniquely identify your elements if the array change el index will change this will results in unnecessary renders hitting performance and data mapping issues.
+
 - Describe useEffect.  What use cases is it used for in React components?
+
+	- useEffect run after every complete render, but we can choose to fire them only when certain values have changed. useEffect uses an array of dependencies that are basically variables or states that useEffect listen for changes that trigger an execution of the main body of the useEffect 
 
 - What does useRef do?  Does a change to a ref value cause a rerender of a component?
 
+	- useRef is a react hook, short for reference, which allows us to persist data across renders without triggering a component rerender, for some cases, we can use this to store a DOM element
+
 - When would you use a ref? When wouldn't you use one?
 
+	- useRef gives the ability to perform certain operations and directly manipulate the DOM, In the general rule of thumb is to avoid using refs unless you absolutely have to. There are some cases where refs are entirely considered useful like:
+	
+		- Managing focus, text selection, or media playback
+		- Triggering imperative animations
+		- Integrating with third-party DOM libraries
+ 
+
 - What is a custom hook in React? When would you want to write one?
+
+	- Custom Hook in react as standard starts with the name "use",  this type of hook offers reusability which makes the code cleaner and reduces the time to write the code also enhances the rendering speed.
+	- I will use React hooks if I have one or multiple repeated logic that will be used at multiple locations in a code, this helps in making the code more readable and cleaner 
