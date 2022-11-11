@@ -1,0 +1,11 @@
+.story-holder {
+  display: flex;
+}
+
+.story-selection {
+  margin-top: 20px;
+}
+
+.story-display {
+  margin-top: 100px;
+}

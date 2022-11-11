@@ -48,6 +48,7 @@ const StorysSelections = () => {
           </option>
         ))}
       </select>
+      <br></br>
       {words.map((w) => (
         <div key={w}>
           <label className="form-control" htmlFor={w}>

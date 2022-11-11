@@ -1,11 +1,10 @@
 import React from "react";
-import StorySelectionForm from "./storySelectionForm";
+import StoryBuilder from "./storyBuilder";
 
 const Madlib = () => {
   return (
     <div>
-      <br></br>
-      <StorySelectionForm />
+      <StoryBuilder />
     </div>
   );
 };
