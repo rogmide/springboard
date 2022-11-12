@@ -6,14 +6,14 @@ export default [
     and on that (NOUN) he had an (ANIMAL), E-I-E-I-O
     with a (NOISE) (NOISE) here
     and a (NOISE) (NOISE) there,
-    here a (NOISE), there a (Noise),
+    here a (NOISE), there a (NOISE),
     everywhere a (NOISE) (NOISE),
-    Adjective Macdonald had a (NOUN), E-I-E-I-O.`,
+    (ADJECTIVE) Macdonald had a (NOUN), E-I-E-I-O.`,
   },
   {
     title: "The Cat and The Fiddle",
     words: [
-      "Silly Word	",
+      "Silly Word",
       "Animal",
       "Musical Intrument",
       "Noun",

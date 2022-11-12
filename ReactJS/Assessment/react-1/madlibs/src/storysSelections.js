@@ -1,16 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import madlibsDB from "./data/madlibsDB";
 import "./storysSelections.css";
 
 const StorysSelections = ({ renderStory }) => {
   const [words, setWords] = useState([]);
-  const [title, setTitle] = useState("");
-  const [text, setText] = useState("");
   const [formData, setFormData] = useState("");
+  const title = useRef("");
+  const text = useRef("");
 
   const handleChangeSelection = (event) => {
     if (event.target.value !== "") {
-      setWords(event.target.value.split(","));
+      const wordsArray = event.target.value.split("/")[0].split(",");
+      title.current = event.target.value.split("/")[1];
+      text.current = event.target.value.split("/")[2];
+      setWords(wordsArray);
     } else {
       setWords([]);
     }
@@ -26,6 +29,7 @@ const StorysSelections = ({ renderStory }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    renderStory(title.current, text.current, formData);
   };
 
   return (
@@ -44,7 +48,7 @@ const StorysSelections = ({ renderStory }) => {
           <option
             className="form-control form-title"
             key={s.title}
-            value={s.words}
+            value={`${s.words}/${s.title}/${s.text}`}
           >
             {s.title}
           </option>
