@@ -10,18 +10,15 @@ const StoryBuilder = () => {
   };
   const [story, setStory] = useState(INITIAL_STATE);
 
-  const renderStory = (title, text, wordsToAdd) => {
-    // console.log(title, text, wordsToAdd);
-
+  const renderStory = (
+    title = INITIAL_STATE.title,
+    text = INITIAL_STATE.text,
+    wordsToAdd
+  ) => {
     for (const w in wordsToAdd) {
-      // console.log(`${w.toUpperCase()}: ${wordsToAdd[w]}`);
       text = text.replaceAll(`(${w.toUpperCase()})`, wordsToAdd[w]);
     }
-    console.log(text);
-
-    //     let text = "Visit Microsoft!";
-    // let result = text.replace("Microsoft", "W3Schools");
-    // setStory({ title, text });
+    setStory({ title, text });
   };
 
   return (

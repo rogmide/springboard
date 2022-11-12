@@ -15,6 +15,7 @@ const StorysSelections = ({ renderStory }) => {
       text.current = event.target.value.split("/")[2];
       setWords(wordsArray);
     } else {
+      renderStory();
       setWords([]);
     }
   };
@@ -30,6 +31,7 @@ const StorysSelections = ({ renderStory }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     renderStory(title.current, text.current, formData);
+    setWords([]);
   };
 
   return (
@@ -59,6 +61,7 @@ const StorysSelections = ({ renderStory }) => {
         <div key={w}>
           <label htmlFor={w}>{w}: </label>
           <input
+            required
             onChange={handleChangeField}
             className="form-control input-group-text"
             id={w}
