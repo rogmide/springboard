@@ -25,6 +25,20 @@ export default [
     The cow jumped over the (NOUN);
     The (ADJECTIVE) dog laughed
     To see such sport,
-    And the (NOUN) ran away with the spoon.`,
+    And the (NOUN 2) ran away with the spoon.`,
+  },
+  {
+    title: "There Was an Old Woman ",
+    words: [
+      "Verb Ending in - ED",
+      "Noun-Plural",
+      "Noun",
+      "Adjective",
+      "Noun 2",
+    ],
+    text: `There was an (ADJECTIVE) woman who lived in an (NOUN).
+    She had so many (NOUN-PLURAL) she didn't know what to do.
+    She gave them some broth without any (NOUN 2).
+    She (VERB ENDING IN - ED) them all soundly and put them to bed.`,
   },
 ];
