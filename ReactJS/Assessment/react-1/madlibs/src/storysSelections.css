@@ -6,3 +6,9 @@
 .btn-getmad {
   margin-top: 10px;
 }
+
+.note {
+  font-size: 12px;
+  text-align: center;
+  color: green;
+}

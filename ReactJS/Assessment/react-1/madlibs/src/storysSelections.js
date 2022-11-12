@@ -3,11 +3,19 @@ import madlibsDB from "./data/madlibsDB";
 import "./storysSelections.css";
 
 const StorysSelections = ({ renderStory }) => {
+  // StorysSelections is a component to handle the form
+  // Variables
+  // words: Store the word that are going to be use on the story
+  // formData: Store the words enter by te user to create de story
+  // title: Is the title of the Story that is chosen
+  // text: Is the text of the Story that is chosen
   const [words, setWords] = useState([]);
   const [formData, setFormData] = useState("");
   const title = useRef("");
   const text = useRef("");
 
+  // Handle the selection, setWords with the words that are going to be use on the story
+  // And set title.current and text.current with the title/text of the story
   const handleChangeSelection = (event) => {
     if (event.target.value !== "") {
       const wordsArray = event.target.value.split("/")[0].split(",");
@@ -20,6 +28,7 @@ const StorysSelections = ({ renderStory }) => {
     }
   };
 
+  // Normal handlechange for the fields on the form
   const handleChangeField = (event) => {
     const { name, value } = event.target;
     setFormData((data) => ({
@@ -28,6 +37,8 @@ const StorysSelections = ({ renderStory }) => {
     }));
   };
 
+  // Handle Submit send back to the parent component using the parent
+  // Function the title, text, and words that we going to use to build the story
   const handleSubmit = (event) => {
     event.preventDefault();
     renderStory(title.current, text.current, formData);
@@ -56,6 +67,7 @@ const StorysSelections = ({ renderStory }) => {
           </option>
         ))}
       </select>
+      <h5 className="note"> - Select First Element to Reset - </h5>
       <br></br>
       {words.map((w) => (
         <div key={w}>
