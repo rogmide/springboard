@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import madlibsDB from "./data/madlibsDB";
 import "./storysSelections.css";
 
-const StorysSelections = () => {
+const StorysSelections = ({ renderStory }) => {
   const [words, setWords] = useState([]);
+  const [title, setTitle] = useState("");
+  const [text, setText] = useState("");
   const [formData, setFormData] = useState("");
-
-  console.log(formData);
 
   const handleChangeSelection = (event) => {
     if (event.target.value !== "") {
@@ -24,13 +24,15 @@ const StorysSelections = () => {
     }));
   };
 
-  const handleSubmit = (event) => {};
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
 
   return (
     <form onSubmit={handleSubmit} className="form-group form-story">
       <label htmlFor="story">Select Story: </label>
       <select
-        className="form-control"
+        className="form-control input-group-text"
         onChange={handleChangeSelection}
         name="story"
         id="story"
@@ -51,18 +53,19 @@ const StorysSelections = () => {
       <br></br>
       {words.map((w) => (
         <div key={w}>
-          <label className="form-control" htmlFor={w}>
-            {w}:{" "}
-          </label>
+          <label htmlFor={w}>{w}: </label>
           <input
             onChange={handleChangeField}
-            className="form-control"
+            className="form-control input-group-text"
             id={w}
             type="text"
             name={w}
             placeholder={w}
             value={formData.word}
           ></input>
+          {words[words.length - 1] === w && (
+            <button className="btn-getmad btn btn-secondary">Get Mad!!!</button>
+          )}
         </div>
       ))}
     </form>
