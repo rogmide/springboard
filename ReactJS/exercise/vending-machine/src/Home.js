@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <div>
       <div className="link-holders">
-        <p>Vending Machine Menu</p>
+        <p>VENDING MACHINE MENU</p>
         <Link exact="true" to="/soda">
           - Soda -
         </Link>
