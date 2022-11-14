@@ -13,9 +13,9 @@ function App() {
       <BrowserRouter>
         <NavBar />
         {/* Sample of Links */}
-        <Link to="/">Home</Link>
+        {/* <Link to="/">Home</Link>
         <Link to="/eat">Eat</Link>
-        <Link to="/drink">Drink</Link>
+        <Link to="/drink">Drink</Link> */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="eat" element={<Eat />} />

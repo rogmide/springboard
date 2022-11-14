@@ -5,13 +5,13 @@ import "./NavBar.css";
 function NavBar() {
   return (
     <nav className="NavBar">
-      <NavLink exact to="/">
+      <NavLink exact="true" to="/">
         Home
       </NavLink>
-      <NavLink exact to="/eat">
+      <NavLink exact="true" to="/eat">
         Eat
       </NavLink>
-      <NavLink exact to="/drink">
+      <NavLink exact="true" to="/drink">
         Drink
       </NavLink>
     </nav>
