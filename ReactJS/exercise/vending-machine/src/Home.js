@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Home.css"
+import "./Home.css";
 
 const Home = () => {
   return (
     <div>
       <div className="link-holders">
+        <p>Vending Machine Menu</p>
         <Link exact="true" to="/soda">
           - Soda -
         </Link>

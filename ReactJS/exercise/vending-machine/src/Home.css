@@ -4,7 +4,7 @@
   position: absolute;
   height: 100%;
   justify-content: center;
-  font-size: 45px;
+  font-size: 25px;
   text-decoration: none;
 }
 
@@ -23,4 +23,13 @@
   color: #fff;
   box-shadow: inset 200px 0 0 0 #54b3d6;
   text-decoration: none;
+}
+
+.link-holders p {
+  color: white;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.9) 0px 3px 8px;
+  border-radius: 10px;
+  font-size: 18px;
+  margin-left: 10px;
 }
