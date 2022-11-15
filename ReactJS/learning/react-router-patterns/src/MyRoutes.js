@@ -14,8 +14,9 @@ function MyRoutes() {
       <Route exact path="/blog/:slug" element={<Post />}></Route>
       <Route exact path="/blog" element={<BlogHome />}></Route>
       <Route exact path="/" element={<Home />}></Route>
-      {/* <Navigate exact="true" to="/" /> */}
-      <Route path="*" element={<h1>NOT FOUND!!!</h1>}></Route>
+      {/* <Route path="*" element={<h1>NOT FOUND!!!</h1>}></Route> */}
+      <Route path="*" element={<Navigate exact="true" to="/about" />}></Route>
+      {/*  */}
     </Routes>
   );
 }

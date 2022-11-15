@@ -10,14 +10,15 @@ function Contact() {
   }
 
   function storeEmail() {
-    console.log("jk, no email storage");
+    // console.log(history)
+    alert("jk, no email storage");
   }
 
   function handleSubmit(evt) {
     evt.preventDefault();
     storeEmail(email);
     // imperatively redirect to homepage
-    history.push("/");
+    history("/about");
   }
 
   return (
