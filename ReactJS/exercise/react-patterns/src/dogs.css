@@ -1,0 +1,15 @@
+.dogs-holder {
+  display: flex;
+  margin: 20px 20px 20px 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.Dog {
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border: 2px solid #2f8587;
+  padding: 10px;
+  border-radius: 10px;
+}

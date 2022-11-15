@@ -1,12 +1,14 @@
 import "./App.css";
 import { BrowserRouter } from "react-router-dom";
 import Nav from "./Nav";
+import Dogs from "./Dogs";
 
 function App({ dogs }) {
   return (
     <div className="App">
       <BrowserRouter>
         <Nav dogs={dogs} />
+        <Dogs dogs={dogs} />
       </BrowserRouter>
     </div>
   );
