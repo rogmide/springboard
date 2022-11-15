@@ -1,7 +1,9 @@
 import React from "react";
-import Nav from "./Nav";
+// import Nav from "./Nav";
 import { Route, BrowserRouter, Routes } from "react-router-dom";
-import Food from "./Food";
+// import Food from "./Food";
+import MyRoutes from "./MyRoutes";
+import Nav2 from "./Nav2";
 
 // <Routes>
 //   <Route path="/" element={<Home />} />
@@ -14,10 +16,12 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Nav />
-        <Routes>
+        {/* <Nav /> */}
+        {/* <Routes>
           <Route exact path="/food/:name" element={<Food />}></Route>
-        </Routes>
+        </Routes> */}
+        <Nav2 />
+        <MyRoutes />
       </BrowserRouter>
     </div>
   );

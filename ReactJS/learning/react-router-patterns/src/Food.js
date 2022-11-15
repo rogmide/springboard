@@ -4,6 +4,7 @@ import axios from "axios";
 
 const GIPHY_URL = "http://api.giphy.com/v1";
 function Food() {
+  // useParams bring a obj any of the data of the Url
   const { name } = useParams();
   const [src, setSrc] = useState(null);
 
