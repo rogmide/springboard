@@ -19,7 +19,7 @@ function Nav({ foods }) {
 }
 
 Nav.defaultProps = {
-  foods: ["burrito", "salad", "pizza", "pasta"],
+  foods: ["tomato", "salad", "sushi", "bean"],
 };
 
 export default Nav;
