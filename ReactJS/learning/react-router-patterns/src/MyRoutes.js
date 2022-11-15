@@ -11,10 +11,11 @@ function MyRoutes() {
     <Routes>
       <Route exact path="/about" element={<About />}></Route>
       <Route exact path="/contact" element={<Contact />}></Route>
-      <Route exact path="//blog/:slug" element={<Post />}></Route>
+      <Route exact path="/blog/:slug" element={<Post />}></Route>
       <Route exact path="/blog" element={<BlogHome />}></Route>
       <Route exact path="/" element={<Home />}></Route>
-      {/* <Navigate to="/" /> */}
+      {/* <Navigate exact="true" to="/" /> */}
+      <Route path="*" element={<h1>NOT FOUND!!!</h1>}></Route>
     </Routes>
   );
 }

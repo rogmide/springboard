@@ -22,6 +22,7 @@ function App() {
         </Routes> */}
         <Nav2 />
         <MyRoutes />
+        
       </BrowserRouter>
     </div>
   );

@@ -5,23 +5,32 @@ function Nav2() {
   return (
     <ul>
       <li>
-        <Link to="/">Home</Link>
+        <Link exact to="/">
+          Home
+        </Link>
       </li>
       <li>
-        <Link to="/about">About Us</Link>
+        <Link exact to="/about">
+          About Us
+        </Link>
       </li>
       <li>
-        <Link to="/contact">Contact</Link>
+        <Link exact to="/contact">
+          Contact
+        </Link>
       </li>
       <li>
-        <Link to="/blog">Blog</Link>
+        <Link exact to="/blog">
+          Blog
+        </Link>
       </li>
       <li>
-        <Link to="/blargh">Broken Link</Link>
+        <Link exact to="/blargh">
+          Broken Link
+        </Link>
       </li>
     </ul>
   );
 }
-// end
 
 export default Nav2;
