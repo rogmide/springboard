@@ -6,7 +6,7 @@ function Nav({ dogs }) {
   return (
     <ul className="NavBar">
       <Link key="home123123" exact="true" to="/">
-        Home
+        Dogs
       </Link>
       {dogs.map((d) => (
         <Link key={d.name} exact="true" to={`/${d.name.toLowerCase()}`}>
