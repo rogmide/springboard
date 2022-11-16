@@ -7,7 +7,7 @@ const DogDetails = ({ dog }) => {
     <div className="dogs-holder">
       <div className="Dog">
         <h3>{dog.name}</h3>
-        {/* <h3>{d.age}</h3> */}
+        <h3>Age: {dog.age}</h3>
         <img src={dog.src} alt={`Dog: ${dog.name}`} />
         {dog.facts.map((f) => (
           <p key={uuidv4()}>{f}</p>

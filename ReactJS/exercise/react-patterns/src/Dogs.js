@@ -11,12 +11,8 @@ const Dogs = ({ dogs }) => {
           <div key={uuidv4()} className="Dog">
             <Link key={d.name} exact="true" to={`/${d.name.toLowerCase()}`}>
               <h3>{d.name}</h3>
-              {/* <h3>{d.age}</h3> */}
               <img src={d.src} alt={`Dog: ${d.name}`} />
             </Link>
-            {/* {d.facts.map((f) => (
-              <p>{f}</p>
-            ))} */}
           </div>
         );
       })}
