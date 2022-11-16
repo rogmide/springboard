@@ -2,6 +2,7 @@ import "./App.css";
 import { BrowserRouter } from "react-router-dom";
 import Nav from "./Nav";
 import Dogs from "./Dogs";
+import DogsRoutes from "./DogsRoutes";
 
 function App({ dogs }) {
   return (
@@ -9,6 +10,7 @@ function App({ dogs }) {
       <BrowserRouter>
         <Nav dogs={dogs} />
         <Dogs dogs={dogs} />
+        <DogsRoutes dogs={dogs} />
       </BrowserRouter>
     </div>
   );

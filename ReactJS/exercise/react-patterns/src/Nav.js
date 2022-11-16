@@ -5,11 +5,11 @@ import "./Nav.css";
 function Nav({ dogs }) {
   return (
     <ul className="NavBar">
-      <Link exact="true" to="/">
+      <Link key="home123123" exact="true" to="/">
         Home
       </Link>
       {dogs.map((d) => (
-        <Link key={d.name} exact="true" to={`/${d.name}`}>
+        <Link key={d.name} exact="true" to={`/${d.name.toLowerCase()}`}>
           {d.name}
         </Link>
       ))}
