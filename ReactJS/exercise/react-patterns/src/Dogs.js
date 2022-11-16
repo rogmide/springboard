@@ -6,7 +6,7 @@ const Dogs = ({ dogs }) => {
     <div className="dogs-holder">
       {dogs.map((d) => {
         return (
-          <div className="Dog">
+          <div key={d.name} className="Dog">
             <h3>{d.name}</h3>
             {/* <h3>{d.age}</h3> */}
             <img src={d.src} alt={`Dog: ${d.name}`} />

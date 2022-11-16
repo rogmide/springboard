@@ -9,7 +9,7 @@ function App({ dogs }) {
     <div className="App">
       <BrowserRouter>
         <Nav dogs={dogs} />
-        <Dogs dogs={dogs} />
+        {/* <Dogs dogs={dogs} /> */}
         <DogsRoutes dogs={dogs} />
       </BrowserRouter>
     </div>
