@@ -6,8 +6,6 @@ import ColorsRoutes from "./ColorsRoutes";
 function App() {
   return (
     <div className="App">
-      <h1>Welcome to the color factory</h1>
-      <button>Add a color</button>
       <div>
         <BrowserRouter>
           <ColorsRoutes />

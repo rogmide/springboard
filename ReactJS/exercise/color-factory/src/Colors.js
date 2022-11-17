@@ -6,8 +6,22 @@ import ColorDB from "./ColorDB";
 const Colors = () => {
   const [colors, setColors] = useState(ColorDB);
 
+  const addColor = (newColor) => {
+    setColors((c) => [...c, newColor]);
+  };
+
+  //   const addItem = (newItem) => {
+  //     setItem((item) => [...item, { ...newItem, id: uuidv4() }]);
+  //   };
+
   return (
     <div>
+      <div
+        style={{ backgroundColor: "#262626", color: "White", padding: "20px" }}
+      >
+        <h1>Welcome to the color factory</h1>
+        <button onClick={addColor}>Add a color</button>
+      </div>
       {colors.map((c) => (
         <Link
           key={uuidv4()}

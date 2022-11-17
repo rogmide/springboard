@@ -2,7 +2,6 @@ import React from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 import Colors from "./Colors";
 import ColorDetail from "./ColorDetail";
-import ColorDB from "./ColorDB";
 
 function ColorsRoutes() {
   return (
@@ -15,10 +14,6 @@ function ColorsRoutes() {
         element={<ColorDetail />}
       ></Route>
       <Route path="*" element={<Navigate exact="true" to="/colors" />}></Route>
-      {/* <Route
-        path="/colors/*"
-        element={<Navigate exact="true" to="/colors" />}
-      ></Route> */}
     </Routes>
   );
 }
