@@ -10,7 +10,7 @@ function Nav({ dogs }) {
         Dogs
       </Link>
       {dogs.map((d) => (
-        <Link key={d.name} exact="true" to={`/${d.name.toLowerCase()}`}>
+        <Link key={uuidv4()} exact="true" to={`/${d.name.toLowerCase()}`}>
           {d.name}
         </Link>
       ))}
