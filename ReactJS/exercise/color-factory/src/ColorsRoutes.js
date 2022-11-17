@@ -8,25 +8,17 @@ function ColorsRoutes() {
   return (
     <Routes>
       <Route exact path="/colors" element={<Colors />}></Route>
-      {/* <Route
+      <Route
         key="1234234"
         exact="true"
         path="/colors/:color"
         element={<ColorDetail />}
-      ></Route> */}
-      {ColorDB.map((d) => (
-        <Route
-          key={d.colorName}
-          exact="true"
-          path={`/colors/:${d.colorName.toLowerCase()}`}
-          element={<ColorDetail />}
-        ></Route>
-      ))}
+      ></Route>
       <Route path="*" element={<Navigate exact="true" to="/colors" />}></Route>
-      <Route
+      {/* <Route
         path="/colors/*"
         element={<Navigate exact="true" to="/colors" />}
-      ></Route>
+      ></Route> */}
     </Routes>
   );
 }
