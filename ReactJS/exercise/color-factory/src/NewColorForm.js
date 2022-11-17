@@ -1,6 +1,10 @@
 import React, { useState } from "react";
+import { useLocation, useParams } from "react-router-dom";
+import "./NewColorForm.css";
 
-const NewItemForm = ({ addColor }) => {
+const NewColorForm = () => {
+  const location = useLocation();
+  console.log(location);
   const INITIAL_STATE = {
     colorName: "",
     color: "",
@@ -18,37 +22,36 @@ const NewItemForm = ({ addColor }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // addItem({ ...formData });
+    // alert("HERE");
+    // addColor({ ...formData });
     setFormData(INITIAL_STATE);
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Product: </label>
+    <div className="div-form">
+      <form className="form-holder" onSubmit={handleSubmit}>
+        <label htmlFor="name">Color name: </label>
         <input
-          id="name"
+          id="colorName"
           type="text"
-          name="name"
-          placeholder="Item Name"
-          value={formData.name}
+          name="colorName"
+          placeholder="Color name"
+          value={formData.colorName}
           onChange={handleChange}
         ></input>
-        <label htmlFor="qty">Quantity: {formData.qty}</label>
+        <label htmlFor="qty">Color value: </label>
         <input
           onChange={handleChange}
-          value={formData.qty}
-          id="qty"
-          name="qty"
-          type="range"
-          min="1"
-          max="10"
+          value={formData.color}
+          id="color"
+          name="color"
+          type="color"
         ></input>
-        <button>Add Items</button>
+        <br></br>
+        <button>Add color</button>
       </form>
     </div>
   );
 };
 
-export default NewItemForm;
+export default NewColorForm;
