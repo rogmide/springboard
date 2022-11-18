@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import "./NewColorForm.css";
-
-import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const NewColorForm = () => {
-  const location = useLocation();
-  console.log(location);
   const INITIAL_STATE = {
     colorName: "",
     color: "",
@@ -21,15 +18,9 @@ const NewColorForm = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert(formData.colorName + formData.color);
-    setFormData(INITIAL_STATE);
-  };
-
   return (
     <div className="div-form">
-      <form className="form-holder" onSubmit={handleSubmit}>
+      <form className="form-holder">
         <label htmlFor="name">Color name: </label>
         <input
           id="colorName"
@@ -48,7 +39,12 @@ const NewColorForm = () => {
           type="color"
         ></input>
         <br></br>
-        <button>Add color</button>
+        <Link
+          to="/colors"
+          state={{ colorName: formData.colorName, color: formData.color }}
+        >
+          Add color
+        </Link>
       </form>
     </div>
   );

@@ -1,19 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import ColorDB from "./ColorDB";
 
 const Colors = () => {
   const [colors, setColors] = useState(ColorDB);
+  const location = useLocation();
 
-  const addColor = (newColor) => {
-    alert();
-    setColors((c) => [...c, newColor]);
+  useEffect(() => {
+    if (!location.state) return;
+    addColor();
+  }, [location.state]);
+
+  const addColor = () => {
+    ColorDB.push({
+      colorName: location.state.colorName,
+      color: location.state.color,
+    });
+    setColors(ColorDB);
   };
-
-  //   const addItem = (newItem) => {
-  //     setItem((item) => [...item, { ...newItem, id: uuidv4() }]);
-  //   };
 
   return (
     <div>
@@ -22,9 +27,7 @@ const Colors = () => {
       >
         <h1>Welcome to the color factory</h1>
         {/* Working in trying to pass the function down to the FORM */}
-        <Link to="/colors/new" state={{ a: "addColor" }}>
-          Add Color
-        </Link>
+        <Link to="/colors/new">Add Color</Link>
       </div>
       {colors.map((c) => (
         <Link
