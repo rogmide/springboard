@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
 import "./NewColorForm.css";
+
+import { useLocation } from "react-router-dom";
 
 const NewColorForm = () => {
   const location = useLocation();
@@ -22,8 +23,7 @@ const NewColorForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // alert("HERE");
-    // addColor({ ...formData });
+    alert(formData.colorName + formData.color);
     setFormData(INITIAL_STATE);
   };
 
