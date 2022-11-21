@@ -47,6 +47,7 @@ const NewColorForm = () => {
         ></input>
         <br></br>
         <Link
+          className="button"
           to="/colors"
           state={{ colorName: formData.colorName, color: formData.color }}
         >

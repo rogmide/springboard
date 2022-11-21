@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Link, useLocation } from "react-router-dom";
 import ColorDB from "./ColorDB";
+import "./NewColorForm.css";
 
 const Colors = () => {
   const [colors, setColors] = useState(ColorDB);
@@ -32,7 +33,9 @@ const Colors = () => {
       >
         <h1>Welcome to the color factory</h1>
         {/* Working in trying to pass the function down to the FORM */}
-        <Link to="/colors/new">Add Color</Link>
+        <Link className="button" to="/colors/new">
+          Add Color
+        </Link>
       </div>
       {colors.map((c) => (
         <Link
