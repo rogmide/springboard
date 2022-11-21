@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Link, useLocation } from "react-router-dom";
 import ColorDB from "./ColorDB";
@@ -8,16 +8,21 @@ const Colors = () => {
   const location = useLocation();
 
   useEffect(() => {
-    if (!location.state) return;
+    if (location.state === null) return;
     addColor();
-  }, [location.state]);
+  }, [location]);
 
   const addColor = () => {
+    setColors((c) => [
+      ...c,
+      { colorName: location.state.colorName, color: location.state.color },
+    ]);
     ColorDB.push({
       colorName: location.state.colorName,
       color: location.state.color,
     });
-    setColors(ColorDB);
+    location.state.colorName = "";
+    location.state.color = "";
   };
 
   return (
@@ -34,6 +39,7 @@ const Colors = () => {
           key={uuidv4()}
           exact="true"
           to={`/colors/${c.colorName.toLowerCase()}`}
+          state={{ bColor: c.color }}
         >
           <h3>{c.colorName}</h3>
         </Link>

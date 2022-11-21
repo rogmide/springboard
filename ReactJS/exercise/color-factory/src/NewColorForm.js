@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const NewColorForm = () => {
   const INITIAL_STATE = {
     colorName: "",
-    color: "",
+    color: "#986767",
   };
 
   const [formData, setFormData] = useState(INITIAL_STATE);
@@ -18,9 +18,16 @@ const NewColorForm = () => {
     }));
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // console.log(location.state);
+    // addColor();
+  };
+
   return (
     <div className="div-form">
-      <form className="form-holder">
+      <form onSubmit={handleSubmit} className="form-holder">
         <label htmlFor="name">Color name: </label>
         <input
           id="colorName"
