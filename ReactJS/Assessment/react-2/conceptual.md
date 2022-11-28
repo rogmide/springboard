@@ -4,7 +4,24 @@ Answer the following questions below:
 
 - What is the purpose of the React Router?
 
+  It is a standard library for routing in react. Enable navigation among views of various components, allowing the browser to change the URL and keeps the UI in sync with the URL.
+ 
+     
+  `React v6 had some changes` from the previous version, here are the main component:
+   		
+	- `BrowserRouter`
+   	- `Routes`: This is a change in v6 previous versions used `<Switch></<Switch>`
+		
+		> Relative s and s
+
+		> Improve: Routes are chosen based on the best match instead of being traversed in order.
+
+	- `Route` 
+	- `Link`
+
 - What is a single page application?
+
+	- A single-page application is a website that dynamically re-writes a current web page with new data from the web server, instead of the default method of a web browser loading entire new pages. 
 
 - What are some differences between client side and server side routing?
 
