@@ -5,20 +5,17 @@ import "./App.css";
 // import CounterReadWrite from "./CounterReadWrite";
 import ThemeContext from "./ThemeContext";
 import Navbar from "./Navbar";
+import ThemeProvider from "./ThemeProvider";
 
 function App() {
   const [ThemeColor, setThemeColor] = useState("green");
 
-  const toggleTheme = () => {
-    setThemeColor((color) => (color === "green" ? "red" : "green"));
-  };
   return (
     <div className="App">
-      <ThemeContext.Provider value={ThemeColor}>
+      <ThemeProvider>
         <Navbar />
-        <button onClick={toggleTheme}>Toggle Theme</button>
         <Child />
-      </ThemeContext.Provider>
+      </ThemeProvider>
     </div>
   );
 }

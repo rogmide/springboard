@@ -5,7 +5,7 @@ import ThemeContext from "./ThemeContext";
 
 function Child() {
   const [count, setCount] = useState(0);
-  const color = useContext(ThemeContext);
+  const { color, toggleTheme } = useContext(ThemeContext);
 
   const addCount = () => {
     setCount((count) => count + 1);

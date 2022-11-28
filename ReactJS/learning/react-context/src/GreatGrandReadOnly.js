@@ -4,7 +4,7 @@ import ThemeContext from "./ThemeContext";
 
 function GreatGrandReadOnly() {
   const { count, addCount } = useContext(CountContext);
-  const color = useContext(ThemeContext);
+  const { color, toggleTheme } = useContext(ThemeContext);
 
   return (
     <div style={{ border: "4px solid yellow", margin: "1em" }}>
