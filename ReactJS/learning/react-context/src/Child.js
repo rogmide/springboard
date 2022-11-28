@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Grandchild from "./Grandchild";
+import CountContext from "./CountContext";
 
 function Child() {
   const [count, setCount] = useState(0);
@@ -8,10 +9,14 @@ function Child() {
     setCount((count) => count + 1);
   };
   return (
-    <div style={{ border: "4px solid blue", margin: "1em", width: "500" }}>
-      <p>I'm the child!</p>
-      <Grandchild count={count} addCount={addCount}/>
-    </div>
+    // value can hold a Obj or a Array :)
+    <CountContext.Provider value={count}>
+      <div style={{ border: "4px solid blue", margin: "1em", width: "500" }}>
+        <p>I'm the child!</p>
+        <Grandchild />
+        <button onClick={addCount}>Add Count</button>
+      </div>
+    </CountContext.Provider>
   );
 }
 
