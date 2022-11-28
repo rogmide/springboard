@@ -10,7 +10,7 @@ function Child() {
   };
   return (
     // value can hold a Obj or a Array :)
-    <CountContext.Provider value={count}>
+    <CountContext.Provider value={{ count, addCount }}>
       <div style={{ border: "4px solid blue", margin: "1em", width: "500" }}>
         <p>I'm the child!</p>
         <Grandchild />
