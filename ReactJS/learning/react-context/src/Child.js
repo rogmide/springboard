@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Grandchild from "./Grandchild";
 import CountContext from "./CountContext";
+import ThemeContext from "./ThemeContext";
 
 function Child() {
   const [count, setCount] = useState(0);
+  const color = useContext(ThemeContext);
 
   const addCount = () => {
     setCount((count) => count + 1);
@@ -14,7 +16,9 @@ function Child() {
       <div style={{ border: "4px solid blue", margin: "1em", width: "500" }}>
         <p>I'm the child!</p>
         <Grandchild />
-        <button onClick={addCount}>Add Count</button>
+        <button style={{ color }} onClick={addCount}>
+          Add Count
+        </button>
       </div>
     </CountContext.Provider>
   );
