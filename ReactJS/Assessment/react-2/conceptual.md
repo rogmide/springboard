@@ -73,7 +73,43 @@ Answer the following questions below:
 
 - What is context in React? When would you use it?
 
-- Describe some differences between class-based components and function
-  components in React.
+	- React context allows us to pass down and use (consume) data in whatever component we need in our React app without using props. Context is great when you are passing data that can be used in any component in your application.
+
+	- Sample where to use:
+
+		- Theme data (like dark or light mode)
+		- User data (the currently authenticated user)
+		- Location-specific data (like user language or locale)
+
+- Describe some differences between class-based components and function components in React.
+
+	- Functional Components 
+
+		- A functional component is just a plain JavaScript pure function that accepts props as an argument and returns a React element(JSX).
+		- There is no render method used in functional components.
+		- Functional component run from top to bottom and once the function is returned it cant be kept alive.
+		- Hooks can be easily used in functional components to make them Stateful example: const [name,SetName] = useState(‘ ‘)
+
+	- Class Components   
+
+		- A class component requires you to extend from React. Component and create a render function which returns a React element.
+
+		- Also known as Stateful components because they implement logic and state.
+
+		- It requires different syntax inside a class component to implement hooks.
+
+			example: 
+
+    	      constructor(props) {
+   			  	super(props);
+			  	this.state = {name: ‘ ‘}
+              }
+		- React lifecycle methods can be used inside class components (for example, componentDidMount).
 
 - What are some of the problems that hooks were designed to solve?
+
+	- Hooks solves the problem likes:
+
+		- Reusing logic: With Hooks, you can extract stateful logic from a component and reuse it without changing your component hierarchy.
+		- Giant components: Hooks let you split one component into smaller functions based on what pieces are logically related, rather than forcing a split based on lifecycle methods.
+		- Confusing classes: Hooks let you use React’s features without classes.
