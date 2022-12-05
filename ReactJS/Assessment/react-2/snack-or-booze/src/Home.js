@@ -1,7 +1,9 @@
 import React from "react";
 import { Card, CardBody, CardTitle } from "reactstrap";
+import FoodMenu from "./FoodMenu";
+import DrinkMenu from "./DrinkMenu";
 
-function Home() {
+function Home({ snacks, drinks }) {
   return (
     <section className="col-md-8">
       <Card>
@@ -13,6 +15,10 @@ function Home() {
           </CardTitle>
         </CardBody>
       </Card>
+      <div style={{ display: "Flex", justifyContent: "center" }}>
+        <FoodMenu snacks={snacks} />
+        <DrinkMenu drinks={drinks} />
+      </div>
     </section>
   );
 }

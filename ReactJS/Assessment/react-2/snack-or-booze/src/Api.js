@@ -1,6 +1,8 @@
 import axios from "axios";
+// axios.defaults.headers.get["Content-Type"] = "application/json";
+// axios.defaults.headers.get["Access-Control-Allow-Origin"] = "*";
 
-const BASE_API_URL = "http://localhost:5000";
+const BASE_API_URL = "http://localhost:3001";
 
 /* 
   json-server will give you CRUD endpoints on snacks and drinks.
@@ -10,12 +12,23 @@ const BASE_API_URL = "http://localhost:5000";
 */
 
 class SnackOrBoozeApi {
-
   static async getSnacks() {
-    const result = await axios.get(`${BASE_API_URL}/snacks`);
-    return result.data;
+    try {
+      const result = await axios.get(`${BASE_API_URL}/snacks`);
+      return result.data;
+    } catch (error) {
+      console.log("Got Problem Fixing Access-Control-Allow-Origin");
+    }
   }
 
+  static async getDrinks() {
+    try {
+      const result = await axios.get(`${BASE_API_URL}/drinks`);
+      return result.data;
+    } catch (error) {
+      console.log("Got Problem Fixing Access-Control-Allow-Origin");
+    }
+  }
 }
 
 export default SnackOrBoozeApi;
