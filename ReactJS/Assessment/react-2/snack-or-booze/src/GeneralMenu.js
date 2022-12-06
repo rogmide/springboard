@@ -16,7 +16,7 @@ function GeneralMenu({ items, foodType }) {
       <Card>
         <CardBody>
           <CardTitle className="font-weight-bold text-center">
-            Drink Menu
+            <span style={{ textTransform: "capitalize" }}>{foodType}</span> Menu
           </CardTitle>
           <CardText>
             Some quick example text to build on the card title and make up the

@@ -11,6 +11,7 @@ import { Route, Switch } from "react-router-dom";
 // import Drink from "./DrinkMenu";
 import GeneralMenuItems from "./GeneralMenuItems";
 import GeneralMenu from "./GeneralMenu";
+import Error404 from "./404";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -50,16 +51,16 @@ function App() {
               <GeneralMenu items={snacks} title="Snacks" foodType="snacks" />
             </Route>
             <Route path="/snacks/:id">
-              <GeneralMenuItems items={snacks} cantFind="/snacks" />
+              <GeneralMenuItems items={snacks} cantFind="/404_Cant_Find_That" />
             </Route>
             <Route exact path="/drinks">
               <GeneralMenu items={drinks} title="Drinks" foodType="drinks" />
             </Route>
             <Route path="/drinks/:id">
-              <GeneralMenuItems items={drinks} cantFind="/drinks" />
+              <GeneralMenuItems items={drinks} cantFind="/404_Cant_Find_That" />
             </Route>
-            <Route>
-              <p>Hmmm. I can't seem to find what you want.</p>
+            <Route path="*">
+              <Error404 />
             </Route>
           </Switch>
         </main>
