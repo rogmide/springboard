@@ -1,0 +1,12 @@
+form {
+  color: black;
+  display: flex;
+  flex-direction: column;
+}
+h1 {
+  color: black;
+}
+
+input {
+  margin-bottom: 10px;
+}

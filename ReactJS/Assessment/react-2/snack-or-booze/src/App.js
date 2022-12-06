@@ -12,6 +12,7 @@ import { Route, Switch } from "react-router-dom";
 import GeneralMenuItems from "./GeneralMenuItems";
 import GeneralMenu from "./GeneralMenu";
 import Error404 from "./404";
+import NewFoodDrinkForm from "./NewFoodDrinkForm";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -38,6 +39,12 @@ function App() {
     return <p>Loading &hellip;</p>;
   }
 
+  const addItem = (newItem) => {
+    alert();
+    console.log(newItem);
+    // setSnacks((snacks) => [...snacks, { ...newItem, id: newItem.name }]);
+  };
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -58,6 +65,9 @@ function App() {
             </Route>
             <Route path="/drinks/:id">
               <GeneralMenuItems items={drinks} cantFind="/404_Cant_Find_That" />
+            </Route>
+            <Route path="/new_food_drink_form">
+              <NewFoodDrinkForm addItem={addItem} />
             </Route>
             <Route path="*">
               <Error404 />

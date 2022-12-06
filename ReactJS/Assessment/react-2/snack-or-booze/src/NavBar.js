@@ -13,6 +13,9 @@ function NavBar() {
 
         <Nav className="ml-auto" navbar>
           <NavItem>
+            <NavLink to="/new_food_drink_form">Add</NavLink>
+          </NavItem>
+          <NavItem>
             <NavLink to="/snacks">Snacks</NavLink>
           </NavItem>
           <NavItem>
