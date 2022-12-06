@@ -12,7 +12,7 @@ import {
 
 function GeneralMenu({ items, foodType }) {
   return (
-    <section className="col-md-4">
+    <section className="col-md-4" style={{ marginTop: "-100px" }}>
       <Card>
         <CardBody>
           <CardTitle className="font-weight-bold text-center">

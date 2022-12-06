@@ -6,7 +6,7 @@ import GeneralMenu from "./GeneralMenu";
 
 function Home({ snacks, drinks }) {
   return (
-    <section className="col-md-8">
+    <section className="col-md-8" style={{ marginTop: "-100px" }}>
       <Card>
         <CardBody className="text-center">
           <CardTitle>

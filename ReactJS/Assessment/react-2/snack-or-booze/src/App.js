@@ -40,9 +40,9 @@ function App() {
   }
 
   const addItem = (newItem) => {
-    alert();
-    console.log(newItem);
-    // setSnacks((snacks) => [...snacks, { ...newItem, id: newItem.name }]);
+    newItem.foodType === "Food"
+      ? setSnacks((snacks) => [...snacks, { ...newItem, id: newItem.name }])
+      : setDrinks((drinks) => [...drinks, { ...newItem, id: newItem.name }]);
   };
 
   return (
