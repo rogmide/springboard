@@ -58,17 +58,18 @@ function App() {
               <GeneralMenu items={snacks} title="Snacks" foodType="snacks" />
             </Route>
             <Route path="/snacks/:id">
-              <GeneralMenuItems items={snacks} cantFind="/404_Cant_Find_That" />
+              <GeneralMenuItems items={snacks} cantFind="/snacks" />
             </Route>
             <Route exact path="/drinks">
               <GeneralMenu items={drinks} title="Drinks" foodType="drinks" />
             </Route>
             <Route path="/drinks/:id">
-              <GeneralMenuItems items={drinks} cantFind="/404_Cant_Find_That" />
+              <GeneralMenuItems items={drinks} cantFind="/drinks" />
             </Route>
             <Route path="/new_food_drink_form">
               <NewFoodDrinkForm addItem={addItem} />
             </Route>
+            {/* No Matching */}
             <Route path="*">
               <Error404 />
             </Route>
