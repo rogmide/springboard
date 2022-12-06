@@ -6,9 +6,11 @@ import Home from "./Home";
 import SnackOrBoozeApi from "./Api";
 import NavBar from "./NavBar";
 import { Route, Switch } from "react-router-dom";
-import Menu from "./FoodMenu";
-import Snack from "./FoodItem";
-import Drink from "./DrinkMenu";
+// import Menu from "./FoodMenu";
+// import Snack from "./FoodItem";
+// import Drink from "./DrinkMenu";
+import GeneralMenuItems from "./GeneralMenuItems";
+import GeneralMenu from "./GeneralMenu";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -34,7 +36,7 @@ function App() {
   if (isLoading) {
     return <p>Loading &hellip;</p>;
   }
-  // sadasd
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -45,16 +47,16 @@ function App() {
               <Home snacks={snacks} drinks={drinks} />
             </Route>
             <Route exact path="/snacks">
-              <Menu snacks={snacks} title="Snacks" />
+              <GeneralMenu items={snacks} title="Snacks" foodType="snacks" />
             </Route>
             <Route path="/snacks/:id">
-              <Snack items={snacks} cantFind="/snacks" />
+              <GeneralMenuItems items={snacks} cantFind="/snacks" />
             </Route>
             <Route exact path="/drinks">
-              <Drink drinks={drinks} title="Drinks" />
+              <GeneralMenu items={drinks} title="Drinks" foodType="drinks" />
             </Route>
             <Route path="/drinks/:id">
-              <Snack items={drinks} cantFind="/drinks" />
+              <GeneralMenuItems items={drinks} cantFind="/drinks" />
             </Route>
             <Route>
               <p>Hmmm. I can't seem to find what you want.</p>

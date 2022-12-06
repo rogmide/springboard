@@ -1,7 +1,8 @@
 import React from "react";
 import { Card, CardBody, CardTitle } from "reactstrap";
-import FoodMenu from "./FoodMenu";
-import DrinkMenu from "./DrinkMenu";
+// import FoodMenu from "./FoodMenu";
+// import DrinkMenu from "./DrinkMenu";
+import GeneralMenu from "./GeneralMenu";
 
 function Home({ snacks, drinks }) {
   return (
@@ -16,8 +17,10 @@ function Home({ snacks, drinks }) {
         </CardBody>
       </Card>
       <div style={{ display: "Flex", justifyContent: "center" }}>
-        <FoodMenu snacks={snacks} />
-        <DrinkMenu drinks={drinks} />
+        {/* <FoodMenu snacks={snacks} />
+        <DrinkMenu drinks={drinks} /> */}
+        <GeneralMenu items={snacks} foodType="snacks" />
+        <GeneralMenu items={drinks} foodType="drinks" />
       </div>
     </section>
   );
