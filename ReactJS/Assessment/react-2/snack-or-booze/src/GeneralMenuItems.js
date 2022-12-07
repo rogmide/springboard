@@ -2,10 +2,18 @@ import React from "react";
 import { Redirect, useParams } from "react-router-dom";
 import { Card, CardBody, CardTitle, CardText } from "reactstrap";
 
-function GeneralMenuItems({ items, cantFind }) {
+/*
+Variable 
+- item:
+  - Holds the snacks or drink is going to be display on details
+- cantFind
+  - Hold the path that is going to be redirect if we cant find the Snack or Drink
+*/
+
+function GeneralMenuItems({ item, cantFind }) {
   const { id } = useParams();
 
-  let drink = items.find((drink) => drink.id === id);
+  let drink = item.find((drink) => drink.id === id);
   if (!drink) return <Redirect to={cantFind} />;
 
   return (

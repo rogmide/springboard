@@ -10,6 +10,14 @@ import {
   ListGroupItem,
 } from "reactstrap";
 
+/*
+Variable 
+- items:
+  - Holds snacks or drink that to be display on the Menu
+- foodType
+  - Hold the type of food to display can be Snacks or Drinks
+*/
+
 function GeneralMenu({ items, foodType }) {
   return (
     <section className="col-md-4" style={{ marginTop: "-100px" }}>

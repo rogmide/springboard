@@ -21,6 +21,10 @@ class SnackOrBoozeApi {
     }
   }
 
+  // ########################
+  // Get all drinks from the DB
+  // Had to add try and catch for an error that was happening
+  // ########################
   static async getDrinks() {
     try {
       const result = await axios.get(`${BASE_API_URL}/drinks`);
