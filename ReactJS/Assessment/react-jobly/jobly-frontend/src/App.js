@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Routes_Base from "./Routes/Routes_Base";
 import jwtDecode from "jwt-decode";
-import JoblyApi from "./API/api";
+import JoblyApi from "./API/Api";
 import UserContext from "./UseContext";
 
 function App() {
