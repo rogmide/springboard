@@ -31,7 +31,9 @@ const LoginForm = ({ login }) => {
         {error === true ? (
           <Navigate exact="true" to="/" />
         ) : (
-          <h5 style={{ color: "red", fontSize: "18px" }}> {error}</h5>
+          <h5 style={{ color: "red", fontSize: "18px", textAlign: "center" }}>
+            {error}
+          </h5>
         )}
         <form onSubmit={handleSubmit}>
           <div className="form-group">
@@ -59,7 +61,7 @@ const LoginForm = ({ login }) => {
             onChange={handleChange}
           ></input>
           <br></br>
-          <button className="btn btn-secondary">Submit</button>
+          <button className="btn btn-secondary float-right">Submit</button>
         </form>
       </div>
     </>

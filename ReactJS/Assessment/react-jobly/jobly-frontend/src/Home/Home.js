@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Home.css";
 import { Link } from "react-router-dom";
+import UserContext from "../UseContext";
 
 const NeedLogIn = () => {
   return (
@@ -16,6 +17,8 @@ const NeedLogIn = () => {
 };
 
 const Home = () => {
+  const { currUser } = useContext(UserContext);
+
   return (
     <div className="Home">
       <div className="container text-center">
@@ -23,8 +26,8 @@ const Home = () => {
           Jobly
         </h1>
         <p>All the jobs in one, convenient place.</p>
-        {/* Need to add Login */}
-        {NeedLogIn()}
+        {/* Checking if the user is login */}
+        {currUser ? <h2>Welcome Back, {currUser.firstName} !</h2> : NeedLogIn()}
       </div>
     </div>
   );

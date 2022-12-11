@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import UserContext from "../UseContext";
 
 const NoUserLogIn = () => {
   return (
@@ -18,13 +19,27 @@ const NoUserLogIn = () => {
   );
 };
 
+const isLogIn = (name, logout) => {
+  return (
+    <ul className="navbar-nav ml-auto">
+      <li className="nav-item mr-4">
+        <NavLink className="nav-link" to="/" onClick={logout}>
+          Logout {name}
+        </NavLink>
+      </li>
+    </ul>
+  );
+};
+
 const NavBar = () => {
+  const { currUser, logout } = useContext(UserContext);
+
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-dark">
       <Link className="navbar-brand" to="/">
         Jobly
       </Link>
-      {NoUserLogIn()}
+      {currUser ? isLogIn(currUser.firstName, logout) : NoUserLogIn()}
     </nav>
   );
 };

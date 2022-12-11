@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Routes_Base from "./Routes/Routes_Base";
 import jwtDecode from "jwt-decode";
 import JoblyApi from "./API/api";
+import UserContext from "./UseContext";
 
 function App() {
   const [currUser, setCurrUser] = useState(null);
@@ -14,7 +15,7 @@ function App() {
           try {
             let { username } = jwtDecode(token);
             JoblyApi.token = token;
-            // let currUser = await JoblyApi.getCurrentUser(username);
+            setCurrUser(await JoblyApi.getUser(username));
           } catch (error) {
             console.log(error);
           }
@@ -35,7 +36,16 @@ function App() {
     }
   }
 
-  return <Routes_Base login={login} />;
+  const logout = () => {
+    setCurrUser(null);
+    setToken(null);
+  };
+
+  return (
+    <UserContext.Provider value={{ currUser, logout }}>
+      <Routes_Base login={login} />
+    </UserContext.Provider>
+  );
 }
 
 export default App;
