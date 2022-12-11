@@ -36,6 +36,17 @@ function App() {
     }
   }
 
+  async function signup(info) {
+    try {
+      let token = await JoblyApi.signup(info);
+      setToken(token);
+      return true;
+    } catch (errors) {
+      console.log(errors);
+      return errors;
+    }
+  }
+
   const logout = () => {
     setCurrUser(null);
     setToken(null);
@@ -43,7 +54,7 @@ function App() {
 
   return (
     <UserContext.Provider value={{ currUser, logout }}>
-      <Routes_Base login={login} />
+      <Routes_Base login={login} signup={signup} />
     </UserContext.Provider>
   );
 }

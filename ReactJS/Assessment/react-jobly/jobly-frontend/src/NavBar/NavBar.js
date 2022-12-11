@@ -24,7 +24,7 @@ const isLogIn = (name, logout) => {
     <ul className="navbar-nav ml-auto">
       <li className="nav-item mr-4">
         <NavLink className="nav-link" to="/" onClick={logout}>
-          Logout {name}
+          Log out {name}
         </NavLink>
       </li>
     </ul>
