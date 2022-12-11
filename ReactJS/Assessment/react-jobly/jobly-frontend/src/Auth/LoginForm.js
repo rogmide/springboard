@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./LoginForm.css";
+import { Navigate } from "react-router-dom";
 
 const LoginForm = ({ login }) => {
   const INITIAL_STATE = {
@@ -7,6 +8,7 @@ const LoginForm = ({ login }) => {
     password: "",
   };
   const [formData, setFormData] = useState(INITIAL_STATE);
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -16,16 +18,21 @@ const LoginForm = ({ login }) => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
-    login({ ...formData });
-    setFormData(INITIAL_STATE);
-  };
+    const resp = await login({ ...formData });
+    setError(resp);
+  }
 
   return (
     <>
       <div className="container LoginForm">
         <h1>Login</h1>
+        {error === true ? (
+          <Navigate exact="true" to="/" />
+        ) : (
+          <h5 style={{ color: "red", fontSize: "18px" }}> {error}</h5>
+        )}
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="username">Username: </label>
