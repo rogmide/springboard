@@ -1,0 +1,54 @@
+import React, { useState } from "react";
+import { Navigate } from "react-router-dom";
+
+const CompanySearch = ({ search }) => {
+  const INITIAL_STATE = {
+    name: "",
+  };
+  const [formData, setFormData] = useState(INITIAL_STATE);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((data) => ({
+      ...data,
+      [name]: value,
+    }));
+  };
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    search(formData.name ? formData.name : undefined);
+  }
+
+  return (
+    <>
+      <div className="container">
+        <form onSubmit={handleSubmit}>
+          <div
+            className="form-group"
+            style={{ display: "flex", marginTop: "20px" }}
+          >
+            <input
+              style={{ padding: "10px", marginLeft: "5px" }}
+              className="form-control"
+              id="name"
+              type="text"
+              name="name"
+              placeholder=""
+              value={formData.name}
+              onChange={handleChange}
+            ></input>
+            <button
+              style={{ marginLeft: "20px", marginRight: "5px" }}
+              className="btn btn-secondary float-right"
+            >
+              Search
+            </button>
+          </div>
+        </form>
+      </div>
+    </>
+  );
+};
+
+export default CompanySearch;
