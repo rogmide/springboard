@@ -16,8 +16,6 @@ const CompaniesList = () => {
 
   async function Search(name) {
     const comp = await JoblyApi.getCompanies(name);
-    console.log(name);
-    console.log(comp);
     setCompanies(comp);
   }
 
