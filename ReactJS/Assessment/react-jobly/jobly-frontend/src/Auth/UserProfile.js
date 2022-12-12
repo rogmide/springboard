@@ -5,7 +5,7 @@ import UserContext from "../UseContext";
 import JoblyApi from "../API/Api";
 
 const UserProfile = () => {
-  const { currUser } = useContext(UserContext);
+  const { currUser, setCurrUser } = useContext(UserContext);
 
   const INITIAL_STATE = {
     username: currUser.username,
@@ -29,16 +29,23 @@ const UserProfile = () => {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    let data = {
-      firstName: formData.firstName,
-      lastName: formData.lastName,
-      email: formData.email,
-      password: formData.password,
-    };
-
-    console.log(currUser);
     try {
-      await JoblyApi.updateUser(currUser.username, data);
+      let isPasswordCorrect = await JoblyApi.checkUserNamePassword({
+        username: currUser.username,
+        password: formData.password,
+      });
+    } catch (error) {
+      setError("Invalid Password!!!");
+      return;
+    }
+
+    try {
+      const userUpdated = await JoblyApi.updateUser(currUser.username, {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+      });
+      setCurrUser(userUpdated);
       setError(true);
     } catch (error) {
       console.log(error);

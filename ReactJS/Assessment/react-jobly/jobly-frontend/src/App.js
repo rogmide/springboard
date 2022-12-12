@@ -53,7 +53,7 @@ function App() {
   };
 
   return (
-    <UserContext.Provider value={{ currUser, logout }}>
+    <UserContext.Provider value={{ currUser, logout, setCurrUser }}>
       <Routes_Base login={login} signup={signup} />
     </UserContext.Provider>
   );

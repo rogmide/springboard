@@ -60,6 +60,11 @@ class JoblyApi {
     return res.user;
   }
 
+  static async checkUserNamePassword(data) {
+    let res = await this.request(`auth/token`, data, "post");
+    return res.token;
+  }
+
   /** Get user data */
 
   static async getUser(username) {
