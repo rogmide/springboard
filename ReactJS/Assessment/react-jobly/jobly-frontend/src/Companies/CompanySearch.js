@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Navigate } from "react-router-dom";
 
 const CompanySearch = ({ search }) => {
   const INITIAL_STATE = {
