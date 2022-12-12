@@ -8,8 +8,7 @@ const CompaniesList = () => {
 
   useEffect(function PreLoadInfo() {
     async function getCompanies() {
-      const comp = await JoblyApi.getCompanies();
-      setCompanies(comp);
+      Search(undefined);
     }
     getCompanies();
   }, []);
