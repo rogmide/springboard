@@ -8,7 +8,7 @@ const CompaniesList = () => {
 
   useEffect(function PreLoadInfo() {
     async function getCompanies() {
-      Search(undefined);
+      Search();
     }
     getCompanies();
   }, []);
