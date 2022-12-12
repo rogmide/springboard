@@ -1,0 +1,14 @@
+.CompanyCard {
+  width: 80%;
+  display: flex;
+}
+
+img {
+  width: 75px;
+  height: 75px;
+}
+
+.card-body {
+  display: flex;
+  justify-content: space-between;
+}

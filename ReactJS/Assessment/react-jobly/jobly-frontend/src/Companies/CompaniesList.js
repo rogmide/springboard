@@ -1,21 +1,31 @@
 import React, { useEffect, useState } from "react";
 import JoblyApi from "../API/Api";
+import CompanyCard from "./CompanyCard";
 
 const CompaniesList = () => {
-  const [companies, setCompanies] = useState(null);
+  const [companies, setCompanies] = useState([]);
 
-  //   useEffect(function PreLoadInfo() {
-  //     async function getCompanies() {
-  //       const temp = await JoblyApi.getCompanies();
-  //       //   setCompanies(await JoblyApi.getCompanies());
-  //       console.log(temp);
-  //     }
-  //     getCompanies();
-  //   }, []);
+  useEffect(function PreLoadInfo() {
+    async function getCompanies() {
+      const comp = await JoblyApi.getCompanies();
+      setCompanies(comp);
+    }
+    getCompanies();
+  }, []);
 
   return (
     <>
-      <div>Something Here!!!</div>
+      {companies.map((c) => (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "20px",
+          }}
+        >
+          <CompanyCard company={c} />
+        </div>
+      ))}
     </>
   );
 };
