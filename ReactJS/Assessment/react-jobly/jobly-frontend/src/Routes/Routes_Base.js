@@ -6,9 +6,21 @@ import LoginForm from "../Auth/LoginForm";
 import SignUpForm from "../Auth/SignUpForm";
 import UserProfile from "../Auth/UserProfile";
 import UserContext from "../UseContext";
+import CompaniesList from "../Companies/CompaniesList";
 
 function Routes_Base({ login, signup }) {
   const { currUser } = useContext(UserContext);
+
+  // Simple Security Check to see if User is Login
+  const SecureRoute = (path, component) => {
+    if (!currUser) {
+      return (
+        <Route path="*" element={<Navigate exact="true" to="/login" />}></Route>
+      );
+    } else {
+      return <Route exact path={path} element={component}></Route>;
+    }
+  };
 
   return (
     <BrowserRouter>
@@ -25,16 +37,9 @@ function Routes_Base({ login, signup }) {
           path="/signup"
           element={<SignUpForm signup={signup} />}
         ></Route>
-
         {/* Ensuring that the user is login to access this routes */}
-        {currUser ? (
-          <Route exact path="/profile" element={<UserProfile />}></Route>
-        ) : (
-          <Route
-            path="*"
-            element={<Navigate exact="true" to="/login" />}
-          ></Route>
-        )}
+        {SecureRoute("/profile", <UserProfile />)}
+        {SecureRoute("/companies", <CompaniesList />)}
 
         <Route path="*" element={<Navigate exact="true" to="/" />}></Route>
       </Routes>

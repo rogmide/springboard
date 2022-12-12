@@ -32,12 +32,31 @@ class JoblyApi {
     }
   }
 
+  //######################################################################
+  // Companies Section
+  //######################################################################
+
   /** Get details on a company by handle. */
 
   static async getCompany(handle) {
     let res = await this.request(`companies/${handle}`);
     return res.company;
   }
+
+  /** Get all the companies */
+
+  static async getCompanies() {
+    let res = await this.request("companies");
+    return res.companies;
+  }
+
+  //######################################################################
+  // End Companies Section
+  //######################################################################
+
+  //######################################################################
+  // Auth/User Section
+  //######################################################################
 
   /** Get token for the user that login */
 
@@ -60,6 +79,8 @@ class JoblyApi {
     return res.user;
   }
 
+  /** Check for user password in order to update de user profile */
+
   static async checkUserNamePassword(data) {
     let res = await this.request(`auth/token`, data, "post");
     return res.token;
@@ -71,6 +92,10 @@ class JoblyApi {
     let res = await this.request(`users/${username}`);
     return res.user;
   }
+
+  //######################################################################
+  // End Auth/User Section
+  //######################################################################
 }
 
 // // for now, put token ("testuser" / "password" on class)

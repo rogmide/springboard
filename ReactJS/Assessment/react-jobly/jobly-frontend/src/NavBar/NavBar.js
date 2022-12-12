@@ -23,6 +23,11 @@ const isLogIn = (name, logout) => {
   return (
     <ul className="navbar-nav ml-auto">
       <li className="nav-item mr-4">
+        <NavLink className="nav-link" to="/companies">
+          Companies
+        </NavLink>
+      </li>
+      <li className="nav-item mr-4">
         <NavLink className="nav-link" to="/profile">
           Profile
         </NavLink>
