@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import JoblyApi from "../API/Api";
 import JobCard from "../Jobs/JobCard";
-import "./CompanyDetail.css"
+import "./CompanyDetail.css";
 
 const CompanyDetail = () => {
   const { handle } = useParams();
@@ -19,13 +19,19 @@ const CompanyDetail = () => {
     [handle]
   );
 
+  // useEffect run sometimes 2 times without this line of code this component break
+  // adding this little line fix the problem
   if (!company) return;
 
   return (
     <div className="container card CompanyDetail">
       <div
         className="card-header"
-        style={{ backgroundColor: "rgba(52, 58, 64, 0.2)" }}
+        style={{
+          backgroundColor: "rgba(52, 58, 64, 0.2)",
+          marginTop: "10px",
+          borderRadius: "10px",
+        }}
       >
         {company.name}
       </div>

@@ -8,9 +8,9 @@ const CompanyCard = ({ company }) => {
       <div
         className="card-header"
         style={{
-          backgroundColor: "rgba(52, 58, 64, 0.2)",
-          marginTop: "10px",
-          borderRadius: "10px",
+          backgroundColor: "rgba(52, 58, 64, 0.2)"
+          // marginTop: "10px",
+          // borderRadius: "10px",
         }}
       >
         {company.name}
