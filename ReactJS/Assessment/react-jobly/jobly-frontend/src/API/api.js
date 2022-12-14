@@ -93,6 +93,10 @@ class JoblyApi {
     return res.user;
   }
 
+  static async applyForJob(username, id) {
+    await this.request(`users/${username}/jobs/${id}`, {}, "post");
+  }
+
   //######################################################################
   // End Auth/User Section
   //######################################################################
