@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from "react";
 import JoblyApi from "../API/Api";
-import CompanyCard from "./CompanyCard";
+import JobCard from "./JobCard";
 import SearchForm from "../CommunComponent/SearchForm";
 
-const CompaniesList = () => {
-  const [companies, setCompanies] = useState([]);
+const JobsList = () => {
+  const [jobs, setJobs] = useState([]);
 
   useEffect(function PreLoadInfo() {
-    async function getCompanies() {
+    async function getJobs() {
       Search();
     }
-    getCompanies();
+    getJobs();
   }, []);
 
   async function Search(name) {
-    const comp = await JoblyApi.getCompanies(name);
-    setCompanies(comp);
+    const res = await JoblyApi.getJobs(name);
+    setJobs(res);
   }
 
   return (
@@ -23,20 +23,20 @@ const CompaniesList = () => {
       <div>
         <SearchForm search={Search} />
       </div>
-      {companies.map((c) => (
+      {jobs.map((j) => (
         <div
-          key={c.handle}
+          key={j.id}
           style={{
             display: "flex",
             justifyContent: "center",
             marginTop: "20px",
           }}
         >
-          <CompanyCard company={c} />
+          <JobCard job={j} />
         </div>
       ))}
     </>
   );
 };
 
-export default CompaniesList;
+export default JobsList;

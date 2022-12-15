@@ -23,7 +23,7 @@ const JobCard = ({ job }) => {
 
   return (
     <>
-      <div className="JobCard">
+      <div className="JobCard" style={{ width: "60vw" }}>
         <div>{job.title}</div>
         <div className="card-body">
           <div>

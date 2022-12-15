@@ -28,6 +28,11 @@ const isLogIn = (name, logout) => {
         </NavLink>
       </li>
       <li className="nav-item mr-4">
+        <NavLink className="nav-link" to="/jobs">
+          Jobs
+        </NavLink>
+      </li>
+      <li className="nav-item mr-4">
         <NavLink className="nav-link" to="/profile">
           Profile
         </NavLink>
