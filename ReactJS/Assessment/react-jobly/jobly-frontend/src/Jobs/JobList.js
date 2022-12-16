@@ -29,7 +29,7 @@ const JobsList = () => {
           style={{
             display: "flex",
             justifyContent: "center",
-            marginTop: "20px",
+            marginTop: "1px",
           }}
         >
           <JobCard job={j} />

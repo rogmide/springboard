@@ -22,10 +22,13 @@ const CompanySearch = ({ search }) => {
   return (
     <>
       <div className="container">
-        <form onSubmit={handleSubmit}>
+        <form
+          onSubmit={handleSubmit}
+          style={{ display: "flex", justifyContent: "center" }}
+        >
           <div
             className="form-group"
-            style={{ display: "flex", marginTop: "20px" }}
+            style={{ display: "flex", marginTop: "20px", width: "60%" }}
           >
             <input
               style={{ padding: "10px", marginLeft: "5px" }}

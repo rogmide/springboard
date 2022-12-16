@@ -1,7 +1,7 @@
 .CompanyCard {
-  width: 80%;
+  width: 60%;
   display: flex;
-  margin-top: 20px;
+  margin-top: 1px;
 }
 
 img {
