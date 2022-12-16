@@ -3,10 +3,11 @@ import Routes_Base from "./Routes/Routes_Base";
 import jwtDecode from "jwt-decode";
 import JoblyApi from "./API/Api";
 import UserContext from "./UseContext";
+import useLocalStore from "./CommunComponent/useLocalStore";
 
 function App() {
   const [currUser, setCurrUser] = useState(null);
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useLocalStore("token");
 
   useEffect(
     function loadUserInfo() {

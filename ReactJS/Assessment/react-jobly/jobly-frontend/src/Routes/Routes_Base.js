@@ -15,12 +15,12 @@ function Routes_Base({ login, signup }) {
 
   // Simple Security Check to see if User is Login
   const SecureRoute = (path, component) => {
-    if (!currUser) {
+    if (currUser) {
+      return <Route exact path={path} element={component}></Route>;
+    } else {
       return (
         <Route path="*" element={<Navigate exact="true" to="/login" />}></Route>
       );
-    } else {
-      return <Route exact path={path} element={component}></Route>;
     }
   };
 
@@ -39,6 +39,7 @@ function Routes_Base({ login, signup }) {
           path="/signup"
           element={<SignUpForm signup={signup} />}
         ></Route>
+
         {/* Ensuring that the user is login to access this routes */}
         {SecureRoute("/profile", <UserProfile />)}
         {SecureRoute("/companies", <CompaniesList />)}
