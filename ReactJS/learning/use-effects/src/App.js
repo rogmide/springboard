@@ -7,6 +7,7 @@ import TimeWrapper from "./TimerWrapper";
 // import ProfileViwerSearch from "./ProfileViwerWithSearch";
 import Video from "./Video";
 
+// Need to look into this more
 function App() {
   return (
     <div className="App">
