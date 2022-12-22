@@ -13,6 +13,8 @@ const countReducer = (state = INITIAL_STATE, action) => {
       return { ...state, count: state.count - 1 };
     case "RESET":
       return { ...state, count: 0 };
+    case "MULTIPLY":
+      return { ...state, count: state.count * action.payload };
     default:
       return state;
   }
