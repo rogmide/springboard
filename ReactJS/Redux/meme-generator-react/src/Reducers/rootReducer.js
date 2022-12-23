@@ -1,15 +1,11 @@
-const INITIAL_STATE = { count: 0, color: "green" };
+const INITIAL_STATE = { meme: { top: "", buttom: "", imgURL: "" } };
 
 const rootReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case "INCREMENT":
-      return { ...state, count: state.count + 1 };
-    case "DECREMENT":
-      return { ...state, count: state.count - 1 };
-    case "RESET":
-      return { ...state, count: 0 };
-    case "MULTIPLY":
-      return { ...state, count: state.count * action.payload };
+    case "CREATE_MEME":
+      return { ...state, meme: action.payload };
+    case "DELETE_MEME":
+      return { ...state, meme: state.count - 1 };
     default:
       return state;
   }
