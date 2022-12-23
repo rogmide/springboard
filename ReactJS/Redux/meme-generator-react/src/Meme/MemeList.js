@@ -2,10 +2,11 @@ import React from "react";
 import { useSelector } from "react-redux";
 import MemeForm from "./MemeForm";
 import DisplayMeme from "./DisplayMeme";
+import "./MemeList.css";
 
 const MemeList = () => {
   const memes = useSelector((store) => store.memes);
-  //   console.log(memes);
+
   return (
     <>
       <div>

@@ -7,8 +7,6 @@ const DisplayMeme = ({ top, buttom, imgURL }) => {
     <>
       <div
         style={{
-          width: "300xp",
-          height: "300px",
           background: `url(${imgURL}) no-repeat`,
           backgroundSize: "100%",
         }}
