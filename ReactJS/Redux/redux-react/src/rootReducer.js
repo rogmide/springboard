@@ -1,4 +1,4 @@
-const INITIAL_STATE = { count: 0, color: "red" };
+const INITIAL_STATE = { count: 0, color: "green" };
 
 const rootReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
