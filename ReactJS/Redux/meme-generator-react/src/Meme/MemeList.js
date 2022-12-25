@@ -5,7 +5,7 @@ import DisplayMeme from "./DisplayMeme";
 import "./MemeList.css";
 
 const MemeList = () => {
-  const memes = useSelector((store) => store);
+  const memes = useSelector((store) => store.memes);
 
   return (
     <>
