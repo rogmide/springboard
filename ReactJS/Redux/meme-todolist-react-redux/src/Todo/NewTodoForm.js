@@ -1,7 +1,11 @@
 import React, { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+import { useDispatch } from "react-redux";
 import "./NewTodoForm.css";
 
-const NewTodoForm = ({ addTodo }) => {
+const NewTodoForm = () => {
+  const dispatch = useDispatch();
+
   const INITIAL_STATE = {
     text: "",
   };
@@ -17,9 +21,14 @@ const NewTodoForm = ({ addTodo }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    //Pass the Data Up to the Parent
-    // addTodo({ ...formData });
-    // setFormData(INITIAL_STATE);
+    const payload = {
+      id: uuidv4(),
+      text: formData.text,
+      done: false,
+      scrach: false,
+    };
+    dispatch({ type: "ADD_TODO", payload: payload });
+    setFormData(INITIAL_STATE);
   };
 
   return (
@@ -28,6 +37,7 @@ const NewTodoForm = ({ addTodo }) => {
       <form className="NewTodoForm" onSubmit={handleSubmit}>
         <label htmlFor="text1">Todo: </label>
         <input
+          required
           id="text1"
           type="text"
           name="text"
