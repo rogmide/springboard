@@ -66,7 +66,7 @@ const MemeForm = () => {
             onChange={handleChange}
           ></input>
 
-          <button>Add Todo</button>
+          <button>Add Meme</button>
         </form>
       </div>
     </>
