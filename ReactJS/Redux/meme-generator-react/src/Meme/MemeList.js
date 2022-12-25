@@ -9,7 +9,7 @@ const MemeList = () => {
 
   return (
     <>
-      <div>
+      <div className="appContainer">
         <MemeForm />
         <div className="MemeHolder">
           {memes.map((m) => (

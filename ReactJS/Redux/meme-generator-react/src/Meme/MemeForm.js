@@ -7,7 +7,7 @@ const MemeForm = () => {
   const dispatch = useDispatch();
 
   const INITIAL_STATE = {
-    up: "",
+    top: "",
     buttom: "",
     imgURL: "",
   };
@@ -23,7 +23,6 @@ const MemeForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert();
     const payload = {
       id: uuidv4(),
       top: formData.top,
@@ -37,37 +36,39 @@ const MemeForm = () => {
   return (
     <>
       <h1>Add Meme</h1>
-      <form className="" onSubmit={handleSubmit}>
-        <label htmlFor="top">Up Text: </label>
-        <input
-          id="top"
-          type="text"
-          name="top"
-          placeholder="Up Text"
-          value={formData.top}
-          onChange={handleChange}
-        ></input>
-        <label htmlFor="buttom">Buttom Text: </label>
-        <input
-          id="buttom"
-          type="text"
-          name="buttom"
-          placeholder="Buttom Text"
-          value={formData.buttom}
-          onChange={handleChange}
-        ></input>
-        <label htmlFor="imgURL">Imagen Url: </label>
-        <input
-          id="imgURL"
-          type="text"
-          name="imgURL"
-          placeholder="Imagen Url"
-          value={formData.imgURL}
-          onChange={handleChange}
-        ></input>
+      <div className="formHolder">
+        <form className="" onSubmit={handleSubmit}>
+          <label htmlFor="top">Up Text: </label>
+          <input
+            id="top"
+            type="text"
+            name="top"
+            placeholder="Up Text"
+            value={formData.top}
+            onChange={handleChange}
+          ></input>
+          <label htmlFor="buttom">Buttom Text: </label>
+          <input
+            id="buttom"
+            type="text"
+            name="buttom"
+            placeholder="Buttom Text"
+            value={formData.buttom}
+            onChange={handleChange}
+          ></input>
+          <label htmlFor="imgURL">Imagen Url: </label>
+          <input
+            id="imgURL"
+            type="text"
+            name="imgURL"
+            placeholder="Imagen Url"
+            value={formData.imgURL}
+            onChange={handleChange}
+          ></input>
 
-        <button>Add Todo</button>
-      </form>
+          <button>Add Todo</button>
+        </form>
+      </div>
     </>
   );
 };

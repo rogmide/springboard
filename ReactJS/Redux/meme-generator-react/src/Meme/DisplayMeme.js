@@ -11,8 +11,14 @@ const DisplayMeme = ({ top, buttom, imgURL }) => {
         }}
         className="backIMG"
       >
-        <div className="upText"> {top} </div>
-        <div className="downText"> {buttom} </div>
+        <div>
+          {" "}
+          <h3 className="top"> {top} </h3>{" "}
+        </div>
+        <div>
+          {" "}
+          <h3 className="bottom">{buttom} </h3>
+        </div>
       </div>
     </>
   );
