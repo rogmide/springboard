@@ -5,7 +5,7 @@ import DisplayMeme from "./DisplayMeme";
 import "./MemeList.css";
 
 const MemeList = () => {
-  const memes = useSelector(store => store);
+  const memes = useSelector((store) => store);
 
   return (
     <>
@@ -15,6 +15,7 @@ const MemeList = () => {
           {memes.map((m) => (
             <DisplayMeme
               key={m.id}
+              id={m.id}
               top={m.top}
               buttom={m.buttom}
               imgURL={m.imgURL}

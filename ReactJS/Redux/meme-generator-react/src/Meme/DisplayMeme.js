@@ -1,10 +1,18 @@
 import React from "react";
 import "./DisplayMeme.css";
+import { useDispatch } from "react-redux";
 
-const DisplayMeme = ({ top, buttom, imgURL }) => {
+const DisplayMeme = ({ id, top, buttom, imgURL }) => {
+  const dispatch = useDispatch();
+
+  const memDele = (id) => {
+    dispatch({ type: "DELETE_MEME", payload: id });
+  };
+
   return (
     <>
       <div
+        onClick={() => memDele(id)}
         style={{
           background: `url(${imgURL}) no-repeat`,
           backgroundSize: "100%",

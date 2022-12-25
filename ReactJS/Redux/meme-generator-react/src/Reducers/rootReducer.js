@@ -11,9 +11,9 @@ const INITIAL_STATE = [
 const rootReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case "CREATE_MEME":
-      return [ ...state, action.payload ];
+      return [...state, action.payload];
     case "DELETE_MEME":
-      return { ...state, memes: state.count - 1 };
+      return [...state.filter((m) => m.id !== action.payload)];
     default:
       return state;
   }
