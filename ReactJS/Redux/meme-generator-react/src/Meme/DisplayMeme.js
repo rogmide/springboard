@@ -2,7 +2,6 @@ import React from "react";
 import "./DisplayMeme.css";
 
 const DisplayMeme = ({ top, buttom, imgURL }) => {
-  console.log(imgURL);
   return (
     <>
       <div

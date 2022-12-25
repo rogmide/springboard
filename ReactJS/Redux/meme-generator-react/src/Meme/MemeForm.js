@@ -1,7 +1,11 @@
 import React, { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+import { useSelector, useDispatch } from "react-redux";
 import "./MemeForm.css";
 
 const MemeForm = () => {
+  const dispatch = useDispatch();
+
   const INITIAL_STATE = {
     up: "",
     buttom: "",
@@ -20,22 +24,27 @@ const MemeForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     alert();
-    // //Pass the Data Up to the Parent
-    // addTodo({ ...formData });
-    // setFormData(INITIAL_STATE);
+    const payload = {
+      id: uuidv4(),
+      top: formData.top,
+      buttom: formData.buttom,
+      imgURL: formData.imgURL,
+    };
+    dispatch({ type: "CREATE_MEME", payload: payload });
+    setFormData(INITIAL_STATE);
   };
 
   return (
     <>
       <h1>Add Meme</h1>
       <form className="" onSubmit={handleSubmit}>
-        <label htmlFor="up">Up Text: </label>
+        <label htmlFor="top">Up Text: </label>
         <input
-          id="up"
+          id="top"
           type="text"
-          name="up"
+          name="top"
           placeholder="Up Text"
-          value={formData.up}
+          value={formData.top}
           onChange={handleChange}
         ></input>
         <label htmlFor="buttom">Buttom Text: </label>
