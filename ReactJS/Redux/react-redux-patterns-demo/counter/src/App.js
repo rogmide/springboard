@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Counter from "./Counter";
 import { Provider } from "react-redux";
 import rootReducer from "./rootReducer";
-import { createStore } from "redux";
+import { legacy_createStore as createStore } from "redux";
 
 const store = createStore(rootReducer);
 class App extends Component {

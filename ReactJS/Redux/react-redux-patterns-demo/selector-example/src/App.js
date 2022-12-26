@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import { Provider } from "react-redux";
 import rootReducer from "./rootReducer";
-import { createStore } from "redux";
+import { legacy_createStore as createStore } from "redux";
 import NumberInputs from "./NumberInputs";
 import Math from "./Math";
 import MathLessRendering from "./MathLessRendering";
