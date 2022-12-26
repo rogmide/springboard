@@ -1,16 +1,16 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { INCREMENT, DECREMENT } from "../Actions/actionsType";
+import { increment, decrement } from "../Actions/actions";
 
 function Counter() {
   const count = useSelector((st) => st.count);
   const dispatch = useDispatch();
 
   function up(evt) {
-    dispatch({ type: INCREMENT });
+    dispatch(increment());
   }
   function down(evt) {
-    dispatch({ type: DECREMENT });
+    dispatch(decrement());
   }
 
   return (
