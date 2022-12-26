@@ -1,11 +1,22 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const NumberInput = () => {
-  const [inputs, setInputs] = useState({ num1: 0, num2: 0 });
+  const dispatch = useDispatch();
+
+  const { num1, num2 } = useSelector((state) => ({
+    num1: state.num1,
+    num2: state.num2,
+  }));
+  const [inputs, setInputs] = useState({ num1: num1, num2: num2 });
 
   const handleChange = (e) => {
     const { value, name } = e.target;
-    setInputs((inputs) => ({ ...inputs, [name]: value }));
+    setInputs((inputs) => ({ ...inputs, [name]: +value }));
+  };
+
+  const changeNum = (num) => {
+    dispatch({ type: "CHANGE_NUM", num, value: inputs[num] });
   };
   return (
     <>
@@ -18,7 +29,7 @@ const NumberInput = () => {
           value={inputs.num1}
           onChange={handleChange}
         ></input>
-        <button>Update</button>
+        <button onClick={() => changeNum("num1")}>Update</button>
       </div>
       <div>
         <label htmlFor="num2">Sec Number:</label>
@@ -29,7 +40,7 @@ const NumberInput = () => {
           name="num2"
           onChange={handleChange}
         ></input>
-        <button>Update</button>
+        <button onClick={() => changeNum("num2")}>Update</button>
       </div>
     </>
   );

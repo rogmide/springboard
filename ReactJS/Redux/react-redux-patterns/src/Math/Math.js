@@ -1,11 +1,25 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, shallowEqual } from "react-redux";
 
 const Math = () => {
-  const { num1, num2 } = useSelector((state) => ({
-    num1: state.num1,
-    num2: state.num2,
-  }));
+  //   const { num1, num2 } = useSelector((state) => ({
+  //     num1: state.num1,
+  //     num2: state.num2,
+  //   }));
+
+  // Use this way to avoid re-render
+  //   const num1 = useSelector((state) => state.num1);
+  //   const num2 = useSelector((state) => state.num2);
+
+  // Use this way to avoid re-render using shallowEqual funtion from react-redux
+  const { num1, num2 } = useSelector(
+    (state) => ({
+      num1: state.num1,
+      num2: state.num2,
+    }),
+    shallowEqual
+  );
+
   return (
     <>
       <div>
