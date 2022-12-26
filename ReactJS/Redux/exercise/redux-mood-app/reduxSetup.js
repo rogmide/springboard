@@ -9,6 +9,4 @@ const moodReducer = (state = INITIAL_STATE, action) => {
   }
 };
 
-// store.dispatch({ type: "LOG_STATE" })
-
 const store = Redux.createStore(moodReducer);
