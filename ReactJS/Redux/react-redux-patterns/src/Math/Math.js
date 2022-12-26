@@ -14,8 +14,8 @@ const Math = () => {
   // Use this way to avoid re-render using shallowEqual funtion from react-redux
   const { num1, num2 } = useSelector(
     (state) => ({
-      num1: state.num1,
-      num2: state.num2,
+      num1: state.nums.num1,
+      num2: state.nums.num2,
     }),
     shallowEqual
   );
