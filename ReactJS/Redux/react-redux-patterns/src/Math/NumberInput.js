@@ -1,13 +1,18 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector, shallowEqual } from "react-redux";
+import { CHANGE_NUM } from "../Actions/actionsType";
 
 const NumberInput = () => {
   const dispatch = useDispatch();
 
-  const { num1, num2 } = useSelector((state) => ({
-    num1: state.num1,
-    num2: state.num2,
-  }));
+  // shallowEqual will compare the obj and if they are no different the component will not be re-render
+  const { num1, num2 } = useSelector(
+    (state) => ({
+      num1: state.num1,
+      num2: state.num2,
+    }),
+    shallowEqual
+  );
   const [inputs, setInputs] = useState({ num1: num1, num2: num2 });
 
   const handleChange = (e) => {
@@ -16,7 +21,7 @@ const NumberInput = () => {
   };
 
   const changeNum = (num) => {
-    dispatch({ type: "CHANGE_NUM", num, value: inputs[num] });
+    dispatch({ type: CHANGE_NUM, num, value: inputs[num] });
   };
   return (
     <>

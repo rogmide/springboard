@@ -24,6 +24,9 @@ const Math = () => {
     <>
       <div>
         <h3>Math Facts!</h3>
+        <p>
+          Current Num1: {num1} and Num2: {num2}
+        </p>
         <ul>
           <li>Sum: {num1 + num2}</li>
           <li>Difference: {num1 - num2}</li>
