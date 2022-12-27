@@ -10,6 +10,7 @@ const ProductList = () => {
       <div className="prodHolder">
         {Object.keys(items).map((id) => (
           <ProductDetail
+            id={id}
             key={id}
             name={items[id].name}
             price={items[id].price}

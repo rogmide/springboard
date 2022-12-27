@@ -1,4 +1,15 @@
-// import { CHANGE_NUM, DECREMENT, INCREMENT } from "./actionsType";
+import { ADD_TO_CART, REMOVE_FROM_CART } from "./actionsType";
 
-// export const increment = () => ({ type: INCREMENT });
-// export const decrement = () => ({ type: DECREMENT });
+export function addToCart(id) {
+  return {
+    type: ADD_TO_CART,
+    id,
+  };
+}
+
+export function removeFromCart(id) {
+  return {
+    type: REMOVE_FROM_CART,
+    id,
+  };
+}

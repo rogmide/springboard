@@ -1,7 +1,10 @@
 import React from "react";
+import { addToCart, removeFromCart } from "../Action/actions";
+import { useDispatch } from "react-redux";
 import "./ProductDetail.css";
 
-const ProductDetail = ({ name, price, description, image_url }) => {
+const ProductDetail = ({ id, name, price, description, image_url }) => {
+  const dispatch = useDispatch();
   return (
     <div className="card" style={{ width: "18rem" }}>
       <img className="card-img-top" src={image_url} alt="Card image cap" />
@@ -11,8 +14,18 @@ const ProductDetail = ({ name, price, description, image_url }) => {
         <p className="card-text">{description}</p>
       </div>
       <div>
-        <button className="btn btn-success">Add</button>
-        <button className="btn btn-success">Remove</button>
+        <button
+          className="btn btn-success"
+          onClick={() => dispatch(addToCart(id))}
+        >
+          Add
+        </button>
+        <button
+          className="btn btn-success"
+          onClick={() => dispatch(removeFromCart(id))}
+        >
+          Remove
+        </button>
       </div>
     </div>
   );
