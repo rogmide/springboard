@@ -1,6 +1,6 @@
 import fakeDB from "../data.json";
 
-function rootReducer(state = fakeDB.products, action) {
+function rootReducer(state = fakeDB, action) {
   switch (action.type) {
     case "SOME_ACTION":
       return state + "";
