@@ -6,7 +6,7 @@ import "./ProductDetail.css";
 const ProductDetail = ({ id, name, price, description, image_url }) => {
   const dispatch = useDispatch();
   return (
-    <div className="card" style={{ width: "18rem" }}>
+    <div className="card" style={{ width: "18rem", margin: "5px" }}>
       <img className="card-img-top" src={image_url} alt="Card image cap" />
       <div className="card-body">
         <h5 className="card-title">{name.toUpperCase()}</h5>

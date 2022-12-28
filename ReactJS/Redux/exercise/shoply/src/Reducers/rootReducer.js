@@ -13,8 +13,10 @@ function rootReducer(state = INITIAL_STATE, action) {
       tempCart[action.id] = (tempCart[action.id] || 0) + 1;
       return { ...state, cartItems: tempCart };
     case REMOVE_FROM_CART:
-      console.log(action.id);
-      return { ...state };
+      const tempCart2 = { ...state.cartItems };
+      tempCart2[action.id] = (tempCart2[action.id] || 0) - 1;
+      if (tempCart2[action.id] === 0) delete tempCart2[action.id];
+      return { ...state, cartItems: tempCart2 };
 
     default:
       return state;
