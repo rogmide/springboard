@@ -8,10 +8,12 @@ const INITIAL_STATE = {
 
 function rootReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
+    
     case ADD_TO_CART:
       const tempCart = { ...state.cartItems };
       tempCart[action.id] = (tempCart[action.id] || 0) + 1;
       return { ...state, cartItems: tempCart };
+
     case REMOVE_FROM_CART:
       const tempCart2 = { ...state.cartItems };
       tempCart2[action.id] = (tempCart2[action.id] || 0) - 1;

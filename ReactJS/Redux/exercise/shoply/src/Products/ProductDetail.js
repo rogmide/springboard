@@ -1,10 +1,7 @@
 import React from "react";
-import { addToCart, removeFromCart } from "../Action/actions";
-import { useDispatch } from "react-redux";
 import "./ProductDetail.css";
-
+import Add_RemoveBtn from "../Add_Remove_BTN/Add_Remove";
 const ProductDetail = ({ id, name, price, description, image_url }) => {
-  const dispatch = useDispatch();
   return (
     <div className="card" style={{ width: "18rem", margin: "5px" }}>
       <img className="card-img-top" src={image_url} alt="Card image cap" />
@@ -13,20 +10,7 @@ const ProductDetail = ({ id, name, price, description, image_url }) => {
         <h5 className="card-text">Price: {price} USD</h5>
         <p className="card-text">{description}</p>
       </div>
-      <div>
-        <button
-          className="btn btn-success"
-          onClick={() => dispatch(addToCart(id))}
-        >
-          Add
-        </button>
-        <button
-          className="btn btn-success"
-          onClick={() => dispatch(removeFromCart(id))}
-        >
-          Remove
-        </button>
-      </div>
+      <Add_RemoveBtn id={id} />
     </div>
   );
 };
