@@ -4,8 +4,8 @@ import BaseRoutes from "./Routes/baseRoutes";
 function App() {
   return (
     <div className="App">
-      {/* <ProductList />
-      <Cart /> */}
+      {/* <ProductList /> */}
+      {/* <Cart /> */}
       <BaseRoutes />
     </div>
   );
