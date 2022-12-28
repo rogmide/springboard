@@ -6,8 +6,7 @@ import Add_RemoveBtn from "../Add_Remove_BTN/Add_Remove";
 const Cart = () => {
   const prods = useSelector((st) => st.products);
   const items = useSelector((st) => st.cartItems);
-  console.log(prods);
-  console.log(items);
+
   return (
     <>
       <div>
