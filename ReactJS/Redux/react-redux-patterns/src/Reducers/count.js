@@ -6,7 +6,7 @@ export default function count(state = INITIAL_STATE, action) {
   switch (action.type) {
     case INCREMENT:
       return state + 1;
-    case DECREMENT:
+    case DECREMENT: 
       return state - 1;
     default:
       return state;

@@ -1,0 +1,14 @@
+.itemHolder {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: solid 1px green;
+  border-radius: 10px;
+  margin-top: 5px;
+  width: 97vw;
+}
+
+.itemHolder img {
+  width: 100px;
+  height: 100px;
+}

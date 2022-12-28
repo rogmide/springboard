@@ -9,8 +9,9 @@ const INITIAL_STATE = {
 function rootReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case ADD_TO_CART:
-      console.log(action.id);
-      return { ...state };
+      const tempCart = { ...state.cartItems };
+      tempCart[action.id] = (tempCart[action.id] || 0) + 1;
+      return { ...state, cartItems: tempCart };
     case REMOVE_FROM_CART:
       console.log(action.id);
       return { ...state };
