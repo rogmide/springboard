@@ -7,7 +7,7 @@ const NavBar = () => {
       className="navbar navbar-expand-md navbar-dark bg-dark"
     >
       <Link className="navbar-brand" to="/">
-        Jobly
+        Shoply
       </Link>
       <ul className="navbar-nav ml-auto">
         <li className="nav-item mr-4">
