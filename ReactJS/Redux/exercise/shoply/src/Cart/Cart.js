@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import "./Cart.css";
+import Add_RemoveBtn from "../Add_Remove_BTN/Add_Remove";
 
 const Cart = () => {
   const prods = useSelector((st) => st.products);
@@ -21,6 +22,7 @@ const Cart = () => {
               <h3>Qty: {items[id]} </h3>
               <h3>Total: {prods[id].price * items[id]} USD</h3>
             </div>
+            <Add_RemoveBtn id={id} />
           </div>
         </div>
       ))}
@@ -29,5 +31,3 @@ const Cart = () => {
 };
 
 export default Cart;
-
-// NEXT STEP IS BUILD THE CART DISPLAY AND ADD ITEMS TO THE CART
