@@ -1,6 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./NavBar.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
 const NavBar = () => {
   const amtItem = useSelector((st) => st.cartItems);
@@ -23,9 +25,9 @@ const NavBar = () => {
         Shoply
       </Link>
       <ul className="navbar-nav ml-auto">
-        <li className="nav-item mr-4">
+        <li>
           <NavLink className="nav-link" to="/cart">
-            Cart
+            <FontAwesomeIcon icon={faCartShopping} />
           </NavLink>
         </li>
         <li>
