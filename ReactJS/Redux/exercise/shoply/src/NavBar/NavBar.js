@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
 const NavBar = () => {
-  const amtItem = useSelector((st) => st.amtItem);
+  const { amtItem, totalCost } = useSelector((st) => st);
 
   return (
     <nav
@@ -23,7 +23,7 @@ const NavBar = () => {
         </li>
         <li>
           <NavLink className="nav-link" to="/cart">
-            {amtItem}
+            {amtItem} Total: {totalCost} USD
           </NavLink>
         </li>
       </ul>
