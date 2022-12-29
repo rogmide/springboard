@@ -10,7 +10,6 @@ const NavBar = () => {
     Object.keys(amtItem).map((id) => {
       total += amtItem[id];
     });
-    console.log(total);
   };
 
   itemTotal();
