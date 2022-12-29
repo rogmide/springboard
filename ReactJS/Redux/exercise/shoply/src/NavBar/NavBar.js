@@ -23,7 +23,7 @@ const NavBar = () => {
         </li>
         <li>
           <NavLink className="nav-link" to="/cart">
-            {amtItem} Total: {totalCost} USD
+            {amtItem} - ${totalCost} USD
           </NavLink>
         </li>
       </ul>

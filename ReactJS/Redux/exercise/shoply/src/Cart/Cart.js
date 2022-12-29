@@ -21,7 +21,7 @@ const Cart = () => {
               </div>
               <div>
                 <h3>Qty: {items[id]} </h3>
-                <h3>Total: {prods[id].price * items[id]} USD</h3>
+                <h3>Total: {(prods[id].price * items[id]).toFixed(2)} USD</h3>
               </div>
               <Add_RemoveBtn id={id} />
             </div>

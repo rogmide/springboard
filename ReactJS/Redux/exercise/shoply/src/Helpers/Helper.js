@@ -11,5 +11,5 @@ export const calculateTotalPrice = (prod, items) => {
   Object.keys(items).map((id) => {
     total += prod[id].price * items[id];
   });
-  return total;
+  return total.toFixed(2);
 };
