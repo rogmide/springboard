@@ -6,6 +6,7 @@ const SignUpForm = ({ signup }) => {
   const INITIAL_STATE = {
     username: "",
     password: "",
+    password1: "",
     firstName: "",
     lastName: "",
     email: "",
@@ -24,6 +25,12 @@ const SignUpForm = ({ signup }) => {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    if (formData.password !== formData.password1) {
+      setError("Passwords do NOT match");
+      console.log(e);
+      return;
+    }
+    delete formData.password1;
     const resp = await signup({ ...formData });
     setError(resp);
   }
@@ -67,20 +74,33 @@ const SignUpForm = ({ signup }) => {
               onChange={handleChange}
             ></input>
           </div>
-          <div className="form-group">
-            <label htmlFor="password">Password: </label>
-            <input
-              className="form-control"
-              required
-              id="password"
-              type="password"
-              name="password"
-              placeholder="Password"
-              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,}$"
-              onInvalid={erroMsg}
-              value={formData.password}
-              onChange={handleChange}
-            ></input>
+          <div className="pwdHolder">
+            <div className="form-group">
+              <label htmlFor="password">Password: </label>
+              <input
+                className="form-control"
+                required
+                id="password"
+                type="password"
+                name="password"
+                placeholder="Password"
+                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,}$"
+                onInvalid={erroMsg}
+                value={formData.password}
+                onChange={handleChange}
+              ></input>
+              <label htmlFor="password1">Confirm Password: </label>
+              <input
+                className="form-control"
+                required
+                id="password1"
+                type="password"
+                name="password1"
+                placeholder=""
+                value={formData.password1}
+                onChange={handleChange}
+              ></input>
+            </div>
           </div>
           <div className="form-group">
             <label htmlFor="firstName">First Name: </label>
