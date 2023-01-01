@@ -6,9 +6,6 @@ import LoginForm from "../Auth/LoginForm";
 import SignUpForm from "../Auth/SignUpForm";
 import UserProfile from "../Auth/UserProfile";
 import UserContext from "../UseContext";
-import CompaniesList from "../Companies/CompaniesList";
-import CompanyDetail from "../Companies/CompanyDetails";
-import JobsList from "../Jobs/JobList";
 
 function Routes_Base({ login, signup }) {
   const { currUser } = useContext(UserContext);
@@ -42,9 +39,6 @@ function Routes_Base({ login, signup }) {
 
         {/* Ensuring that the user is login to access this routes */}
         {SecureRoute("/profile", <UserProfile />)}
-        {SecureRoute("/companies", <CompaniesList />)}
-        {SecureRoute("/companies/:handle", <CompanyDetail />)}
-        {SecureRoute("/jobs", <JobsList />)}
 
         <Route path="*" element={<Navigate exact="true" to="/" />}></Route>
       </Routes>
