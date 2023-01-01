@@ -25,7 +25,7 @@ const Home = () => {
     <div className="Home">
       <div className="container text-center">
         <h1 className="mb-3 font-weight-bold" style={{ color: "#343a40" }}>
-          Jobly
+          Unnamed-CapStone
         </h1>
         <p>All the jobs in one, convenient place.</p>
         {/* Checking if the user is login */}

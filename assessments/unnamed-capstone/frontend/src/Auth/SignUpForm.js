@@ -15,6 +15,7 @@ const SignUpForm = ({ signup }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    e.target.setCustomValidity("");
     setFormData((data) => ({
       ...data,
       [name]: value,
@@ -26,6 +27,17 @@ const SignUpForm = ({ signup }) => {
     const resp = await signup({ ...formData });
     setError(resp);
   }
+
+  const erroMsg = (e) => {
+    if (e.target.id === "email") {
+      e.target.setCustomValidity("Enter in the format: name@sample.com");
+    }
+    if (e.target.id === "password") {
+      e.target.setCustomValidity(
+        "At least 1 Uppercase, Lowercase, Number, Symbol, Min 8 chars"
+      );
+    }
+  };
 
   return (
     <>
@@ -64,6 +76,8 @@ const SignUpForm = ({ signup }) => {
               type="password"
               name="password"
               placeholder="Password"
+              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,}$"
+              onInvalid={erroMsg}
               value={formData.password}
               onChange={handleChange}
             ></input>
@@ -104,6 +118,7 @@ const SignUpForm = ({ signup }) => {
               name="email"
               placeholder=""
               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+              onInvalid={erroMsg}
               value={formData.email}
               onChange={handleChange}
             ></input>
