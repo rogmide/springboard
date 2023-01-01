@@ -27,10 +27,10 @@ const SignUpForm = ({ signup }) => {
     e.preventDefault();
     if (formData.password !== formData.password1) {
       setError("Passwords do NOT match");
-      console.log(e);
       return;
     }
     delete formData.password1;
+    alert();
     const resp = await signup({ ...formData });
     setError(resp);
   }
@@ -57,7 +57,7 @@ const SignUpForm = ({ signup }) => {
           <h5 style={{ color: "red", fontSize: "18px", textAlign: "center" }}>
             {/* Using the error that is coming from the BackEnd */}
             {/* Controlled the Email with a Regex pattern */}
-            {error}
+            <span> {error} </span>
           </h5>
         )}
         <form onSubmit={handleSubmit}>

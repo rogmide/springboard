@@ -16,3 +16,17 @@
   padding: 15px;
   border-radius: 15px;
 }
+
+h5 {
+  font-size: 18px;
+  text-align: center;
+  padding: 10px;
+  /* border: 1px solid #acb5bf; */
+  /* border-radius: 10px; */
+  /* background: #e6e2e2; */
+  color: brown;
+}
+
+h5 span {
+  background-color: rgb(215, 202, 202);
+}
