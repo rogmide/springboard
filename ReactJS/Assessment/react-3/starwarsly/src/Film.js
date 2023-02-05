@@ -41,7 +41,7 @@ function Film() {
 
   if (missing) return <h1 className="mt-5">loading...</h1>;
 
-  // If planet is not explore already will Display Unknow
+  // If planet is not explore already will Display Unknown
   // If planet is explore will Display Planet Name
   const planets = film.planets.map((pid) => ({
     id: pid,
@@ -49,7 +49,7 @@ function Film() {
     display: planetState[pid] ? planetState[pid].name : "Unknown",
   }));
 
-  // If characters is not explore already will Display Unknow
+  // If characters is not explore already will Display Unknown
   // If characters is explore will Display Planet Name
   const characters = film.characters.map((cid) => ({
     id: cid,

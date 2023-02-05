@@ -9,6 +9,11 @@ import Person from "./Person";
 import HomePage from "./HomePage";
 
 function Routes() {
+  /**
+   * Routes:
+   * @return  {<Components />}
+   *           Return the Routes that are going to be use on the app
+   */
   return (
     <Switch>
       <Route exact path="/">
