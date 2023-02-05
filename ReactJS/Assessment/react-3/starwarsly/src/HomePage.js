@@ -5,12 +5,21 @@ import { useSelector, useDispatch } from "react-redux";
 import { resetAll } from "./actions/reset";
 
 function HomePage() {
+  /**
+   * HomePage: Component
+   * @return  Render a Button and the Background Img for the HomePage
+   */
+
+  // loaded: control to Start or Reset Exploration
   const loaded = useSelector((st) => st.films[1] !== undefined);
-  const sta = useSelector((st) => st);
+  // dispatch: dispatch is use to dispatch actions
   const dispatch = useDispatch();
-  console.log(sta);
 
   function reset() {
+    /**
+     * reset:
+     *      dispatch reset all action to reset the app
+     */
     dispatch(resetAll());
   }
 
