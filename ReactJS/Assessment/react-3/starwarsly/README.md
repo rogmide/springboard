@@ -14,14 +14,14 @@ Clone the project then run in terminal on the project folder:
 	npm install
 	
 
-### Executing programÏ
+### Executing program
 	
 	npm start
 	Runs the app in the development mode.
 	Open http://localhost:3000 to view it in your browser.
 	
 
-## 
+## Architecture
 
 	.
 	└── /src
@@ -59,6 +59,14 @@ Clone the project then run in terminal on the project folder:
             	└── /navigation
                 	└── /NavBar
                     	└── NavBar.js
+
+## Libraries
+
+- React
+- Axios
+- React-router-dom
+- Redux (data-flow architecture)
+- React-redux
 
 ## Components 
 
