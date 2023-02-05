@@ -32,6 +32,7 @@ function Planet() {
 
   useEffect(
     function () {
+      // load planet to show on page
       if (missing) {
         dispatch(getPlanetFromAPI(id));
       }

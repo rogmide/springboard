@@ -12,6 +12,7 @@ function getPlanetFromAPI(id) {
    */
 
   return async function (dispatch) {
+    // Axios request to the stawars API for the films with the id that is pass as param
     const res = await axios.get(`https://swapi.dev/api/planets/${id}/`);
     let { name, population, climate, residents, films } = res.data;
 

@@ -28,6 +28,7 @@ function Person() {
 
   useEffect(
     function () {
+      // load person to show on page
       if (missing) {
         dispatch(getPersonFromAPI(id));
       }

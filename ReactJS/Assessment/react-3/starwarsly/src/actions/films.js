@@ -12,6 +12,7 @@ function getFilmFromAPI(id) {
    */
 
   return async function (dispatch) {
+    // Axios request to the stawars API for the films with the id that is pass as param
     const res = await axios.get(`https://swapi.dev/api/films/${id}/`);
     let {
       title: name,

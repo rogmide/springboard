@@ -12,6 +12,7 @@ function getPersonFromAPI(id) {
    */
 
   return async function (dispatch) {
+    // Axios request to the stawars API for the films with the id that is pass as param
     const res = await axios.get(`https://swapi.dev/api/people/${id}/`);
     let { name, gender, birth_year: birthYear, homeworld, films } = res.data;
 

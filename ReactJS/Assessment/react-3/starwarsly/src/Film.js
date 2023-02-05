@@ -32,6 +32,7 @@ function Film() {
 
   useEffect(
     function () {
+      // load film to show on page
       if (missing) {
         dispatch(getFilmFromAPI(id));
       }
