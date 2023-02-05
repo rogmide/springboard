@@ -5,7 +5,7 @@ import { LOAD_PLANET } from "./types";
 
 function getPlanetFromAPI(id) {
   /**
-   * <function description>
+   * getPlanetFromAPI
    * @param   {int} id Is the ID that is going to be use to request a planet from the API
    * @return  {name, population, climate, residents, films}
    *           Returns a planet data from the API.

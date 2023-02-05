@@ -5,7 +5,7 @@ import { LOAD_PERSON } from "./types";
 
 function getPersonFromAPI(id) {
   /**
-   * <function description>
+   * getPersonFromAPI
    * @param   {int} id Is the ID that is going to be use to request a Person from the API
    * @return  {name, gender, birth_year: birthYear, homeworld, films}
    *           Returns a person data from the API.
