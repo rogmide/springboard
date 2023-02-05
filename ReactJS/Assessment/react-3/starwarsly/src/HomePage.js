@@ -1,25 +1,23 @@
-import React from 'react';
+import React from "react";
 import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from "react-redux";
 
 import { resetAll } from "./actions/reset";
 
-
 function HomePage() {
-  const loaded = useSelector(st => st.films[1] !== undefined);
+  const loaded = useSelector((st) => st.films[1] !== undefined);
+  const sta = useSelector((st) => st);
   const dispatch = useDispatch();
+  console.log(sta);
 
   function reset() {
     dispatch(resetAll());
   }
-  
+
   return (
     <>
       {loaded ? (
-        <button
-          className="btn btn-danger btn-block btn-lg"
-          onClick={reset}
-        >
+        <button className="btn btn-danger btn-block btn-lg" onClick={reset}>
           Reset To Fresh Exploration
         </button>
       ) : (
