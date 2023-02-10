@@ -5,8 +5,6 @@ function findRotationCount(arr) {
 
   while (idxRigh != -1) {
     middle = Math.floor((idxLeft + idxRigh) / 2);
-    console.log(middle, arr[middle - 1], arr[middle]);
-
     if (arr[middle - 1] > arr[middle]) {
       return middle;
     } else {
