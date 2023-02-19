@@ -23,16 +23,49 @@ class FriendGraph {
   }
 
   // BFS using a queue, shift()
-  areConnected(p1, p2) {
+  areConnectedBFS(p1, p2) {
     let toVisitQueue = [p1];
     let seen = new Set(toVisitQueue);
     while (toVisitQueue.length) {
       let currPerson = toVisitQueue.shift();
+      console.log("VISITING: ", currPerson.name);
       if (currPerson === p2) return true;
       for (const neighbor of currPerson.adjacent) {
         if (!seen.has(neighbor)) {
           toVisitQueue.push(neighbor);
           seen.add(neighbor);
+        }
+      }
+    }
+    return false;
+  }
+  // DFS using a stack, pop()
+  // tranverse
+  areConnectedDFS(p1, p2) {
+    let toVisitStack = [p1];
+    let seen = new Set(toVisitStack);
+    while (toVisitStack.length) {
+      let currPerson = toVisitStack.pop();
+      console.log("VISITING: ", currPerson.name);
+      if (currPerson === p2) return true;
+      for (const neighbor of currPerson.adjacent) {
+        if (!seen.has(neighbor)) {
+          toVisitStack.push(neighbor);
+          seen.add(neighbor);
+        }
+      }
+    }
+    return false;
+  }
+
+  areConnectedRecursive(p1, p2, seen = new Set([p1])) {
+    if (p1 === p2) return true;
+    for (const neighbor of p1.adjacent) {
+      if (!seen.has(neighbor)) {
+        seen.add(neighbor);
+        console.log("VISITING: ", neighbor.name);
+        if (this.areConnectedRecursive(neighbor, p2, seen)) {
+          return true;
         }
       }
     }
@@ -66,4 +99,6 @@ friends.setFriends(barney, lenny);
 // for (const f of friends.nodes) {
 //   console.log(f);
 // }
-console.log(friends.areConnected(homer, lisa));
+console.log(friends.areConnectedBFS(homer, marge));
+console.log(friends.areConnectedDFS(homer, marge));
+console.log(friends.areConnectedRecursive(homer, barney));
