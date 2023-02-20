@@ -17,7 +17,7 @@ function bubbleSort3(arr) {
 }
 
 // Both Array has to be Sorted
-function mergeSort(arr1, arr2) {
+function merge(arr1, arr2) {
   const result = [];
   let i = 0;
   let j = 0;
@@ -45,14 +45,14 @@ function mergeSort(arr1, arr2) {
 // bubbleSort3([45, 6, 7, 23, 1, 19]);
 // mergeSort([1, 3, 8, 10, 15], [2, 2, 2, 4, 5, 6]);
 
-function mergeSortRec(arr) {
+function mergeSort(arr) {
   // base case
   if (arr.length <= 1) return arr;
   const mid = Math.floor(arr.length / 2);
-  const left = mergeSortRec(arr.slice(0, mid));
-  const right = mergeSortRec(arr.slice(mid));
+  const left = mergeSort(arr.slice(0, mid));
+  const right = mergeSort(arr.slice(mid));
   console.log("Left: ", left, "Right: ", right);
-  return mergeSort(left, right);
+  return merge(left, right);
 }
 
-mergeSortRec([4, 45, 67, 1, -9, 99, 23, 24, 77, 100]);
+mergeSort([4, 45, 67, 1, -9, 99, 23, 24, 77, 100]);
