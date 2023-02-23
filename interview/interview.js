@@ -83,5 +83,41 @@ function isValidAnagram_v2(str1, str2) {
   return true;
 }
 
-console.log(isValidAnagram("bat", "tab"));
-console.log(isValidAnagram_v2("bat", "tab"));
+// console.log(isValidAnagram("bat", "tab"));
+// console.log(isValidAnagram_v2("bat", "tab"));
+
+function zumZero(nums) {
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] > 0) return undefined;
+    for (let j = i + 1; j < nums.length; j++) {
+      console.log(nums[i], nums[j]);
+      if (nums[i] + nums[j] === 0) {
+        return [nums[i], nums[j]];
+      }
+    }
+  }
+  return undefined;
+}
+
+// console.log(zumZero([-3, -2, 0, 1, 7, 9]));
+
+// [-30, -21, -10, -5, -3, -2, -1, 0, 3, 6, 99]
+function zumZeroMultiplePointers(nums) {
+  let leftPointer = 0;
+  let rightPointer = nums.length - 1;
+  while (leftPointer < rightPointer) {
+    console.log(nums[leftPointer], nums[rightPointer]);
+    const sum = nums[leftPointer] + nums[rightPointer];
+    if (sum === 0) {
+      return [nums[leftPointer], nums[rightPointer]];
+    } else if (sum > 0) {
+      rightPointer--;
+    } else {
+      leftPointer++;
+    }
+  }
+}
+let nums = [
+  -12, -4, -3, -2, -1, 0, 1, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15, 16, 17,
+];
+console.log(zumZeroMultiplePointers(nums));
