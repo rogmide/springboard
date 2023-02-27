@@ -8,6 +8,7 @@ const rootReducer = (state = {}, action) => {
         memes: [...state.memes.filter((m) => m.id !== action.payload)],
       };
     case "ADD_TODO":
+      console.log(state.todos);
       return { ...state, todos: [...state.todos, action.payload] };
     case "DEL_TODO":
       return {

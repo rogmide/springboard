@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <MemeList />
-        <TodoList />
+        {/* <TodoList /> */}
       </header>
     </div>
   );

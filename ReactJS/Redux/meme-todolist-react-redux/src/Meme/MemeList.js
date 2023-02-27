@@ -12,15 +12,17 @@ const MemeList = () => {
       <div className="appContainer">
         <MemeForm />
         <div className="MemeHolder">
-          {memes.map((m) => (
-            <DisplayMeme
-              key={m.id}
-              id={m.id}
-              top={m.top}
-              buttom={m.buttom}
-              imgURL={m.imgURL}
-            />
-          ))}
+          {memes
+            ? memes.map((m) => (
+                <DisplayMeme
+                  key={m.id}
+                  id={m.id}
+                  top={m.top}
+                  buttom={m.buttom}
+                  imgURL={m.imgURL}
+                />
+              ))
+            : " "}
         </div>
       </div>
     </>

@@ -13,14 +13,16 @@ const TodoList = () => {
       {" "}
       <div className="TodoList">
         <h1>Todo List</h1>
-        {todos.map((t) => (
-          <div key={t.id}>
-            {/* {isEditForm === t.id && (
+        {todos
+          ? todos.map((t) => (
+              <div key={t.id}>
+                {/* {isEditForm === t.id && (
               <EditTodoForm todo={t} editTodo={editTodo} />
             )} */}
-            <Todo id={t.id} text={t.text} done={t.done} scrach={t.scrach} />
-          </div>
-        ))}
+                <Todo id={t.id} text={t.text} done={t.done} scrach={t.scrach} />
+              </div>
+            ))
+          : ""}
       </div>
       <NewTodoForm />
     </>
