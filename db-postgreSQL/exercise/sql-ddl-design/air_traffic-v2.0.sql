@@ -1,28 +1,20 @@
-DROP DATABASE IF EXISTS air_traffic;
+DROP DATABASE IF EXISTS airtraffic;
 
-CREATE DATABASE air_traffic;
+CREATE DATABASE airtraffic;
 
-\c air_traffic
+\c airtraffic
 
-CREATE TABLE "fly_route"(
+CREATE TABLE "airline"(
     "id" INTEGER NOT NULL,
-    "city_from_id" INTEGER NOT NULL,
-    "city_to_id" INTEGER NOT NULL,
-    "country_from_id" INTEGER NOT NULL,
-    "country_to_id" INTEGER NOT NULL,
-    "departure_date" DATE NOT NULL,
-    "arrival_date" DATE NOT NULL,
-    "airplane_id" INTEGER NOT NULL
+    "name" INTEGER NOT NULL,
+    "phone_number" INTEGER NOT NULL
 );
 ALTER TABLE
-    "fly_route" ADD PRIMARY KEY("id");
-CREATE TABLE "city"(
+    "airline" ADD PRIMARY KEY("id");
+CREATE TABLE "country"(
     "id" INTEGER NOT NULL,
-    "country_id" INTEGER NOT NULL
+    "name" TEXT NOT NULL
 );
-ALTER TABLE
-    "city" ADD PRIMARY KEY("id");
-CREATE TABLE "country"("id" INTEGER NOT NULL);
 ALTER TABLE
     "country" ADD PRIMARY KEY("id");
 CREATE TABLE "customer"(
@@ -40,27 +32,38 @@ CREATE TABLE "airplane"(
 );
 ALTER TABLE
     "airplane" ADD PRIMARY KEY("id");
-CREATE TABLE "airplane_customer"(
+CREATE TABLE "city"(
     "id" INTEGER NOT NULL,
-    "ariplane_id" INTEGER NOT NULL,
-    "customer_id" INTEGER NOT NULL,
-    "seat_number" TEXT NOT NULL
+    "country_id" INTEGER NOT NULL,
+    "name" TEXT NOT NULL,
+    "air_port_name" TEXT NOT NULL
 );
 ALTER TABLE
-    "airplane_customer" ADD PRIMARY KEY("id");
+    "city" ADD PRIMARY KEY("id");
+CREATE TABLE "ticket"(
+    "id" INTEGER NOT NULL,
+    "city_from_id" INTEGER NOT NULL,
+    "city_to_id" INTEGER NOT NULL,
+    "country_from_id" INTEGER NOT NULL,
+    "country_to_id" INTEGER NOT NULL,
+    "departure_date" DATE NOT NULL,
+    "arrival_date" DATE NOT NULL,
+    "airplane_id" INTEGER NOT NULL,
+    "customer_id" INTEGER NOT NULL,
+    "seat" INTEGER NOT NULL,
+    "airline_id" INTEGER NOT NULL
+);
 ALTER TABLE
-    "fly_route" ADD CONSTRAINT "fly_route_city_from_id_foreign" FOREIGN KEY("city_from_id") REFERENCES "city"("id");
+    "ticket" ADD PRIMARY KEY("id");
 ALTER TABLE
-    "fly_route" ADD CONSTRAINT "fly_route_city_to_id_foreign" FOREIGN KEY("city_to_id") REFERENCES "city"("id");
+    "ticket" ADD CONSTRAINT "ticket_city_from_id_foreign" FOREIGN KEY("city_from_id") REFERENCES "city"("id");
 ALTER TABLE
-    "airplane_customer" ADD CONSTRAINT "airplane_customer_ariplane_id_foreign" FOREIGN KEY("ariplane_id") REFERENCES "airplane"("id");
-ALTER TABLE
-    "fly_route" ADD CONSTRAINT "fly_route_airplane_id_foreign" FOREIGN KEY("airplane_id") REFERENCES "airplane"("id");
-ALTER TABLE
-    "airplane_customer" ADD CONSTRAINT "airplane_customer_customer_id_foreign" FOREIGN KEY("customer_id") REFERENCES "customer"("id");
+    "ticket" ADD CONSTRAINT "ticket_airplane_id_foreign" FOREIGN KEY("airplane_id") REFERENCES "airplane"("id");
 ALTER TABLE
     "city" ADD CONSTRAINT "city_country_id_foreign" FOREIGN KEY("country_id") REFERENCES "country"("id");
 ALTER TABLE
-    "fly_route" ADD CONSTRAINT "fly_route_country_to_id_foreign" FOREIGN KEY("country_to_id") REFERENCES "country"("id");
+    "ticket" ADD CONSTRAINT "ticket_customer_id_foreign" FOREIGN KEY("customer_id") REFERENCES "customer"("id");
 ALTER TABLE
-    "fly_route" ADD CONSTRAINT "fly_route_country_from_id_foreign" FOREIGN KEY("country_from_id") REFERENCES "country"("id");
+    "ticket" ADD CONSTRAINT "ticket_airline_id_foreign" FOREIGN KEY("airline_id") REFERENCES "airline"("id");
+ALTER TABLE
+    "ticket" ADD CONSTRAINT "ticket_country_from_id_foreign" FOREIGN KEY("country_from_id") REFERENCES "country"("id");
